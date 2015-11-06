@@ -1,5 +1,15 @@
 # msgapi-sdk-php
+
 Version: 1.1.2
+
+Code analysers: [![Code Climate](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php/badges/gpa.svg)](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/badges/quality-score.png?b=community)](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/?branch=community) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/0f0dd548-550d-4a8a-a37e-13d6ee67f30c/mini.png)](https://insight.sensiolabs.com/projects/0f0dd548-550d-4a8a-a37e-13d6ee67f30c)  
+All code analysers are configured to ignore `docs/*` and `source/Salt/*` as these should not be part of the analyses.
+
+## Notes about this version
+This is the community version of the Threema Gateway PHP SDK. It may contain additional changes compared to the official one, downloadable from the Threema website. If you are looking for an exact mirror of the downloadable Threema you can switch to the branch [`official`](https://github.com/rugk/threema-msgapi-sdk-php/tree/official).  
+More information are avaliable in [the wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/What-to-know-about-this-fork).
+
+The contributors of this repositoriy are not affiliated with Threema or the Threema GmbH.
 
 ## Installation
 - Install PHP 5.4 or later: [https://secure.php.net/manual/en/install.php](https://secure.php.net/manual/en/install.php)
