@@ -6,7 +6,8 @@ Code analysers: [![Code Climate](https://codeclimate.com/github/rugk/threema-msg
 All code analysers are configured to ignore `docs/*` and `source/Salt/*` as these should not be part of the analyses.
 
 ## Notes about this version
-This is the community version of the Threema Gateway PHP SDK. It may contain additional changes compared to the official one, downloadable from the Threema website. If you are looking for an exact mirror of the downloadable Threema you can switch to the branch [`official`](https://github.com/rugk/threema-msgapi-sdk-php/tree/official).  
+This is a fork of the original repo after it was announced that it is no longer maintained by Threema.
+As this is the community version of the Threema Gateway PHP SDK it may contain additional changes compared to the official one downloadable from the Threema website. If you are looking for an exact mirror of the downloadable Threema you can switch to the branch to [`official`](https://github.com/rugk/threema-msgapi-sdk-php/tree/official).  
 More information are avaliable in [the wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/What-to-know-about-this-fork).
 
 The contributors of this repositoriy are not affiliated with Threema or the Threema GmbH.
