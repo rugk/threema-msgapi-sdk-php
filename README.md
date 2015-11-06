@@ -1,5 +1,5 @@
 # msgapi-sdk-php
-Version: 1.1.0
+Version: 1.1.2
 
 ## Installation
 - Install PHP 5.4 or later: [https://secure.php.net/manual/en/install.php](https://secure.php.net/manual/en/install.php)
@@ -47,7 +47,7 @@ $connector = new Connection($settings, $publicKeyStore);
 ```
 
 ### Creating a connection with advanced options
-**Attention:** This settings change internal values of the TLS connection. Choosing wrong settings can weaken the TLS connection or prevent connecting to the server. Use this options with care!
+**Attention:** This settings change internal values of the TLS connection. Choosing wrong settings can weaken the TLS connection or prohibit a successful connection to the server. Use them with care!
 
 Each of the additional options shown below is optional. You can leave it out or use `null` to use the default value for this option.
 
@@ -62,7 +62,7 @@ require_once('lib/bootstrap.php');
 $settings = new ConnectionSettings(
     '*THREEMA',
     'THISISMYSECRET'
-    null, //the host to be use, set to null for default (recommend)
+    null, //the host to be used, set to null for default (recommend)
     [
         'forceHttps' => true, //set to true to force HTTPS, default: false
         'tlsVersion' => '1.2', //set the version of TLS to be used, default: null
