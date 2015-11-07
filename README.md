@@ -2,7 +2,7 @@
 
 Version: 1.1.2
 
-Code analysers: [![Code Climate](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php/badges/gpa.svg)](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/badges/quality-score.png?b=community)](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/?branch=community) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/0f0dd548-550d-4a8a-a37e-13d6ee67f30c/mini.png)](https://insight.sensiolabs.com/projects/0f0dd548-550d-4a8a-a37e-13d6ee67f30c)  
+Code analysers: [![Code Climate](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php/badges/gpa.svg)](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/0f0dd548-550d-4a8a-a37e-13d6ee67f30c/mini.png)](https://insight.sensiolabs.com/projects/0f0dd548-550d-4a8a-a37e-13d6ee67f30c)  
 All code analysers are configured to ignore `docs/*` and `source/Salt/*` as these should not be part of the analyses.
 
 ## Notes about this version
