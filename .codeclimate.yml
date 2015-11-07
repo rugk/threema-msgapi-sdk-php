@@ -4,5 +4,10 @@ languages:
   PHP: true
   Python: false
 exclude_paths:
+<<<<<<< HEAD
   - docs/**/*
   - source/Salt/**/*
+=======
+- docs/*
+- source/Salt/*
+>>>>>>> origin/master
