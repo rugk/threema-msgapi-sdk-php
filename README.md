@@ -1,4 +1,4 @@
-# msgapi-sdk-php
+# Threema Gateway PHP SDK
 
 Version: 1.1.2
 
