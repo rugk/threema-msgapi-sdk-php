@@ -275,4 +275,4 @@ Decrypt a box (must be provided on stdin) message and download (if the message i
 threema-msgapi-tool.php -C <from> <secret>
 ```
 
-Fetch remaining credits
+Fetch remaining credits.
