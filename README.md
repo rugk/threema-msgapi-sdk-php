@@ -2,8 +2,8 @@
 
 Version: 1.1.2
 
-Code analysers: [![Code Climate](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php/badges/gpa.svg)](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/b2d332ae-4100-42e0-abda-9cc96a79b18a/mini.png)](https://insight.sensiolabs.com/projects/b2d332ae-4100-42e0-abda-9cc96a79b18a)  
-All code analysers are configured to ignore `docs/*` and `source/Salt/*` as these should not be part of the analyses.
+Code analysers: [![Code Climate](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php/badges/gpa.svg)](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/b2d332ae-4100-42e0-abda-9cc96a79b18a/mini.png)](https://insight.sensiolabs.com/projects/b2d332ae-4100-42e0-abda-9cc96a79b18a) [![Codacy Badge](https://api.codacy.com/project/badge/grade/b90e43398be24c7fa417a43f02fbd31a)](https://www.codacy.com/app/c917250b/threema-msgapi-sdk-php)  
+All code analysers are configured to ignore `source/Salt/*` as this should not be part of the analyses.
 
 ## Notes about this version
 This is a fork of the [original repo](https://github.com/threema-ch/threema-msgapi-sdk-php) after it was announced that it is no longer maintained by Threema.
