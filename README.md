@@ -1,4 +1,4 @@
-# Threema Gateway PHP SDK
+# [Threema Gateway](http://gateway.threema.ch/) PHP SDK
 
 Version: 1.1.2
 
@@ -7,8 +7,10 @@ All code analysers are configured to ignore `docs/*` and `source/Salt/*` as thes
 
 ## Notes about this version
 This is a fork of the [original repo](https://github.com/threema-ch/threema-msgapi-sdk-php) after it was announced that it is no longer maintained by Threema.
-As this is the community version of the Threema Gateway PHP SDK it may contain additional changes compared to the official one downloadable from the Threema website. If you are looking for an exact mirror of the downloadable Threema you can switch to the branch to [`official`](https://github.com/rugk/threema-msgapi-sdk-php/tree/official).  
+As this is the community version of the Threema Gateway PHP SDK it may contain additional changes compared to the official one downloadable from the Threema website. If you are looking for an exact mirror of the downloadable Threema you can switch to the branch [`official`](https://github.com/rugk/threema-msgapi-sdk-php/tree/official).  
 More information are avaliable in [the wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/What-to-know-about-this-fork).
+
+An automatically created documentation of this SDK can be found [here](https://rugk.github.io/threema-msgapi-sdk-php/).
 
 The contributors of this repositoriy are not affiliated with Threema or the Threema GmbH.
 
@@ -152,7 +154,7 @@ else {
 threema-msgapi-tool.php -e <privateKey> <publicKey>
 ```
 
-Encrypt standard input using the given sender private key and recipient public key. two lines to standard output: first the nonce (hex), and then the box (hex).
+Encrypt standard input using the given sender private key and recipient public key. Two lines to standard output: first the nonce (hex), and then the box (hex).
 
 #### Decrypt
 
@@ -201,7 +203,7 @@ Derive the public key that corresponds with the given private key.
 threema-msgapi-tool.php -s <threemaId> <from> <secret>
 ```
 
-Send a message from standard input with server-side encryption to the given ID. is the API identity and 'secret' is the API secret. the message ID on success.
+Send a message from standard input with server-side encryption to the given ID. `<from>` is the API identity and `<secret>` is the API secret. the message ID on success.
 
 #### Send End-to-End Encrypted Text Message
 
@@ -209,7 +211,7 @@ Send a message from standard input with server-side encryption to the given ID. 
 threema-msgapi-tool.php -S <threemaId> <from> <secret> <privateKey>
 ```
 
-Encrypt standard input and send the text message to the given ID. 'from' is the API identity and 'secret' is the API secret. Prints the message ID on success.
+Encrypt standard input and send the text message to the given ID. `<from>` is the API identity and `<secret>` is the API secret. Prints the message ID on success.
 
 #### Send a End-to-End Encrypted Image Message
 
@@ -217,7 +219,7 @@ Encrypt standard input and send the text message to the given ID. 'from' is the 
 threema-msgapi-tool.php -S -i <threemaId> <from> <secret> <privateKey> <imageFile>
 ```
 
-Encrypt the image file and send the message to the given ID. 'from' is the API identity and 'secret' is the API secret. Prints the message ID on success.
+Encrypt the image file and send the message to the given ID. `<from>` is the API identity and `<secret>` is the API secret. Prints the message ID on success.
 
 #### Send a End-to-End Encrypted File Message
 
@@ -225,7 +227,7 @@ Encrypt the image file and send the message to the given ID. 'from' is the API i
 threema-msgapi-tool.php -S -f <threemaId> <from> <secret> <privateKey> <file> <thumbnailFile>
 ```
 
-Encrypt the file (and thumbnail if given) and send the message to the given ID. 'from' is the API identity and 'secret' is the API secret. Prints the message ID on success.
+Encrypt the file (and thumbnail if given) and send the message to the given ID. `<from>` is the API identity and `<secret>` is the API secret. Prints the message ID on success.
 
 #### ID-Lookup By Email Address
 
@@ -257,7 +259,7 @@ Lookup the public key for the given ID.
 threema-msgapi-tool.php -c <threemaId> <from> <secret>
 ```
 
-Fetch the capabilities of a Threema ID
+Fetch the capabilities of a Threema ID.
 
 #### Decrypt a Message and download the Files
 
@@ -265,7 +267,7 @@ Fetch the capabilities of a Threema ID
 threema-msgapi-tool.php -r <threemaId> <from> <secret> <privateKey> <messageId> <nonce> <outputFolder>
 ```
 
-Decrypt a box (must be provided on stdin) message and download (if the message is an image or file message) the file(s) to the given <outputFolder> folder
+Decrypt a box (must be provided on stdin) message and download (if the message is an image or file message) the file(s) to the given `<outputFolder>` folder.
 
 #### Remaining credits
 
