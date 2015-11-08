@@ -1,6 +1,6 @@
 engines:
   csslint:
-    enabled: true
+    enabled: false
   fixme:
     enabled: true
   phpcodesniffer:
@@ -9,7 +9,6 @@ engines:
     enabled: true
 ratings:
   paths:
-  - "**.css"
   - "**.php"
   - "**.module"
   - "**.inc"
