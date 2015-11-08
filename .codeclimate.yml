@@ -14,5 +14,4 @@ ratings:
   - "**.module"
   - "**.inc"
 exclude_paths:
-- docs/**/*
 - source/Salt/**/*
