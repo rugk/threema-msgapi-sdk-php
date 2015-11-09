@@ -75,7 +75,7 @@ require_once('lib/bootstrap.php');
 $settings = new ConnectionSettings(
     '*THREEMA',
     'THISISMYSECRET'
-    null, //the host to be used, set to null for default (recommend)
+    null, //the host to be used, set to null to use the default (recommend)
     [
         'forceHttps' => true, //set to true to force HTTPS, default: false
         'tlsVersion' => '1.2', //set the version of TLS to be used, default: null
@@ -276,3 +276,7 @@ threema-msgapi-tool.php -C <from> <secret>
 ```
 
 Fetch remaining credits.
+
+## Contributing
+If you want to contribute we are very grateful for this. We may periodically send patches to Threema to make it possible for them to implement them in the official SDK version.  
+You can find more information [in our wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/Contributing).
