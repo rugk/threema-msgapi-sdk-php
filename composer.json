@@ -1,8 +1,8 @@
 {
     "name": "rugk/threema-msgapi-sdk-php",
     "type": "library",
-    "description": "Threem Source code to successfully integrate Threema Gateway in your environment. This is a fork of the original repo after it was announced that it is no longer maintained by Threema.",
-    "version": "v1.1.3,
+    "description": "Threema PHP-SDK to integrate Threema Gateway in your environment. This is a fork of the original repo after it was announced that it is no longer maintained by Threema.",
+    "version": "v1.1.3",
     "keywords": ["threema","message", "messenger"],
     "homepage": "https://gateway.threema.ch/en/developer/sdk-php",
     "authors": [
