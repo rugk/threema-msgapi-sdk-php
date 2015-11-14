@@ -1,2 +1,14 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Force to use LE line ending always
+* text eol=lf
+
+# binary files should not be touched
+*.phar binary
+
+# image files should not be touched
+*.jpg binary
+*.png binary
+
+# font files should not be touched
+*.woff binary
+*.ttf binary
+*.otf binary
