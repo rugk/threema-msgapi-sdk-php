@@ -1,0 +1,5 @@
+<?php
+//paste your private key here and save this file as PrivateKey.php.
+define('MSGAPI_PRIVATE_KEY', 'private:4a6a1b34dcef15d43cb74de2fd36091be99fbbaf126d099d47d83d919712c72b');
+//alternatively you may read the key from a file where you saved it earlier
+// define('MSGAPI_PRIVATE_KEY', trim(file_get_contents('../../privateKey.txt')));

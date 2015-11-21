@@ -1,0 +1,14 @@
+# Ignore gateway credentials entered for testing
+ConnectionCredentials.php
+PrivateKey.php
+
+# Ignore public keystore files
+keystore.txt
+keystore.php
+
+# Ignore key files
+*.key
+# private.key
+# public.key
+privateKey.txt
+publicKey.txt
