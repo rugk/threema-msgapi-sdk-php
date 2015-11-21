@@ -11,7 +11,7 @@
             "name": "Threema GmbH",
         }
     ],
-    "support"     : {
+    "support": {
         "docs": "https://rugk.github.io/threema-msgapi-sdk-php/",
         "email": "support-gateway-service@threema.ch",
     },
@@ -19,7 +19,7 @@
         "php": ">=5.4.0"
     },
     "suggest": {
-        "ext-libsodium": ">=1.0.0"
+        "ext-libsodium": "Installing libsodium is highly recommend! If you use a 64bit version of PHP you can also use a fallback to a pure PHP implementation, but for security reasons it is always recommend to use libsodium. When installing libsodium it is recommend to choose the latest avaliable version. If you cannot or do not want to do this install at least libsodium v1.1.0 or higher as this is the first stable version of the extension."
     },
     "autoload": {
         "files": ["source/bootstrap.php"]
