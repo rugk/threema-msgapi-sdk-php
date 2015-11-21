@@ -1,19 +1,30 @@
 {
     "name": "rugk/threema-msgapi-sdk-php",
     "type": "library",
-    "description": "Threema PHP-SDK to integrate Threema Gateway in your environment.",
+    "description": "Threema PHP-SDK to integrate Threema Gateway in your environment. This SDK allows you to send end-to-end-encrypted messages to Threema users using the Threema Gateway.",
     "version": "v1.1.3",
-    "keywords": ["threema","message", "messenger"],
+    "keywords": ["Threema", "message", "messenger", "mobile", "notifications", "notification", "gateway", "encryption", "encrypted", "end-to-end-encrypted", "Switzerland"],
     "homepage": "https://gateway.threema.ch/en/developer/sdk-php",
     "license" : "MIT",
     "authors": [
         {
             "name": "Threema GmbH",
+            "email": "support-gateway-service@threema.ch",
+            "homepage": "https://gateway.threema.ch",
+            "role": "Developer"
+        }
+        {
+            "name": "rugk",
+            "homepage": "https://github.com/rugk",
+            "role": "Maintainer of GitHub repository"
         }
     ],
     "support": {
-        "docs": "https://rugk.github.io/threema-msgapi-sdk-php/",
         "email": "support-gateway-service@threema.ch",
+        "issues": "https://github.com/rugk/threema-msgapi-sdk-php/issues",
+        "wiki": "https://github.com/rugk/threema-msgapi-sdk-php/wiki",
+        "source": "https://github.com/rugk/threema-msgapi-sdk-php",
+        "docs": "https://rugk.github.io/threema-msgapi-sdk-php/",
     },
     "require": {
         "php": ">=5.4.0"
