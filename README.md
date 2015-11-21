@@ -74,7 +74,7 @@ require_once('lib/bootstrap.php');
 //define your connection settings
 $settings = new ConnectionSettings(
     '*THREEMA',
-    'THISISMYSECRET'
+    'THISISMYSECRET',
     null, //the host to be used, set to null to use the default (recommend)
     [
         'forceHttps' => true, //set to true to force HTTPS, default: false
