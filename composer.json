@@ -24,7 +24,7 @@
         "issues": "https://github.com/rugk/threema-msgapi-sdk-php/issues",
         "wiki": "https://github.com/rugk/threema-msgapi-sdk-php/wiki",
         "source": "https://github.com/rugk/threema-msgapi-sdk-php",
-        "docs": "https://rugk.github.io/threema-msgapi-sdk-php/",
+        "docs": "https://rugk.github.io/threema-msgapi-sdk-php/"
     },
     "require": {
         "php": ">=5.4.0"
