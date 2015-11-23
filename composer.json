@@ -34,5 +34,5 @@
     },
     "autoload": {
         "files": ["source/bootstrap.php"]
-    },
+    }
 }
