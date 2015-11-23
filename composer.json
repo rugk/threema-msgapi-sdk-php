@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Threema PHP-SDK to integrate Threema Gateway in your environment. This SDK allows you to send end-to-end-encrypted messages to Threema users using the Threema Gateway.",
     "version": "v1.1.3",
-    "keywords": ["Threema", "message", "messenger", "mobile", "notifications", "notification", "gateway", "encryption", "encrypted", "end-to-end-encrypted", "Switzerland"],
+    "keywords": ["threema", "message", "messenger", "mobile", "notifications", "notification", "gateway", "sms gateway", "security", "encryption", "encrypted", "switzerland", "libsodium", "nacl"],
     "homepage": "https://gateway.threema.ch/en/developer/sdk-php",
     "license" : "MIT",
     "authors": [
