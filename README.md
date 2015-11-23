@@ -36,6 +36,8 @@ The contributors of this repositoriy are not affiliated with Threema or the Thre
 
 If you want to check whether your server meets the requirements and everything is configured properly you can execute `threema-msgapi-tool.php` without any parameters on the console or point your browser to the location where it is saved on your server.
 
+If you want to use this library in your own product it is recommend to use [Composer](https://getcomposer.org/) and require  [`rugk/threema-msgapi-sdk-php`](https://packagist.org/packages/rugk/threema-msgapi-sdk-php).
+
 ## SDK usage
 ### Creating a connection
 
