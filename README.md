@@ -62,7 +62,7 @@ $connector = new Connection($settings, $publicKeyStore);
 ```
 
 ### Creating a connection with advanced options
-**Attention:** This settings change internal values of the TLS connection. Choosing wrong settings can weaken the TLS connection or prohibit a successful connection to the server. Use them with care!
+**Attention:** These settings change internal values of the TLS connection. Choosing wrong settings can weaken the TLS connection or prevent a successful connection to the server. Use them with care!
 
 Each of the additional options shown below is optional. You can leave it out or use `null` to use the default value for this option.
 
