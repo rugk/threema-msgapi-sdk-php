@@ -1,6 +1,6 @@
 engines:
   csslint:
-    enabled: false
+    enabled: true
   fixme:
     enabled: true
   phpcodesniffer:
@@ -15,5 +15,6 @@ ratings:
   - "**.php"
   - "**.module"
   - "**.inc"
+  - "**.css"
 exclude_paths:
 - source/Salt/**/*

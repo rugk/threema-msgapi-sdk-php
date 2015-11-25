@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:docname="cross.svg"
+   inkscape:export-filename="/home/sergey/pix/shared/check.png"
+   viewBox="0 0 38.687999 38.925801"
+   sodipodi:version="0.32"
+   inkscape:export-xdpi="90"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-ydpi="90"
+   inkscape:version="0.91 r13725"
+   width="38.688"
+   height="38.9258">
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     guidetolerance="10.0"
+     pagecolor="#ffffff"
+     gridtolerance="10.0"
+     inkscape:zoom="5.9956762"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     inkscape:current-layer="svg2"
+     inkscape:cx="21.235593"
+     inkscape:cy="28.246093"
+     inkscape:window-y="-8"
+     inkscape:window-x="1912"
+     inkscape:window-height="746"
+     inkscape:pageopacity="0.0"
+     inkscape:window-width="1024"
+     showgrid="false"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <g
+     id="g2159"
+     transform="translate(-4.25,-4.4686)">
+    <path
+       id="path2161"
+       style="fill:#000000"
+       d="m 4.25,4.4688 0,38.687 38.688,0 0,-38.687 -38.688,-2e-4 z m 6.312,5.5622 26.063,0 0,27.594 -26.063,0 0,-27.594 z"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path2163"
+       sodipodi:nodetypes="cccc"
+       style="fill:none;stroke:#d40000;stroke-width:9"
+       d="m 12.699,40.505 24.18,-28.87 M 14.152,14.23 36.286,36.259"
+       inkscape:connector-curvature="0" />
+  </g>
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title></dc:title>
+        <dc:date>2008-01-16T09:51:22</dc:date>
+        <dc:description>Classic cross icon (“no”). Red cross, black ballot box outlines. Ballot box internal is transparent.</dc:description>
+        <dc:source>https://openclipart.org/detail/11118/check-sign-and-cross-sign-by-jetxee</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>jetxee</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>accept</rdf:li>
+            <rdf:li>black</rdf:li>
+            <rdf:li>cancel</rdf:li>
+            <rdf:li>check</rdf:li>
+            <rdf:li>checkbox</rdf:li>
+            <rdf:li>colour</rdf:li>
+            <rdf:li>cross</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>okay</rdf:li>
+            <rdf:li>red</rdf:li>
+            <rdf:li>reject</rdf:li>
+            <rdf:li>sign</rdf:li>
+            <rdf:li>tick</rdf:li>
+            <rdf:li>yes</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
