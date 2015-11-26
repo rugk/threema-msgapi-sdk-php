@@ -12,6 +12,27 @@ const FILENAME_CONNCRED = 'ConnectionCredentials.php';
 const FILENAME_PRIVKEY = 'PrivateKey.php';
 const FILEEXT_EXAMPLE = '.example';
 
+const REGEXP_THREEMAID_GATEWAY = '^\*[A-Za-z0-9]{7}$';
+// REGEXP_THREEMAID_GATEWAY: https://regex101.com/r/fF9hQ0/4
+const REGEXP_THREEMAID_ANY = '^((\*[A-Za-z0-9]{7})|([A-Za-z0-9]{8}))$';
+// REGEXP_THREEMAID_ANY: https://regex101.com/r/bF6xV5/7
+
+/* SOME SMALL FUNCTIONS */
+function ShowDefaultReceiverId($addOptionsHtmlCode = false)
+{
+    if (MSGAPI_DEFAULTRECEIVER <> '') {
+        if ($addOptionsHtmlCode) {
+            echo '<option value="';
+        }
+
+        echo MSGAPI_DEFAULTRECEIVER;
+
+        if ($addOptionsHtmlCode) {
+            echo '">';
+        }
+    }
+}
+
 /* CHECK PREREQUISITES */
 $fileConnCredentErr = '';
 if (!file_exists(FILENAME_CONNCRED)) {
@@ -19,14 +40,12 @@ if (!file_exists(FILENAME_CONNCRED)) {
 } else {
     require_once FILENAME_CONNCRED;
     if (!defined('MSGAPI_GATEWAY_THREEMA_ID') ||
-        !defined('MSGAPI_GATEWAY_THREEMA_ID_SECRET') ||
-        !defined('MSGAPI_DEFAULTRECEIVER')
+        !defined('MSGAPI_GATEWAY_THREEMA_ID_SECRET')
     ) {
-        $fileConnCredentErr .= ' Not all constants are defined.';
+        $fileConnCredentErr .= ' Not all required constants are defined.';
     } else {
-        // RegExp of Threema Gateway ID: https://regex101.com/r/fF9hQ0/2
         if (MSGAPI_GATEWAY_THREEMA_ID == '' ||
-            !preg_match('/^\h*\*[[:alnum:]]{7}\h*/', MSGAPI_GATEWAY_THREEMA_ID)
+            !preg_match('/' . REGEXP_THREEMAID_GATEWAY . '/', MSGAPI_GATEWAY_THREEMA_ID)
         ) {
             $fileConnCredentErr .= ' \'MSGAPI_GATEWAY_THREEMA_ID\' is invalid.';
         }
@@ -37,9 +56,13 @@ if (!file_exists(FILENAME_CONNCRED)) {
             $fileConnCredentErr .= ' \'MSGAPI_GATEWAY_THREEMA_ID_SECRET\' is invalid.';
         }
 
-        // RegExp of Threema ID: https://regex101.com/r/bF6xV5/5
-        if (MSGAPI_DEFAULTRECEIVER == '' ||
-            !preg_match('/^\h*((\*[[:alnum:]]{7})|([[:alnum:]]{8}))\h*$/', MSGAPI_DEFAULTRECEIVER)
+        // MSGAPI_DEFAULTRECEIVER is optional
+        if (!defined('MSGAPI_DEFAULTRECEIVER')) {
+            define('MSGAPI_DEFAULTRECEIVER', '');
+        }
+
+        if (MSGAPI_DEFAULTRECEIVER <> '' &&
+            !preg_match('/' . REGEXP_THREEMAID_ANY . '/', MSGAPI_DEFAULTRECEIVER)
         ) {
             $fileConnCredentErr .= ' \'MSGAPI_DEFAULTRECEIVER\' is invalid.';
         }
@@ -135,16 +158,40 @@ if (!file_exists(FILENAME_PRIVKEY)) {
             </div>
             <?php endif ?>
         </div>
+
+        <!-- Sending UI -->
         <h2 id="test">Test</h2>
         <?php if ($fileConnCredentErr <> '' || $fileChkPrivateKeyErr <> ''): ?>
             <div class="warning">
                 You do not have prepared your setup correctly to use the test. Please follow the intructions above to setup your environment.
             </div>
         <?php else: ?>
-            <form class="" action="process.php" method="get">
-                <label for="id"></label>
-                <input type="submit" value="Send">
-            </form>
+            <div class="formcontainer">
+                <form class="" action="process.php" method="get">
+                    <fieldset id="field_generalsettings">
+                        <legend>General settings</legend>
+                        <label for="SenderId">Sender: </label>
+                        <input class="idInput" type="text" maxlength="8" name="SenderId" value="<?php echo MSGAPI_GATEWAY_THREEMA_ID ?>" placeholder="*THREEMA" disabled="" pattern="<?php echo REGEXP_THREEMAID_GATEWAY ?>"><br />
+                        <div class="publickeynote">
+                            public key: 4a6a1b34dcef15d43cb74de2fd36091be99fbbaf126d099d47d83d919712c72b
+                        </div>
+                        <label for="receiverId">Receiver: </label>
+                        <input class="idInput" type="text" list="cachedRecieverIds" maxlength="8" name="RecieverIds" value="<?php ShowDefaultReceiverId(); ?>" placeholder="ECHOECHO" required="" pattern="<?php echo REGEXP_THREEMAID_ANY ?>"><br />
+                        <datalist id="cachedRecieverIds">
+                            <?php ShowDefaultReceiverId(true); ?>
+                            <option value="ECHOECHO">
+                        </datalist>
+                        <div class="publickeynote">
+                            public key: 4a6a1b34dcef15d43cb74de2fd36091be99fbbaf126d099d47d83d919712c72b
+                        </div>
+                    </fieldset>
+                    <fieldset id="field_message">
+                        <legend>Message</legend>
+                        <textarea id="messageinput" type="text" id="messageedit" name="message" maxlength="3500" wrap="soft" value="" required="" autofocus=""></textarea>
+                    </fieldset><br />
+                    <input type="submit" value="Send">
+                </form>
+            </div>
         <?php endif ?>
         <!-- TODO: add GUI -->
     </body>

@@ -1,3 +1,5 @@
+/* GENERALLY */
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 12pt;
@@ -5,7 +7,11 @@ body {
     background-color: rgb(250, 250, 254);
     padding-left: 5%;
     padding-right: 5%;
-    max-width: 1000px;
+    /*max-width: 1000px;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0px;
 }
 
 code {
@@ -16,11 +22,15 @@ code {
     border-radius: 3px;
 }
 
+/* CONTENT */
+
 .graphicon {
     height: 20px;
     width: 20px;
     vertical-align: middle;
 }
+
+/* OUTPUT */
 
 .warning {
     background-color: rgb(255, 0, 0);
@@ -36,4 +46,94 @@ code {
 
 .filecheckdesc {
     vertical-align: middle;
+}
+
+.publickeynote {
+    color: rgb(60, 60, 60);
+    font-size: 8pt;
+}
+
+/* INPUT */
+
+fieldset {
+    /* do not make larger than content */
+    display: inline-block;
+    border-width: thin;
+    border-radius: 4px;
+    border-color: rgba(122, 122, 122, 0.47);
+    border-style: solid;
+
+    margin-bottom: 10px;
+
+    vertical-align: top;
+    max-width: 98%;
+}
+
+label {
+    line-height: 1.7;
+}
+
+/* partly taken from Twitter Bootstrap https://github.com/twbs/bootstrap */
+input[type=text], textarea {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11pt;
+
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+/* partly taken from Twitter Bootstrap https://github.com/twbs/bootstrap */
+input[type=text]:focus {
+    border-color: rgba(82, 168, 236, 0.8);
+    outline: 0;
+    outline: thin dotted \9;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+input[type=text]:disabled {
+    cursor: not-allowed;
+    border-color: rgb(204, 204, 204);
+    background-color: rgb(233, 233, 233);
+
+    color: rgb(0, 0, 0);
+}
+
+input[type=text]:invalid {
+    border-color: rgb(166, 71, 71);
+    box-shadow: inset 0 1px 1px rgba(255, 0, 0, 0.1), 0 0 8px rgba(236, 81, 81, 0.6);
+}
+
+input[type=text].idInput {
+    text-transform: uppercase;
+}
+
+.formcontainer {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+#field_generalsettings {
+    align-self: flex-start;
+}
+
+#field_message {
+    width: 40%;
+    min-width: 90px;
+    max-width: 85%;
+}
+
+#messageinput {
+    min-width: 97%;
+    min-height: 50px;
+    height: auto;
+    width: 97%;
 }
