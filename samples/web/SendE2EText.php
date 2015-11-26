@@ -18,14 +18,14 @@ require_once 'PrivateKey.php';
 require_once 'CreateConnection.php';
 require_once 'ConvertKey.php';
 
-function SendText($connector, $recieverID, $message)
+function SendText($connector, $receiverId, $message)
 {
     //get private key
     $privateKey = KeyHexToBin(MSGAPI_PRIVATE_KEY);
 
     //send message
     $e2eHelper = new \Threema\MsgApi\Helpers\E2EHelper($privateKey, $connector);
-    $result = $e2eHelper->sendTextMessage($recieverID, $message);
+    $result = $e2eHelper->sendTextMessage($receiverId, $message);
 
     //show result
     if(true === $result->isSuccess()) {
@@ -40,4 +40,4 @@ function SendText($connector, $recieverID, $message)
 // create connection
 $connector = CreateConnection();
 
-SendText($connector, MSGAPI_DEFAULTRECIEVER, 'test');
+SendText($connector, MSGAPI_DEFAULTRECEIVER, 'test');

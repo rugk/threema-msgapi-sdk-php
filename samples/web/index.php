@@ -20,7 +20,7 @@ if (!file_exists(FILENAME_CONNCRED)) {
     require_once FILENAME_CONNCRED;
     if (!defined('MSGAPI_GATEWAY_THREEMA_ID') ||
         !defined('MSGAPI_GATEWAY_THREEMA_ID_SECRET') ||
-        !defined('MSGAPI_DEFAULTRECIEVER')
+        !defined('MSGAPI_DEFAULTRECEIVER')
     ) {
         $fileConnCredentErr .= ' Not all constants are defined.';
     } else {
@@ -38,10 +38,10 @@ if (!file_exists(FILENAME_CONNCRED)) {
         }
 
         // RegExp of Threema ID: https://regex101.com/r/bF6xV5/5
-        if (MSGAPI_DEFAULTRECIEVER == '' ||
-            !preg_match('/^\h*((\*[[:alnum:]]{7})|([[:alnum:]]{8}))\h*$/', MSGAPI_DEFAULTRECIEVER)
+        if (MSGAPI_DEFAULTRECEIVER == '' ||
+            !preg_match('/^\h*((\*[[:alnum:]]{7})|([[:alnum:]]{8}))\h*$/', MSGAPI_DEFAULTRECEIVER)
         ) {
-            $fileConnCredentErr .= ' \'MSGAPI_DEFAULTRECIEVER\' is invalid.';
+            $fileConnCredentErr .= ' \'MSGAPI_DEFAULTRECEIVER\' is invalid.';
         }
     }
 }
@@ -96,7 +96,7 @@ if (!file_exists(FILENAME_PRIVKEY)) {
             <!-- files already exist - no need to show instructions -->
         <?php else: ?>
         <p>
-            Before you can use this test, you have to get credentials at <a href="https://gateway.threema.ch" title="Threema Gateway">gateway.threema.ch</a> and <a href="https://github.com/rugk/threema-msgapi-sdk-php/wiki/How-to-generate-a-new-key-pair-and-send-a-message">create a key pair</a>. After you did so you have to open <code><?php echo FILENAME_CONNCRED . FILEEXT_EXAMPLE ?></code> and <code><?php echo FILENAME_PRIVKEY . FILEEXT_EXAMPLE ?></code> and add your credentials and private key. Save them without the <code><?php echo FILEEXT_EXAMPLE ?></code> file extension afterwards.
+            Before you can use this test, you have to get credentials at <a href="https://gateway.threema.ch" title="Threema Gateway">gateway.threema.ch</a> and <a href="https://github.com/rugk/threema-msgapi-sdk-php/wiki/How-to-generate-a-new-key-pair-and-send-a-message">create a key pair</a>. After you did so, you have to open <code><?php echo FILENAME_CONNCRED . FILEEXT_EXAMPLE ?></code> and <code><?php echo FILENAME_PRIVKEY . FILEEXT_EXAMPLE ?></code> and add your credentials and private key. Save them without the <code><?php echo FILEEXT_EXAMPLE ?></code> file extension afterwards.
             By default these files are excluded from git pulls so you will not accidentally publish these sensitive files.
         </p>
         <?php endif ?>
@@ -138,9 +138,13 @@ if (!file_exists(FILENAME_PRIVKEY)) {
         <h2 id="test">Test</h2>
         <?php if ($fileConnCredentErr <> '' || $fileChkPrivateKeyErr <> ''): ?>
             <div class="warning">
-                You do not have prepared your setup correctly to use the test. Please follow the intructions above to setup your envoriment.
+                You do not have prepared your setup correctly to use the test. Please follow the intructions above to setup your environment.
             </div>
         <?php else: ?>
+            <form class="" action="process.php" method="get">
+                <label for="id"></label>
+                <input type="submit" value="Send">
+            </form>
         <?php endif ?>
         <!-- TODO: add GUI -->
     </body>
