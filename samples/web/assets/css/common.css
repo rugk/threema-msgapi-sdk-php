@@ -1,139 +1,135 @@
 /* GENERALLY */
 
 body {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 12pt;
-    line-height: 1.5;
-    background-color: rgb(250, 250, 254);
-    padding-left: 5%;
-    padding-right: 5%;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  background-color: rgb(250, 250, 254);
+  padding-left: 5%;
+  padding-right: 5%;
     /*max-width: 1000px;*/
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 code {
-    font-family: Consolas, "Lucida Console", Monaco, monospace;
-    background-color: rgba(0, 0, 0, 0.04);
-    padding: 0.2em;
-    font-size: 85%;
-    border-radius: 3px;
+  font-family: Consolas, "Lucida Console", Monaco, monospace;
+  background-color: rgba(0, 0, 0, 0.04);
+  padding: 0.2em;
+  font-size: 85%;
+  border-radius: 3px;
 }
 
 /* CONTENT */
 
 .graphicon {
-    height: 20px;
-    width: 20px;
-    vertical-align: middle;
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
 }
 
 /* OUTPUT */
 
 .warning {
-    background-color: rgb(255, 0, 0);
-    color: rgb(50, 33, 33);
-    padding: 5px;
-    border: 1px solid rgb(148, 0, 0);
-    border-radius: 5px;
+  background-color: rgb(255, 0, 0);
+  color: rgb(50, 33, 33);
+  padding: 5px;
+  border: 1px solid rgb(148, 0, 0);
+  border-radius: 5px;
 }
 
 .filecheck {
-
 }
 
 .filecheckdesc {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .publickeynote {
-    color: rgb(60, 60, 60);
-    font-size: 8pt;
+  color: rgb(60, 60, 60);
+  font-size: 8pt;
+  word-break: break-all;
 }
 
 /* INPUT */
 
 fieldset {
     /* do not make larger than content */
-    display: inline-block;
-    border-width: thin;
-    border-radius: 4px;
-    border-color: rgba(122, 122, 122, 0.47);
-    border-style: solid;
-
-    margin-bottom: 10px;
-
-    vertical-align: top;
-    max-width: 98%;
+  display: inline-block;
+  border-width: thin;
+  border-radius: 4px;
+  border-color: rgba(122, 122, 122, 0.47);
+  border-style: solid;
+  margin-bottom: 10px;
+  vertical-align: top;
+  max-width: 98%;
 }
 
 label {
-    line-height: 1.7;
+  line-height: 1.7;
 }
 
 /* partly taken from Twitter Bootstrap https://github.com/twbs/bootstrap */
 input[type=text], textarea {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 11pt;
-
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 5px;
-    padding-right: 5px;
-
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(204, 204, 204);
-    border-radius: 3px;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    transition: border linear 0.2s, box-shadow linear 0.2s;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11pt;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
 /* partly taken from Twitter Bootstrap https://github.com/twbs/bootstrap */
 input[type=text]:focus {
-    border-color: rgba(82, 168, 236, 0.8);
-    outline: 0;
-    outline: thin dotted \9;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
 input[type=text]:disabled {
-    cursor: not-allowed;
-    border-color: rgb(204, 204, 204);
-    background-color: rgb(233, 233, 233);
-
-    color: rgb(0, 0, 0);
+  cursor: not-allowed;
+  border-color: rgb(204, 204, 204);
+  background-color: rgb(233, 233, 233);
+  color: rgb(0, 0, 0);
 }
 
 input[type=text]:invalid {
-    border-color: rgb(166, 71, 71);
-    box-shadow: inset 0 1px 1px rgba(255, 0, 0, 0.1), 0 0 8px rgba(236, 81, 81, 0.6);
+  border-color: rgb(166, 71, 71);
+  box-shadow: inset 0 1px 1px rgba(255, 0, 0, 0.1), 0 0 8px rgba(236, 81, 81, 0.6);
 }
 
 input[type=text].idInput {
-    text-transform: uppercase;
+  text-transform: uppercase;
+  width: 90px;
 }
 
 .formcontainer {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 #field_generalsettings {
-    align-self: flex-start;
+  align-self: flex-start;
 }
 
 #field_message {
-    width: 40%;
-    min-width: 90px;
-    max-width: 85%;
+  width: 40%;
+  min-width: 90px;
+  max-width: 85%;
 }
 
 #messageinput {
-    min-width: 97%;
-    min-height: 50px;
-    height: auto;
-    width: 97%;
+  min-width: 97%;
+  min-height: 50px;
+  height: auto;
+  width: 97%;
 }
