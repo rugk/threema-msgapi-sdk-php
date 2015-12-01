@@ -166,8 +166,8 @@ if (!file_exists(FILENAME_PRIVKEY)) {
                 You do not have prepared your setup correctly to use the test. Please follow the intructions above to setup your environment.
             </div>
         <?php else: ?>
-            <div class="formcontainer">
-                <form class="" action="process.php" method="get">
+            <form action="process.php" method="get">
+                <div class="formcontainer">
                     <fieldset id="field_generalsettings">
                         <legend>General settings</legend>
                         <label for="SenderId">Sender: </label>
@@ -189,9 +189,9 @@ if (!file_exists(FILENAME_PRIVKEY)) {
                         <legend>Message</legend>
                         <textarea id="messageinput" type="text" id="messageedit" name="message" maxlength="3500" wrap="soft" value="" required="" autofocus=""></textarea>
                     </fieldset><br />
-                    <input type="submit" value="Send">
-                </form>
-            </div>
+                </div>
+            <input type="submit" value="Send">
+        </form>
         <?php endif ?>
         <!-- TODO: add GUI -->
     </body>
