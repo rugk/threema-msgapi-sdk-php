@@ -18,6 +18,15 @@ require_once 'PrivateKey.php';
 require_once 'CreateConnection.php';
 require_once 'ConvertKey.php';
 
+/**
+ * Send an end-to-end encrypted message to a specific Threema ID.
+ *
+ * Undocumented function long description
+ *
+ * @param Connection $connector connector
+ * @param string $receiverId The id the message should be sent to
+ * @param string $message The message whcih should be send
+ **/
 function SendText($connector, $receiverId, $message)
 {
     //get private key
@@ -37,7 +46,7 @@ function SendText($connector, $receiverId, $message)
 
 }
 
-// create connection
+//create connection
 $connector = CreateConnection();
 
 SendText($connector, MSGAPI_DEFAULTRECEIVER, 'test');
