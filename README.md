@@ -92,7 +92,7 @@ $publicKeyStore = new Threema\MsgApi\PublicKeyStores\PhpFile('/path/to/my/keysto
 $connector = new Connection($settings, $publicKeyStore);
 ```
 
-If you want to get a list of all ciphers you can use have a look at the [SSLLabs scan](https://www.ssllabs.com/ssltest/analyze.html?d=msgapi.threema.ch&latest), at the list of all available [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/apps/ciphers.html) and the [comparison table by Mozilla](https://wiki.mozilla.org/Security/Server_Side_TLS#Cipher_names_correspondence_table), which also has some suggestions for good ciphers you should use.
+If you want to get a list of all ciphers you can use have a look at the [SSLLabs scan](https://www.ssllabs.com/ssltest/analyze.html?d=msgapi.threema.ch&latest), at the list of all available [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/apps/ciphers.html) and the [comparison table by Mozilla](https://wiki.mozilla.org/Security/Server_Side_TLS#Cipher_names_correspondence_table) which also has some suggestions for good ciphers you should use.
 
 ### Sending a text message to a Threema ID (Simple Mode)
 
