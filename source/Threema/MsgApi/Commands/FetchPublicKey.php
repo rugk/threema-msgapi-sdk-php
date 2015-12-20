@@ -34,7 +34,6 @@ class FetchPublicKey implements CommandInterface {
 	 * @return string
 	 */
 	function getPath() {
-		echo 'pubkeys/'.urlencode($this->threemaId)."\n";
 		return 'pubkeys/'.urlencode($this->threemaId);
 	}
 
