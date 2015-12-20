@@ -103,14 +103,14 @@ if (!file_exists(FILENAME_PRIVKEY)) {
         <h1 id="devui">Development UI - MSGAPI-PHP-SDK - Threema Gateway</h1>
         <p>
             This is a development UI for the <a href="https://github.com/rugk/threema-msgapi-sdk-php" title="Threema Gateway PHP SDK">Threema MSGAPI PHP-SDK</a>.
-            Here you can test sending different messages.
+            Here you can test the PHP message SDK.
         </p>
         <h2 id="prerequisites">Prerequisites</h2>
         <?php if ($fileConnCredentErr == '' && $fileChkPrivateKeyErr == ''): ?>
             <!-- files already exist - no need to show instructions -->
         <?php else: ?>
         <p>
-            Before you can use this test, you have to get credentials at <a href="https://gateway.threema.ch" title="Threema Gateway">gateway.threema.ch</a> and <a href="https://github.com/rugk/threema-msgapi-sdk-php/wiki/How-to-generate-a-new-key-pair-and-send-a-message">create a key pair</a>. After you did so, you have to open <code><?php echo FILENAME_CONNCRED . FILEEXT_EXAMPLE ?></code> and <code><?php echo FILENAME_PRIVKEY . FILEEXT_EXAMPLE ?></code> and add your credentials and private key. Save them without the <code><?php echo FILEEXT_EXAMPLE ?></code> file extension afterwards.
+            Before you can use this test you have to get credentials at <a href="https://gateway.threema.ch" title="Threema Gateway">gateway.threema.ch</a> and <a href="https://github.com/rugk/threema-msgapi-sdk-php/wiki/How-to-generate-a-new-key-pair-and-send-a-message">create a key pair</a>. After you did so, you have to open <code><?php echo FILENAME_CONNCRED . FILEEXT_EXAMPLE ?></code> and <code><?php echo FILENAME_PRIVKEY . FILEEXT_EXAMPLE ?></code> and add your credentials and private key. Save them without the <code><?php echo FILEEXT_EXAMPLE ?></code> file extension afterwards.
             By default these files are excluded from git pulls so you will not accidentally publish these sensitive files.
         </p>
         <?php endif ?>
@@ -187,9 +187,9 @@ if (!file_exists(FILENAME_PRIVKEY)) {
                 </div>
             <input type="submit" value="Send">
         </form>
-        <?php endif ?>
 
         <!-- Put JS at the end so it is executed when the DOM is loaded completly -->
         <script src="assets/js/pubkeyfetch.js" charset="utf-8"></script>
+        <?php endif ?>
     </body>
 </html>

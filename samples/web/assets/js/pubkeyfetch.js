@@ -48,6 +48,6 @@ function updatePubKey(input, output) {
 
   // send request
   output.innerHTML = "Fetching public key... Please wait...";
-  xhttp.open("GET", "publickey.php?threemaid=" + threemaid, true);
+  xhttp.open("GET", "FetchPublicKey.php?threemaid=" + threemaid, true);
   xhttp.send();
 }

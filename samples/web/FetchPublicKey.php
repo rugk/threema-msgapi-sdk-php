@@ -11,8 +11,9 @@ require_once '../../source/bootstrap.php'; //use source
 // require_once '../../threema_msgapi.phar'; //use phar
 
 //include credentials
-require_once 'ConnectionCredentials.php';
-require_once 'PrivateKey.php';
+require_once 'GlobalConstants.php';
+require_once FILENAME_CONNCRED;
+require_once FILENAME_PRIVKEY;
 
 //include web files used
 require_once 'GlobalConstants.php';
@@ -56,7 +57,7 @@ function IsValidPublicKey($threemaID)
 //get params
 $threemaID = null;
 if (isset($_GET['threemaid']) && IsValidPublicKey($_GET['threemaid'])) {
-    $threemaID = $_GET['threemaid'];
+    $threemaID = htmlentities($_GET['threemaid']);
 }
 
 //create connection
