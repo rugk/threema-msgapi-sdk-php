@@ -1,4 +1,4 @@
-# Force to use LE line ending always
+# Force to use LF line ending always
 * text eol=lf
 
 # binary files should not be touched
