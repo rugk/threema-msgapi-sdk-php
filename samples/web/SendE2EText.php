@@ -39,8 +39,7 @@ function SendText($connector, $receiverId, $message)
     //show result
     if(true === $result->isSuccess()) {
     	echo 'Message ID: '.$result->getMessageId() . "\n";
-    }
-    else {
+    } else {
     	echo 'Error: '.$result->getErrorMessage() . "\n";
     }
 

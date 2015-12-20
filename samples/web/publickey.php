@@ -20,9 +20,7 @@ require_once 'CreateConnection.php';
 require_once 'ConvertKey.php';
 
 /**
- * undocumented function summary
- *
- * Undocumented function long description
+ * Fetches the public key of an ID from the Threema server
  *
  * @param Connection $connector connector
  * @param string $threemaID The id whose public key should be fetched
@@ -58,7 +56,7 @@ function IsValidPublicKey($threemaID)
 //get params
 $threemaID = null;
 if (isset($_GET['threemaid']) && IsValidPublicKey($_GET['threemaid'])) {
-        $threemaID = $_GET['threemaid'];
+    $threemaID = $_GET['threemaid'];
 }
 
 //create connection
@@ -72,6 +70,9 @@ if ($threemaID != null) {
     }
     catch (Exception $e) {
         http_response_code(500);
-        echo  $e->getMessage();
+        echo $e->getMessage();
     }
+} else {
+    http_response_code(500);
+    echo 'Invalid Threema ID';
 }

@@ -103,7 +103,7 @@ if (!file_exists(FILENAME_PRIVKEY)) {
         <h1 id="devui">Development UI - MSGAPI-PHP-SDK - Threema Gateway</h1>
         <p>
             This is a development UI for the <a href="https://github.com/rugk/threema-msgapi-sdk-php" title="Threema Gateway PHP SDK">Threema MSGAPI PHP-SDK</a>.
-            Here you can test sending of different messages.
+            Here you can test sending different messages.
         </p>
         <h2 id="prerequisites">Prerequisites</h2>
         <?php if ($fileConnCredentErr == '' && $fileChkPrivateKeyErr == ''): ?>
@@ -162,18 +162,22 @@ if (!file_exists(FILENAME_PRIVKEY)) {
                     <fieldset id="field_generalsettings">
                         <legend>General settings</legend>
                         <label for="SenderId">Sender: </label>
-                        <input class="idInput" type="text" maxlength="8" name="SenderId" value="<?php echo MSGAPI_GATEWAY_THREEMA_ID ?>" placeholder="*THREEMA" disabled="" pattern="<?php echo REGEXP_THREEMAID_GATEWAY ?>"><br />
-                        <div class="publickeynote">
-                            public key: 4a6a1b34dcef15d43cb74de2fd36091be99fbbaf126d099d47d83d919712c72b
+                        <input id="SenderIdInput" class="idInput" type="text" maxlength="8" name="SenderId" value="<?php echo MSGAPI_GATEWAY_THREEMA_ID ?>" placeholder="*THREEMA" disabled="" pattern="<?php echo REGEXP_THREEMAID_GATEWAY ?>"><br />
+                        <div class="publickeynote" id="SenderPubKey">
+                            <noscript>
+                                Please enable Javascript for a live display of the public keys.
+                            </noscript>
                         </div>
                         <label for="receiverId">Receiver: </label>
-                        <input class="idInput" type="text" list="cachedRecieverIds" maxlength="8" name="RecieverIds" value="<?php ShowDefaultReceiverId(); ?>" placeholder="ECHOECHO" required="" pattern="<?php echo REGEXP_THREEMAID_ANY ?>"><br />
+                        <input id="RecieverIdInput" class="idInput" type="text" list="cachedRecieverIds" maxlength="8" name="RecieverIds" value="<?php ShowDefaultReceiverId(); ?>" placeholder="ECHOECHO" required="" pattern="<?php echo REGEXP_THREEMAID_ANY ?>"><br />
                         <datalist id="cachedRecieverIds">
                             <?php ShowDefaultReceiverId(true); ?>
                             <option value="ECHOECHO">
                         </datalist>
-                        <div class="publickeynote">
-                            public key: 4a6a1b34dcef15d43cb74de2fd36091be99fbbaf126d099d47d83d919712c72b
+                        <div class="publickeynote" id="RecieverPubKey">
+                            <noscript>
+                                Please enable Javascript for a live display of the public keys.
+                            </noscript>
                         </div>
                     </fieldset>
                     <fieldset id="field_message">
@@ -184,5 +188,8 @@ if (!file_exists(FILENAME_PRIVKEY)) {
             <input type="submit" value="Send">
         </form>
         <?php endif ?>
+
+        <!-- Put JS at the end so it is executed when the DOM is loaded completly -->
+        <script src="assets/js/pubkeyfetch.js" charset="utf-8"></script>
     </body>
 </html>
