@@ -81,7 +81,7 @@ if (!file_exists(FILENAME_PRIVKEY)) {
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Development UI - MSGAPI-PHP-SDK - Threema Gateway</title>
         <link rel="stylesheet" type="text/css" href="assets/css/common.css" charset="utf-8">
     </head>

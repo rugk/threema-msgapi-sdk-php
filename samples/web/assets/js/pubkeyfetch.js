@@ -26,7 +26,9 @@ inputReceiver.addEventListener("change", function() {
  * @param {Object} input - The element where the Threema ID is stored.
  * @param {string} input.value - The Threema ID
  * @param {Object} output - The element where the public should be written to
- * @param {Object} output.innerHTML
+ * @param {Object} output.innerHTML - The HTML content where this should bewritten to
+ *                 written to
+ * @returns {undefined}
  */
 function updatePubKey(input, output) {
   // create vars
@@ -35,9 +37,9 @@ function updatePubKey(input, output) {
 
   // show on change
   xhttp.onreadystatechange = function() {
-    if (xhttp.readyState == 4) {
-      if (xhttp.status == 200) {
-        output.innerHTML =  "public key: " + xhttp.responseText;
+    if (xhttp.readyState === 4) {
+      if (xhttp.status === 200) {
+        output.innerHTML = "public key: " + xhttp.responseText;
       } else {
         output.innerHTML = "error when fetching public key";
         console.log("Public key request for " + threemaid + " failed. Result: "
