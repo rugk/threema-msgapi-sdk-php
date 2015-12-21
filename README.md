@@ -24,7 +24,7 @@ The contributors of this repositoriy are not affiliated with Threema or the Thre
 
   To install the libsodium PHP extension:
 
-  ```shell
+  ```ShellSession
   pecl install libsodium
   ```
 
@@ -152,7 +152,7 @@ else {
 ### Local operations (no network communication)
 #### Encrypt
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -e <privateKey> <publicKey>
 ```
 
@@ -160,7 +160,7 @@ Encrypt standard input using the given sender private key and recipient public k
 
 #### Decrypt
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -D <privateKey> <publicKey> <nonce>
 ```
 
@@ -168,7 +168,7 @@ Decrypt standard input using the given recipient private key and sender public k
 
 #### Hash Email Address
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -h -e <email>
 ```
 
@@ -176,7 +176,7 @@ Hash an email address for identity lookup. Prints the hash in hex.
 
 #### Hash Phone Number
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -h -p <phoneNo>
 ```
 
@@ -184,7 +184,7 @@ Hash a phone number for identity lookup. Prints the hash in hex.
 
 #### Generate Key Pair
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -g <privateKeyFile> <publicKeyFile>
 ```
 
@@ -192,7 +192,7 @@ Generate a new key pair and write the private and public keys to the respective 
 
 #### Derive Public Key
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -d <privateKey>
 ```
 
@@ -201,7 +201,7 @@ Derive the public key that corresponds with the given private key.
 ### Network operations
 #### Send Simple Message
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -s <threemaId> <from> <secret>
 ```
 
@@ -209,7 +209,7 @@ Send a message from standard input with server-side encryption to the given ID. 
 
 #### Send End-to-End Encrypted Text Message
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -S <threemaId> <from> <secret> <privateKey>
 ```
 
@@ -217,7 +217,7 @@ Encrypt standard input and send the text message to the given ID. `<from>` is th
 
 #### Send a End-to-End Encrypted Image Message
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -S -i <threemaId> <from> <secret> <privateKey> <imageFile>
 ```
 
@@ -225,7 +225,7 @@ Encrypt the image file and send the message to the given ID. `<from>` is the API
 
 #### Send a End-to-End Encrypted File Message
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -S -f <threemaId> <from> <secret> <privateKey> <file> <thumbnailFile>
 ```
 
@@ -233,7 +233,7 @@ Encrypt the file (and thumbnail if given) and send the message to the given ID. 
 
 #### ID-Lookup By Email Address
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -l -e <email> <from> <secret>
 ```
 
@@ -241,7 +241,7 @@ Lookup the ID linked to the given email address (will be hashed locally).
 
 #### ID-Lookup By Phone Number
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -l -p <phoneNo> <from> <secret>
 ```
 
@@ -249,7 +249,7 @@ Lookup the ID linked to the given phone number (will be hashed locally).
 
 #### Fetch Public Key
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -l -k <threemaId> <from> <secret>
 ```
 
@@ -257,7 +257,7 @@ Lookup the public key for the given ID.
 
 #### Fetch Capability
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -c <threemaId> <from> <secret>
 ```
 
@@ -265,7 +265,7 @@ Fetch the capabilities of a Threema ID.
 
 #### Decrypt a Message and download the Files
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -r <threemaId> <from> <secret> <privateKey> <messageId> <nonce> <outputFolder>
 ```
 
@@ -273,7 +273,7 @@ Decrypt a box (must be provided on stdin) message and download (if the message i
 
 #### Remaining credits
 
-```shell
+```ShellSession
 threema-msgapi-tool.php -C <from> <secret>
 ```
 
