@@ -1,5 +1,5 @@
 # msgapi-sdk-php
-Version: 1.1.3
+Version: 1.1.4
 
 ## Installation
 - Install PHP 5.4 or later: [https://secure.php.net/manual/en/install.php](https://secure.php.net/manual/en/install.php)
