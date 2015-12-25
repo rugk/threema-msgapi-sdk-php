@@ -110,7 +110,10 @@ abstract class CryptTool {
 		$padbytes = mt_rand(1, 255);
 
 		/* append padding */
-		$textBytes .= str_repeat(chr($padbytes), $padbytes);
+		$padbytes = 0;
+		while($padbytes < 1 || $padbytes > 255) {
+			$padbytes = ord($this->createRandom(1));
+		}
 
 		return $this->makeBox($textBytes, $nonce, $senderPrivateKey, $recipientPublicKey);
 	}
