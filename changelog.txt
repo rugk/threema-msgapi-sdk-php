@@ -1,0 +1,2 @@
+1.1.4
+	- use salt random instead mt_rand for padding

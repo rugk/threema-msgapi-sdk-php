@@ -107,7 +107,10 @@ abstract class CryptTool {
 		$textBytes = "\x01" . $text;
 
 		/* determine random amount of PKCS7 padding */
-		$padbytes = mt_rand(1, 255);
+		$padbytes = 0;
+		while($padbytes < 1 || $padbytes > 255) {
+			$padbytes = ord($this->createRandom(1));
+		}
 
 		/* append padding */
 		$textBytes .= str_repeat(chr($padbytes), $padbytes);
