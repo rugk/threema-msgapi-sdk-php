@@ -18,7 +18,8 @@ require_once 'SendTextMessage.php';
 /* SOME SMALL FUNCTIONS */
 function ShowDefaultReceiverId($addOptionsHtmlCode = false)
 {
-    $isShown = ReturnGetPost('threemaid') != null || ReturnGetPost('recieverid') != null || MSGAPI_DEFAULTRECEIVER <> '';
+    $isShown = ReturnGetPost('threemaid') != null || ReturnGetPost('recieverid')
+    != null || MSGAPI_DEFAULTRECEIVER <> '';
 
     // Show previous input if there is something
     if ($isShown && $addOptionsHtmlCode) {

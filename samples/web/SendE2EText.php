@@ -39,7 +39,7 @@ function SendText($connector, $receiverId, $message)
     $result = $e2eHelper->sendTextMessage($receiverId, $message);
 
     //show result
-    if(true === $result->isSuccess()) {
+    if (true === $result->isSuccess()) {
     	echo 'Message ID: '.$result->getMessageId() . "\n";
     } else {
     	echo 'Error: '.$result->getErrorMessage() . "\n";

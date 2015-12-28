@@ -1,15 +1,29 @@
 engines:
   csslint:
     enabled: true
+    exclude_fingerprints:
+    - a907208b7f93e6c071e5cc5e32a24b8a #ignore 0px for margin-bottom on h tags
+    checks:
+      shorthand:
+        enabled: false
+      fallback-colors:
+        enabled: false
   fixme:
     enabled: true
   phpcodesniffer:
     enabled: true
     checks:
       Generic WhiteSpace DisallowTabIndent TabsUsed:
-        enabled: false	
+        enabled: false
+      Squiz WhiteSpace ScopeClosingBrace ContentBefore:
+        enabled: false
   phpmd:
     enabled: true
+    checks:
+      Controversial/Superglobals:
+        enabled: false
+      CleanCode/ElseExpression:
+        enabled: false
 ratings:
   paths:
   - "**.php"

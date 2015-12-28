@@ -12,7 +12,7 @@
  * @param string optional suffix (usually 'private:' or 'public:') (default: '')
  * @return bool whether the key is valid (true) or not (false)
  */
-function KeyCheck($publicKey, $suffix='')
+function KeyCheck($publicKey, $suffix = '')
 {
     // RegExp: https://regex101.com/r/sU5tC8/1
     return preg_match('/^(' . $suffix . ')?[[:alnum:]]{64}$/', $publicKey);

@@ -1,13 +1,13 @@
 /* GENERALLY */
 
 body {
+  background-color: rgb(255, 255, 255);
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12pt;
   line-height: 1.5;
-  background-color: rgb(255, 255, 255);
+  /*max-width: 1000px;*/
   padding-left: 5%;
   padding-right: 5%;
-  /*max-width: 1000px;*/
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,40 +15,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 code {
-  font-family: Consolas, "Lucida Console", Monaco, monospace;
   background-color: rgba(0, 0, 0, 0.04);
-  padding: 0.2em;
-  font-size: 85%;
   border-radius: 3px;
+  font-family: Consolas, "Lucida Console", Monaco, monospace;
+  font-size: 85%;
+  padding: 0.2em;
 }
 
 /* CONTENT */
 
 .graphicon {
   height: 20px;
-  width: 20px;
   vertical-align: middle;
+  width: 20px;
 }
 
 /* OUTPUT */
 
 .warning, .error {
   background-color: rgb(255, 0, 0);
+  border-radius: 5px;
+  border: 1px solid rgb(148, 0, 0);
   color: rgb(50, 33, 33);
   padding: 5px;
-  border: 1px solid rgb(148, 0, 0);
-  border-radius: 5px;
 }
 
 .success {
   background-color: rgb(80, 230, 0);
+  border-radius: 5px;
+  border: 1px solid rgb(1, 62, 0);
   color: rgb(3, 51, 0);
   padding: 5px;
-  border: 1px solid rgb(1, 62, 0);
-  border-radius: 5px;
-}
-
-.filecheck {
 }
 
 .filecheckdesc {
@@ -64,20 +61,17 @@ code {
 /* INPUT */
 
 .formcontainer {
-  display: flex;
   align-items: baseline;
+  display: flex;
   flex-wrap: wrap;
 }
 
 fieldset {
-  /* do not make larger than content */
-  border-width: thin;
-  border-radius: 4px;
   border-color: rgba(122, 122, 122, 0.47);
+  border-radius: 4px;
   border-style: solid;
+  border-width: thin;
   margin: 5px;
-  /*vertical-align: top;*/
-  /*max-width: 98%;*/
 }
 
 label {
@@ -86,32 +80,32 @@ label {
 
 /* partly taken from Twitter Bootstrap https://github.com/twbs/bootstrap */
 input[type=text], textarea {
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+  border: 1px solid rgb(204, 204, 204);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   font-family: Helvetica, Arial, sans-serif;
   font-size: 11pt;
-  padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(204, 204, 204);
-  border-radius: 3px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  padding-top: 1px;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
 /* partly taken from Twitter Bootstrap https://github.com/twbs/bootstrap */
 input[type=text]:focus {
   border-color: rgba(82, 168, 236, 0.8);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   outline: 0;
   outline: thin dotted \9;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
 input[type=text]:disabled {
-  cursor: not-allowed;
-  border-color: rgb(204, 204, 204);
   background-color: rgb(233, 233, 233);
+  border-color: rgb(204, 204, 204);
   color: rgb(0, 0, 0);
+  cursor: not-allowed;
 }
 
 input[type=text]:invalid {
@@ -119,23 +113,14 @@ input[type=text]:invalid {
   box-shadow: inset 0 1px 1px rgba(255, 0, 0, 0.1), 0 0 8px rgba(236, 81, 81, 0.6);
 }
 
-input[type=text].idInput {
+.idInput {
   text-transform: uppercase;
   width: 100px;
 }
 
-#field_generalsettings {
-  /*flex: 0 0 auto;*/
-  /*min-width: 150px;*/
-}
-
-#field_message {
-  /*flex-basis: 300px;*/
-}
-
-#messageinput {
-  min-width: 290px;
-  min-height: 80px;
+.maintextinput {
   height: auto;
+  min-height: 80px;
+  min-width: 290px;
   width: auto;
 }

@@ -12,3 +12,6 @@ keystore.php
 # public.key
 privateKey.txt
 publicKey.txt
+
+# Ignore composer
+vendor/

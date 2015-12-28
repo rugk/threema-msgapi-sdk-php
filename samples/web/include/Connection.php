@@ -21,7 +21,7 @@ use Threema\MsgApi\ConnectionSettings;
 function CreateConnection($keystorePath='../../keystore.php', $useTlsOptions=true)
 {
     $publicKeyStore = CreatePublicKeyStore($keystorePath);
-    $settings = CreateConnectionSettings($publicKeyStore, $useTlsOptions);
+    $settings = CreateConnectionSettings($useTlsOptions);
     $connector = InitiateConnection($settings, $publicKeyStore);
 
     return $connector;
@@ -41,18 +41,17 @@ function CreatePublicKeyStore($keystorePath)
             throw new Exception("PHP keystore could not be created.");
         }
     }
-    return $publicKeyStore = new Threema\MsgApi\PublicKeyStores\PhpFile($keystorePath);
+    return new Threema\MsgApi\PublicKeyStores\PhpFile($keystorePath);
 }
 
 /**
  * Creates connection settings
  *
- * @param string $publicKeyStore file for PHP public key store
  * @param bool $useTlsOptions whether to use advanced options or not
  *
  * @return ConnectionSettings $settings connection settings
  */
-function CreateConnectionSettings($publicKeyStore, $useTlsOptions)
+function CreateConnectionSettings($useTlsOptions)
 {
     if ($useTlsOptions == true) {
         //create a connection with advanced options
@@ -87,5 +86,5 @@ function CreateConnectionSettings($publicKeyStore, $useTlsOptions)
  */
 function InitiateConnection($settings, $publicKeyStore)
 {
-    return $connector = new Connection($settings, $publicKeyStore);
+    return new Connection($settings, $publicKeyStore);
 }

@@ -33,10 +33,9 @@ require_once 'include/GetPost.php';
 function FetchPublicKey($connector, $threemaId)
 {
     $result = $connector->fetchPublicKey($threemaId);
-    if($result->isSuccess()) {
+    if ($result->isSuccess()) {
     	return $result->getPublicKey();
-    }
-    else {
+    } else {
     	throw new Exception($result->getErrorMessage());
     }
 }
@@ -57,8 +56,7 @@ if ($threemaId != null) {
     try {
         $publicKey = FetchPublicKey($connector, $threemaId);
         echo $publicKey;
-    }
-    catch (Exception $e) {
+    } catch (Exception $e) {
         http_response_code(500);
         echo $e->getMessage();
     }
