@@ -1,7 +1,8 @@
 <?php
 /**
- * @author Threema GmbH
- * @copyright Copyright (c) 2015 Threema GmbH
+ * @author rugk
+ * @copyright Copyright (c) 2015 rugk
+ * @license MIT
  */
 
 /* CONSTANTS */

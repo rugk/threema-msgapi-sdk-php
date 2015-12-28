@@ -1,7 +1,8 @@
 <?php
 /**
- * @author Threema GmbH
- * @copyright Copyright (c) 2015 Threema GmbH
+ * @author rugk
+ * @copyright Copyright (c) 2015 rugk
+ * @license MIT
  */
 
 /**
@@ -25,10 +26,10 @@ function KeyCheck($publicKey, $suffix='')
  * full public key of it is:
  * `4a6a1b34dcef15d43cb74de2fd36091be99fbbaf126d099d47d83d919712c72b`
  *
- * @param var Description
+ * @param $publicKey The public key to format.
  *
  * @return string 32 hex characters
- **/
+ */
 function KeyGetUserDisplay($publicKey)
 {
     //force key to be binary
@@ -42,12 +43,12 @@ function KeyGetUserDisplay($publicKey)
 }
 
 /**
- * undocumented function summary
+ * Converts a key from hex (string) to binary format.
  *
- * Undocumented function long description
+ * It automatically removes the prefixes if neccessary.
  *
- * @param var Description
- **/
+ * @param $keyHex The key in hex (a string)
+ */
 function KeyHexToBin($keyHex)
 {
     //delete prefix

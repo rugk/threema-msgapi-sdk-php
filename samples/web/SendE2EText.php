@@ -1,7 +1,8 @@
 <?php
 /**
- * @author Threema GmbH
- * @copyright Copyright (c) 2015 Threema GmbH
+ * @author rugk
+ * @copyright Copyright (c) 2015 rugk
+ * @license MIT
  */
 
 header('Content-Type: text/plain');
@@ -16,8 +17,8 @@ require_once FILENAME_CONNCRED;
 require_once FILENAME_PRIVKEY;
 
 //include web files used
-require_once 'CreateConnection.php';
-require_once 'ConvertKey.php';
+require_once 'include/Connection.php';
+require_once 'include/PublicKey.php';
 
 /**
  * Send an end-to-end encrypted message to a specific Threema ID.
@@ -26,8 +27,8 @@ require_once 'ConvertKey.php';
  *
  * @param Connection $connector connector
  * @param string $receiverId The id the message should be sent to
- * @param string $message The message whcih should be send
- **/
+ * @param string $message The message which should be send
+ */
 function SendText($connector, $receiverId, $message)
 {
     //get private key

@@ -1,26 +1,49 @@
+<!--
 <?php
 /**
- * @author Threema GmbH
- * @copyright Copyright (c) 2015 Threema GmbH
+ * @author rugk
+ * @copyright Copyright (c) 2015 rugk
+ * @license MIT
  */
 
 /* INCLUDES */
-require_once 'GlobalConstants.php';
-require_once 'ConvertKey.php';
+require_once 'include/GlobalConstants.php';
+require_once 'include/PublicKey.php';
+require_once 'include/GetPost.php';
+
+/* HANDLE SENDING OF MESSAGES */
+$actionDone = null;
+require_once 'SendTextMessage.php';
 
 /* SOME SMALL FUNCTIONS */
 function ShowDefaultReceiverId($addOptionsHtmlCode = false)
 {
-    if (MSGAPI_DEFAULTRECEIVER <> '') {
-        if ($addOptionsHtmlCode) {
-            echo '<option value="';
-        }
+    $isShown = ReturnGetPost('threemaid') != null || ReturnGetPost('recieverid') != null || MSGAPI_DEFAULTRECEIVER <> '';
 
+    // Show previous input if there is something
+    if ($isShown && $addOptionsHtmlCode) {
+        echo '<option value="';
+    }
+
+    if (ReturnGetPost('threemaid') != null) {
+        echo htmlentities(ReturnGetPost('threemaid'));
+    } elseif (ReturnGetPost('recieverid') != null) {
+        echo htmlentities(ReturnGetPost('recieverid'));
+    } elseif (MSGAPI_DEFAULTRECEIVER <> '') {
+        // use receiver in config
         echo MSGAPI_DEFAULTRECEIVER;
+    }
 
-        if ($addOptionsHtmlCode) {
-            echo '">';
-        }
+    if ($isShown && $addOptionsHtmlCode) {
+        echo '">';
+    }
+}
+
+function ShowDefaultMessage()
+{
+    // Show previous input if there is something
+    if (ReturnGetPost('message') != null) {
+        echo htmlentities(ReturnGetPost('message'));
     }
 }
 
@@ -77,6 +100,7 @@ if (!file_exists(FILENAME_PRIVKEY)) {
     }
 }
 ?>
+-->
 
 <!DOCTYPE html>
 <html>
@@ -152,24 +176,35 @@ if (!file_exists(FILENAME_PRIVKEY)) {
 
         <!-- Sending UI -->
         <h2 id="test">Test</h2>
+        <?php if ($actionDone == true): ?>
+            <?php if ($errorMessage == null): ?>
+                <div class="success">
+                    Message successfully sent to <?php echo $threemaId ?>. Message ID: <?php echo $messageId ?>.
+                </div>
+            <?php else: ?>
+                <div class="error">
+                    Sending message to <?php echo $threemaId ?> failed. Error: <?php echo $errorMessage ?>.
+                </div>
+            <?php endif ?>
+        <?php endif ?>
         <?php if ($fileConnCredentErr <> '' || $fileChkPrivateKeyErr <> ''): ?>
             <div class="warning">
-                You do not have prepared your setup correctly to use the test. Please follow the intructions above to setup your environment.
+                You did not prepared your setup correctly to use the test. Please follow the intructions above to setup your environment.
             </div>
         <?php else: ?>
-            <form action="process.php" method="get">
+            <form id="mainform" action="." method="<?php echo $_SERVER['REQUEST_METHOD']; ?>">
                 <div class="formcontainer">
                     <fieldset id="field_generalsettings">
                         <legend>General settings</legend>
-                        <label for="SenderId">Sender: </label>
-                        <input id="SenderIdInput" class="idInput" type="text" maxlength="8" name="SenderId" value="<?php echo MSGAPI_GATEWAY_THREEMA_ID ?>" placeholder="*THREEMA" disabled="" pattern="<?php echo REGEXP_THREEMAID_GATEWAY ?>"><br />
+                        <label for="senderid">Sender: </label>
+                        <input id="SenderIdInput" class="idInput" type="text" maxlength="8" name="senderid" value="<?php echo MSGAPI_GATEWAY_THREEMA_ID ?>" placeholder="*THREEMA" disabled="" pattern="<?php echo REGEXP_THREEMAID_GATEWAY ?>"><br />
                         <div class="publickeynote" id="SenderPubKey">
                             <noscript>
                                 Please enable Javascript for a live display of the public keys.
                             </noscript>
                         </div>
-                        <label for="receiverId">Receiver: </label>
-                        <input id="RecieverIdInput" class="idInput" type="text" list="cachedRecieverIds" maxlength="8" name="RecieverIds" value="<?php ShowDefaultReceiverId(); ?>" placeholder="ECHOECHO" required="" pattern="<?php echo REGEXP_THREEMAID_ANY ?>"><br />
+                        <label for="recieverid">Receiver: </label>
+                        <input id="RecieverIdInput" class="idInput" type="text" list="cachedRecieverIds" maxlength="8" name="recieverid" value="<?php ShowDefaultReceiverId(); ?>" placeholder="ECHOECHO" required="" pattern="<?php echo REGEXP_THREEMAID_ANY ?>"><br />
                         <datalist id="cachedRecieverIds">
                             <?php ShowDefaultReceiverId(true); ?>
                             <option value="ECHOECHO">
@@ -182,14 +217,25 @@ if (!file_exists(FILENAME_PRIVKEY)) {
                     </fieldset>
                     <fieldset id="field_message">
                         <legend>Message</legend>
-                        <textarea id="messageinput" type="text" id="messageedit" name="message" maxlength="3500" wrap="soft" value="" required="" autofocus=""></textarea>
-                    </fieldset><br />
+                        <textarea id="messageinput" type="text" id="messageedit" name="message" maxlength="3500" wrap="soft" required="" autofocus=""><?php echo ShowDefaultMessage(); ?></textarea>
+                    </fieldset>
+                    <fieldset id="field_method">
+                        <legend>Method</legend>
+                        <input id="SrvMethodGet" name="servermethod" type="radio" <?php if ($_SERVER['REQUEST_METHOD'] == 'GET') {echo 'checked="checked"';}?> value="get">
+                            <label for="SrvMethodGet">GET</label>
+                        <input id="SrvMethodPost" name="servermethod" type="radio" <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') {echo 'checked="checked"';}?> value="post">
+                            <label for="SrvMethodPost">POST</label>
+                        <br />
+                        <input id="ButtonExternalScript" name="isExternal" type="checkbox">
+                            <label for="ButtonExternalScript">Use own script</label>
+                    </fieldset>
                 </div>
             <input type="submit" value="Send">
         </form>
 
         <!-- Put JS at the end so it is executed when the DOM is loaded completly -->
         <script src="assets/js/pubkeyfetch.js" charset="utf-8"></script>
+        <script src="assets/js/methodswitcher.js" charset="utf-8"></script>
         <?php endif ?>
     </body>
 </html>

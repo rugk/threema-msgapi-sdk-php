@@ -1,6 +1,7 @@
 /**
- * @author Threema GmbH
- * @copyright Copyright (c) 2015 Threema GmbH
+ * @author rugk
+ * @copyright Copyright (c) 2015 rugk
+ * @license MIT
  */
 
 // Get elements
@@ -10,13 +11,13 @@ var inputReceiver = document.getElementById("RecieverIdInput");
 var outputReceiver = document.getElementById("RecieverPubKey");
 // alert("inputSender.value: "+inputSender.value);
 
-// Add onload events
-window.onload = updatePubKey(inputSender, outputSender);
-window.onload = updatePubKey(inputReceiver, outputReceiver);
+// Add general events
+window.onload = UpdatePubKey(inputSender, outputSender);
+window.onload = UpdatePubKey(inputReceiver, outputReceiver);
 
-// Add onchange events
+// Add specific events
 inputReceiver.addEventListener("change", function() {
-  updatePubKey(inputReceiver, outputReceiver);
+  UpdatePubKey(inputReceiver, outputReceiver);
 });
 
 /**
@@ -30,7 +31,7 @@ inputReceiver.addEventListener("change", function() {
  *                 written to
  * @returns {undefined}
  */
-function updatePubKey(input, output) {
+function UpdatePubKey(input, output) {
   // create vars
   var xhttp = new XMLHttpRequest();
   var threemaid = input.value;
