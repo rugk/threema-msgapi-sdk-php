@@ -18,7 +18,7 @@ use Threema\MsgApi\ConnectionSettings;
  *
  * @return Connection $connector
  */
-function CreateConnection($keystorePath='../../keystore.php', $useTlsOptions=true)
+function CreateConnection($keystorePath = '../../keystore.php', $useTlsOptions = true)
 {
     $publicKeyStore = CreatePublicKeyStore($keystorePath);
     $settings = CreateConnectionSettings($useTlsOptions);

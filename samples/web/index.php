@@ -218,7 +218,7 @@ if (!file_exists(FILENAME_PRIVKEY)) {
                     </fieldset>
                     <fieldset id="field_message">
                         <legend>Message</legend>
-                        <textarea id="messageinput" type="text" id="messageedit" name="message" maxlength="3500" wrap="soft" required="" autofocus=""><?php echo ShowDefaultMessage(); ?></textarea>
+                        <textarea class="maintextinput" id="messageinput" type="text" id="messageedit" name="message" maxlength="3500" wrap="soft" required="" autofocus=""><?php echo ShowDefaultMessage(); ?></textarea>
                     </fieldset>
                     <fieldset id="field_method">
                         <legend>Method</legend>
