@@ -107,6 +107,7 @@ if (!file_exists(FILENAME_PRIVKEY)) {
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Development UI - MSGAPI-PHP-SDK - Threema Gateway</title>
         <link rel="stylesheet" type="text/css" href="assets/css/common.css" charset="utf-8">
     </head>
@@ -205,7 +206,7 @@ if (!file_exists(FILENAME_PRIVKEY)) {
                             </noscript>
                         </div>
                         <label for="recieverid">Receiver: </label>
-                        <input id="RecieverIdInput" class="idInput" type="text" list="cachedRecieverIds" maxlength="8" name="recieverid" value="<?php ShowDefaultReceiverId(); ?>" placeholder="ECHOECHO" required="" pattern="<?php echo REGEXP_THREEMAID_ANY ?>"><br />
+                        <input id="RecieverIdInput" class="idInput" type="text" list="cachedRecieverIds" maxlength="8" name="recieverid" value="<?php ShowDefaultReceiverId(); ?>" placeholder="ECHOECHO" required="" pattern="<?php echo REGEXP_THREEMAID_ANY ?>" title="Threema ID of the receiver"><br />
                         <datalist id="cachedRecieverIds">
                             <?php ShowDefaultReceiverId(true); ?>
                             <option value="ECHOECHO">
@@ -223,15 +224,15 @@ if (!file_exists(FILENAME_PRIVKEY)) {
                     <fieldset id="field_method">
                         <legend>Method</legend>
                         <input id="SrvMethodGet" name="servermethod" type="radio" <?php if ($_SERVER['REQUEST_METHOD'] == 'GET') {echo 'checked="checked"';}?> value="get">
-                            <label for="SrvMethodGet">GET</label>
+                            <label for="SrvMethodGet" title="Use the GET method for sending the request to the (local) server">GET</label>
                         <input id="SrvMethodPost" name="servermethod" type="radio" <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') {echo 'checked="checked"';}?> value="post">
-                            <label for="SrvMethodPost">POST</label>
+                            <label for="SrvMethodPost" title="Use the POST method for sending the request to the (local) server">POST</label>
                         <br />
                         <input id="ButtonExternalScript" name="isExternal" type="checkbox">
-                            <label for="ButtonExternalScript">Use own script</label>
+                            <label for="ButtonExternalScript" title="Use a separate page (in a new tab) instead of the index.php for submitting this request">Use own script</label>
                     </fieldset>
                 </div>
-            <input type="submit" value="Send">
+            <input type="submit" value="Send" title="Submit request and send message">
         </form>
 
         <!-- Put JS at the end so it is executed when the DOM is loaded completly -->

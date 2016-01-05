@@ -1,4 +1,4 @@
-/* GENERALLY */
+/* GENERAL */
 
 body {
   background-color: rgb(255, 255, 255);
@@ -123,4 +123,16 @@ input[type=text]:invalid {
   min-height: 80px;
   min-width: 290px;
   width: auto;
+}
+
+/* MOBILE ADJUSTMENTS */
+
+@media screen and (max-width: 370px) {
+  body {
+    padding: 0px;
+  }
+
+  .maintextinput {
+    min-width: 150px;
+  }
 }
