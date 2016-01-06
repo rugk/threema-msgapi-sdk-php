@@ -32,16 +32,26 @@ inputReceiver.addEventListener("change", function() {
  * @returns {undefined}
  */
 function UpdatePubKey(input, output) {
-  // vars
+  //vars
   var xhttp = new XMLHttpRequest();
   var threemaid = input.value;
 
-  // show on change
+  var publicKey, publicKeyShort
+
+  //show on change
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState === 4) {
       if (xhttp.status === 200) {
-        output.innerHTML = "public key: " + xhttp.responseText;
+        //successful
+
+        //get short public key
+        publicKey = xhttp.responseText;
+        publicKeyShort = hex2bin(publicKey);
+
+        //output data
+        output.innerHTML = "public key: " + publicKey;
       } else {
+        //error
         output.innerHTML = "error when fetching public key";
         console.log("Public key request for " + threemaid + " failed. Result: "
         + "(" + xhttp.status + ") " + xhttp.responseText);
@@ -54,3 +64,5 @@ function UpdatePubKey(input, output) {
   xhttp.open("GET", "FetchPublicKey.php?threemaid=" + threemaid, true);
   xhttp.send();
 }
+
+/* libaries */
