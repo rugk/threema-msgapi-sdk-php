@@ -1,6 +1,6 @@
 /**
  * @author rugk
- * @copyright Copyright (c) 2015 rugk
+ * @copyright Copyright (c) 2015-2016 rugk
  * @license MIT
  */
 
@@ -35,32 +35,30 @@ function UpdatePubKey(input, output) {
   //vars
   var xhttp = new XMLHttpRequest();
   var threemaid = input.value;
-
-  var publicKey, publicKeyShort
+  var result
 
   //show on change
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState === 4) {
+      //get result
+      result = JSON.parse(xhttp.responseText);
+
       if (xhttp.status === 200) {
         //successful
-
-        //get short public key
-        publicKey = xhttp.responseText;
-        publicKeyShort = hex2bin(publicKey);
-
-        //output data
-        output.innerHTML = "public key: " + publicKey;
+        output.innerHTML = "public key: " + result.shortuserdisplay;
+        output.title = result.long;
       } else {
         //error
         output.innerHTML = "error when fetching public key";
         console.log("Public key request for " + threemaid + " failed. Result: "
-        + "(" + xhttp.status + ") " + xhttp.responseText);
+        + "(" + xhttp.status + ") " + result.errorMessage);
       }
     }
   };
 
   // send request
   output.innerHTML = "Fetching public key... Please wait...";
+  output.title = "";
   xhttp.open("GET", "FetchPublicKey.php?threemaid=" + threemaid, true);
   xhttp.send();
 }

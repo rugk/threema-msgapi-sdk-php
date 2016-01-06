@@ -1,7 +1,7 @@
 <?php
 /**
  * @author rugk
- * @copyright Copyright (c) 2015 rugk
+ * @copyright Copyright (c) 2015-2016 rugk
  * @license MIT
  */
 
@@ -51,16 +51,18 @@ if (ReturnGetPost('threemaid') &&
 //create connection
 $connector = CreateConnection();
 
-//Fetch public key and return a 500 error in case of a failure
+//fetch public key and return a 500 error in case of a failure
 if ($threemaId != null) {
     try {
-        $publicKey = FetchPublicKey($connector, $threemaId);
-        echo $publicKey;
+        //success: return all variants of the key as a JSON
+        $publicKey['long'] = FetchPublicKey($connector, $threemaId);
+        $publicKey['shortuserdisplay'] = KeyGetUserDisplay($publicKey['long']);
+        echo json_encode($publicKey);
     } catch (Exception $e) {
         http_response_code(500);
-        echo $e->getMessage();
+        echo json_encode(['errorMessage' => $e->getMessage()]);
     }
 } else {
     http_response_code(500);
-    echo 'Invalid Threema ID';
+    echo json_encode(['errorMessage' => 'Invalid Threema ID']);
 }

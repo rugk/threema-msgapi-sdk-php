@@ -1,7 +1,7 @@
 <?php
 /**
  * @author rugk
- * @copyright Copyright (c) 2015 rugk
+ * @copyright Copyright (c) 2015-2016 rugk
  * @license MIT
  */
 
@@ -38,7 +38,7 @@ function KeyGetUserDisplay($publicKey)
     }
 
     //create short hash
-    $shortHash = substr(hash('sha256', $publicKey, 0, 32));
+    $shortHash = substr(hash('sha256', $publicKey), 0, 32);
     return $shortHash;
 }
 
