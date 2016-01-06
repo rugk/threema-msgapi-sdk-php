@@ -119,10 +119,12 @@ input[type=text]:invalid {
 }
 
 .maintextinput {
-  height: auto;
-  min-height: 80px;
-  min-width: 290px;
-  width: auto;
+  /* default size */
+  box-sizing: border-box;
+  height: 80px;
+  width: 290px;
+  min-width: 100%;
+  resize: both;
 }
 
 /* MOBILE ADJUSTMENTS */
@@ -131,8 +133,13 @@ input[type=text]:invalid {
   body {
     padding: 0px;
   }
+  fieldset {
+    width: 100%;
+  }
 
   .maintextinput {
-    min-width: 150px;
+    /* New default size */
+    width: 100%;
+    resize: vertical;
   }
 }

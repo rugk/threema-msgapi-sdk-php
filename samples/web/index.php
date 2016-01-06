@@ -238,6 +238,7 @@ if (!file_exists(FILENAME_PRIVKEY)) {
         <!-- Put JS at the end so it is executed when the DOM is loaded completly -->
         <script src="assets/js/pubkeyfetch.js" charset="utf-8"></script>
         <script src="assets/js/methodswitcher.js" charset="utf-8"></script>
+        <script src="assets/js/stylehelper.js" charset="utf-8"></script>
         <?php endif ?>
     </body>
 </html>

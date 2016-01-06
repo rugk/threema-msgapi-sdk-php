@@ -32,7 +32,7 @@ inputReceiver.addEventListener("change", function() {
  * @returns {undefined}
  */
 function UpdatePubKey(input, output) {
-  // create vars
+  // vars
   var xhttp = new XMLHttpRequest();
   var threemaid = input.value;
 

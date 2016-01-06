@@ -41,7 +41,7 @@ function UpdateMethodState() {
  * @returns {undefined}
  */
 function UpdateRequestMethod(newMethod) {
-  // create vars
+  //vars
   var form = document.getElementById("mainform");
 
   //change method
@@ -57,7 +57,7 @@ function UpdateRequestMethod(newMethod) {
  * @returns {undefined}
  */
 function UpdateExternalScript() {
-  // create vars
+  //vars
   var button = document.getElementById("ButtonExternalScript");
   var form = document.getElementById("mainform");
 
