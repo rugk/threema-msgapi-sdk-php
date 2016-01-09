@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Threema GmbH
- * @copyright Copyright (c) 2015 Threema GmbH
+ * @copyright Copyright (c) 2016 Threema GmbH
  */
 
 namespace Threema\MsgApi\Tools;
@@ -107,10 +107,7 @@ abstract class CryptTool {
 		$textBytes = "\x01" . $text;
 
 		/* determine random amount of PKCS7 padding */
-		$padbytes = 0;
-		while($padbytes < 1 || $padbytes > 255) {
-			$padbytes = ord($this->createRandom(1));
-		}
+		$padbytes = $this->generatePadBytes();
 
 		/* append padding */
 		$textBytes .= str_repeat(chr($padbytes), $padbytes);
@@ -137,7 +134,7 @@ abstract class CryptTool {
 		$message .= $encryptResult->getNonce();
 
 		/* determine random amount of PKCS7 padding */
-		$padbytes = mt_rand(1, 255);
+		$padbytes = $this->generatePadBytes();
 
 		/* append padding */
 		$message .= str_repeat(chr($padbytes), $padbytes);
@@ -170,7 +167,7 @@ abstract class CryptTool {
 		$message = "\x17" . json_encode($messageContent);
 
 		/* determine random amount of PKCS7 padding */
-		$padbytes = mt_rand(1, 255);
+		$padbytes = $this->generatePadBytes();
 
 		/* append padding */
 		$message .= str_repeat(chr($padbytes), $padbytes);
@@ -444,6 +441,18 @@ abstract class CryptTool {
 			$privateKey,
 			$publicKey,
 			$nonce);
+	}
+
+	/**
+	 * determine random amount of PKCS7 padding
+	 * @return int
+	 */
+	private function generatePadBytes() {
+		$padbytes = 0;
+		while($padbytes < 1 || $padbytes > 255) {
+			$padbytes = ord($this->createRandom(1));
+		}
+		return $padbytes;
 	}
 
 	function __toString() {

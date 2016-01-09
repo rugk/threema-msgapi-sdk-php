@@ -1,2 +1,4 @@
+1.1.5
+	- use salt random instead mt_rand for padding (file and image messages)
 1.1.4
-	- use salt random instead mt_rand for padding
+	- use salt random instead mt_rand for padding (text messages)
