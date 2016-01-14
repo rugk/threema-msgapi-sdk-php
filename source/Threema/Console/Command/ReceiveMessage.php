@@ -38,11 +38,11 @@ class ReceiveMessage extends Base {
 		$id = $this->getArgumentThreemaId(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);
 		$privateKey = $this->getArgumentPrivateKey(self::argPrivateKey);
-		$nonce = hex2bin($this->getArgument(self::argNonce));
+		$nonce = \Sodium\hex2bin($this->getArgument(self::argNonce));
 		$messageId = $this->getArgument(self::argMessageId);
 		$outputFolder = $this->getArgument(self::argOutputFolder);
 
-		$box = hex2bin($this->readStdIn());
+		$box = \Sodium\hex2bin($this->readStdIn());
 
 		Common::required($box, $id, $secret, $privateKey, $nonce);
 

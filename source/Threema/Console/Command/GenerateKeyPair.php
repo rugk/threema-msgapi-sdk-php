@@ -20,8 +20,8 @@ class GenerateKeyPair extends Base {
 	function doRun() {
 		$keyPair = CryptTool::getInstance()->generateKeyPair();
 
-		$privateKeyHex = bin2hex($keyPair->privateKey);
-		$publicKeyHex = bin2hex($keyPair->publicKey);
+		$privateKeyHex = \Sodium\bin2hex($keyPair->privateKey);
+		$publicKeyHex = \Sodium\bin2hex($keyPair->publicKey);
 
 		file_put_contents($this->getArgument(self::argPrivateKeyFile), Common::convertPrivateKey($privateKeyHex)."\n");
 		file_put_contents($this->getArgument(self::argPublicKeyFile), Common::convertPublicKey($publicKeyHex)."\n");

@@ -35,8 +35,8 @@ class Encrypt extends Base {
 		$newNonce = $cryptTool->randomNonce();
 		$encryptedMessageText = $cryptTool->encryptMessageText($textToEncrypt, $privateKey, $publicKey, $newNonce);
 
-		Common::ln(bin2hex($newNonce));
+		Common::ln(\Sodium\bin2hex($newNonce));
 		//output encrypted text
-		Common::ln(bin2hex($encryptedMessageText));
+		Common::ln(\Sodium\bin2hex($encryptedMessageText));
 	}
 }

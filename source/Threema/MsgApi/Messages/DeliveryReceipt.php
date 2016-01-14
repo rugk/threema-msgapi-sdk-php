@@ -80,7 +80,7 @@ class DeliveryReceipt extends ThreemaMessage {
 		$str = "Delivery receipt (" . $this->getReceiptTypeName() . "): ";
 		$hexMessageIds = array();
 		foreach ($this->ackedMessageIds as $messageId) {
-			$hexMessageIds[] = bin2hex($messageId);
+			$hexMessageIds[] = \Sodium\bin2hex($messageId);
 		}
 		$str .= join(", ", $hexMessageIds);
 		return $str;

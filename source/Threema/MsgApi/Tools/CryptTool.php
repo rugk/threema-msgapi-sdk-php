@@ -129,7 +129,7 @@ abstract class CryptTool {
 			$senderPrivateKey,
 			$recipientPublicKey,
 			$nonce) {
-		$message = "\x02" . hex2bin($uploadFileResult->getBlobId());
+		$message = "\x02" . \Sodium\hex2bin($uploadFileResult->getBlobId());
 		$message .= pack('V', $encryptResult->getSize());
 		$message .= $encryptResult->getNonce();
 
@@ -153,7 +153,7 @@ abstract class CryptTool {
 
 		$messageContent = array(
 			'b' => $uploadFileResult->getBlobId(),
-			'k' => bin2hex($encryptResult->getKey()),
+			'k' => \Sodium\bin2hex($encryptResult->getKey()),
 			'm' => $fileAnalysisResult->getMimeType(),
 			'n' => $fileAnalysisResult->getFileName(),
 			's' => $fileAnalysisResult->getSize(),
@@ -280,7 +280,7 @@ abstract class CryptTool {
 				$blobId = $piece->__invoke(self::BLOB_ID_LEN);
 				$length = $piece->__invoke(self::IMAGE_FILE_SIZE_LEN);
 				$nonce = $piece->__invoke(self::IMAGE_NONCE_LEN);
-				return new ImageMessage(bin2hex($blobId), bin2hex($length), $nonce);
+				return new ImageMessage(\Sodium\bin2hex($blobId), \Sodium\bin2hex($length), $nonce);
 			case FileMessage::TYPE_CODE:
 				/* Image Message */
 				$decodeResult = json_decode(substr($data, 1), true);
