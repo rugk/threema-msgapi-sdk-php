@@ -280,5 +280,5 @@ threema-msgapi-tool.php -C <from> <secret>
 Fetch remaining credits.
 
 ## Contributing
-If you want to contribute we are very grateful for this. We may periodically send patches to Threema to make it possible for them to implement them in the official SDK version.  
+Nice to see you want to contribute. We may periodically send patches to Threema to make it possible for them to implement them in the official SDK version.  
 You can find more information [in our wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/Contributing).
