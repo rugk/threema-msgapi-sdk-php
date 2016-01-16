@@ -30,7 +30,7 @@ class Capability implements CommandInterface {
 	}
 
 	function getPath() {
-		return 'capabilities/'.urlencode($this->threemaId);
+		return 'capabilities/'.$this->threemaId;
 	}
 
 	/**
