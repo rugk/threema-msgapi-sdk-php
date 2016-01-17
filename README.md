@@ -5,7 +5,7 @@ Version: [1.1.5](https://github.com/rugk/threema-msgapi-sdk-php/releases/tag/1.1
 [![Code Climate](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php/badges/gpa.svg)](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rugk/threema-msgapi-sdk-php/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/b2d332ae-4100-42e0-abda-9cc96a79b18a/mini.png)](https://insight.sensiolabs.com/projects/b2d332ae-4100-42e0-abda-9cc96a79b18a)
-[![Codacy Badge](https://api.codacy.com/project/badge/grade/b90e43398be24c7fa417a43f02fbd31a)](https://www.codacy.com/app/c917250b/threema-msgapi-sdk-php)  
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/28a86de2f74a421b98ecb2dddd4355f6)](https://www.codacy.com/app/rugk/threema-msgapi-sdk-php)  
 All code analysers are configured to ignore `source/Salt/*` as this should not be part of the analyses.
 
 ## Notes about this version
