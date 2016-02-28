@@ -1,4 +1,4 @@
-# [Threema Gateway](http://gateway.threema.ch/) PHP SDK
+# [Threema Gateway](https://gateway.threema.ch/) PHP SDK
 
 Version: [1.1.5](https://github.com/rugk/threema-msgapi-sdk-php/releases/tag/1.1.5)
 
@@ -15,7 +15,7 @@ More information are avaliable in [the wiki](https://github.com/rugk/threema-msg
 
 An automatically created documentation of this SDK can be found [here](https://rugk.github.io/threema-msgapi-sdk-php/).
 
-The contributors of this repositoriy are not affiliated with Threema or the Threema GmbH.
+The contributors of this repository are not affiliated with Threema or the Threema GmbH.
 
 ## Installation
 - Install PHP 5.4 or later: [https://secure.php.net/manual/en/install.php](https://secure.php.net/manual/en/install.php)
@@ -285,3 +285,9 @@ Fetch remaining credits.
 ## Contributing
 Nice to see you want to contribute. We may periodically send patches to Threema to make it possible for them to implement them in the official SDK version.  
 You can find more information [in our wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/Contributing).
+
+## Other platforms (Java and Python)
+All repositories on GitHub are no longer maintained by the Threema GmbH. However, the community has forked the repositories of all platforms and they are now maintained unofficially.
+
+You can find the Java repository at [simmac/threema-msgapi-sdk-java](https://github.com/simmac/threema-msgapi-sdk-java)  
+and the Python repository at [lgrahl/threema-msgapi-sdk-python](https://github.com/lgrahl/threema-msgapi-sdk-python).
