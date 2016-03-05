@@ -4,7 +4,7 @@ require_once("Salt/autoload.php");
 //define possibly missing constants
 defined('CURL_SSLVERSION_DEFAULT')  || define('CURL_SSLVERSION_DEFAULT', 0);
 defined('CURL_SSLVERSION_TLSv1')    || define('CURL_SSLVERSION_TLSv1', 1);
-defined('CURL_SSLVERSION_TLSv1_1') || define('CURL_SSLVERSION_TLSv1_1', 5);
+defined('CURL_SSLVERSION_TLSv1_1')  || define('CURL_SSLVERSION_TLSv1_1', 5);
 defined('CURL_SSLVERSION_TLSv1_2')  || define('CURL_SSLVERSION_TLSv1_2', 6);
 
 //define autoloader
