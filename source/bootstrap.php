@@ -2,11 +2,10 @@
 require_once("Salt/autoload.php");
 
 //define possibly missing constants
-//thanks https://stackoverflow.com/questions/31266501/use-of-undefined-constant-curl-sslversion-tlsv1-assumed-curl-sslversion-tlsv1/31267155#answer-32018088
-defined('CURL_SSLVERSION_DEFAULT') || define('CURL_SSLVERSION_DEFAULT', 0);
-defined('CURL_SSLVERSION_TLSv1')   || define('CURL_SSLVERSION_TLSv1', 1);
-defined('CURL_SSLVERSION_SSLv2')   || define('CURL_SSLVERSION_SSLv2', 2);
-defined('CURL_SSLVERSION_SSLv3')   || define('CURL_SSLVERSION_SSLv3', 3);
+defined('CURL_SSLVERSION_DEFAULT')  || define('CURL_SSLVERSION_DEFAULT', 0);
+defined('CURL_SSLVERSION_TLSv1')    || define('CURL_SSLVERSION_TLSv1', 1);
+defined('CURL_SSLVERSION_TLSv1_1') || define('CURL_SSLVERSION_TLSv1_1', 5);
+defined('CURL_SSLVERSION_TLSv1_2')  || define('CURL_SSLVERSION_TLSv1_2', 6);
 
 //define autoloader
 $d = dirname(__FILE__);
