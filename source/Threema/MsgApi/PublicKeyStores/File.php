@@ -70,7 +70,7 @@ class File extends PublicKeyStore {
 
 	/**
 	 * Initialize a new File Public Key Store
-	 * @param string $path the file will be created it it does not exist
+	 * @param string $path the file will be created if it does not exist
 	 * @return File
 	 */
 	public static function create($path) {

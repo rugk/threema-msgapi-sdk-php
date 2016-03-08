@@ -55,6 +55,7 @@ abstract class PublicKeyStore {
 		$this->cache[$threemaId] = $publicKey;
 		return $this->savePublicKey($threemaId, $publicKey);
 	}
+    
 	/**
 	 * save a public key
 	 * @param string $threemaId
@@ -62,4 +63,11 @@ abstract class PublicKeyStore {
 	 * @return bool
 	 */
 	abstract protected function savePublicKey($threemaId, $publicKey);
+    
+	/**
+	 * Initialize a new File|PhpFile Public Key Store
+	 * @param string $path
+	 * @return File|PhpFile
+	 */
+	abstract protected function create($path);
 }
