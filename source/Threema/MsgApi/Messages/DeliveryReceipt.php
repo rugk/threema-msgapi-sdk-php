@@ -18,7 +18,8 @@ class DeliveryReceipt extends ThreemaMessage {
 	private static $receiptTypesToNames = array(
 		1 => 'received',
 		2 => 'read',
-		3 => 'userack');
+		3 => 'userack',
+		4 => 'userdec');
 
 	/**
 	 * the type of this receipt

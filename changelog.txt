@@ -1,3 +1,8 @@
+1.1.7
+	- Add support for "user decline" (thumbs down) delivery receipt type
+1.1.6
+	- Fix bug in PHP keystore
+	- Fix SALT random generator (failed if only one bytes was requested and this happened to be '0')
 1.1.5
 	- use salt random instead mt_rand for padding (file and image messages)
 1.1.4

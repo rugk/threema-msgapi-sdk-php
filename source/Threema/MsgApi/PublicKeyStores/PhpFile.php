@@ -71,7 +71,7 @@ class PhpFile extends PublicKeyStore
 		//Parse file
 		$keystore = array();
 		$isMsgApiKeystore = true;
-		require_once $this->file;
+		require $this->file;
 
 		//Update cache
 		$this->keystore = $keystore;
