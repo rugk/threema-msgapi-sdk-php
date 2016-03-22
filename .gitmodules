@@ -1,3 +1,4 @@
 [submodule "source/Salt"]
 	path = source/Salt
 	url = https://github.com/rugk/Salt.git
+	branch = threemagw
