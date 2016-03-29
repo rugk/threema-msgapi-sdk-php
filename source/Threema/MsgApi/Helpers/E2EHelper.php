@@ -216,7 +216,7 @@ class E2EHelper {
 		$message = $this->cryptTool->decryptMessage(
 			$box,
 			$this->privateKey,
-			hex2bin($receiverPublicKey->getPublicKey()),
+			\Sodium\hex2bin($receiverPublicKey->getPublicKey()),
 			$nonce
 		);
 
@@ -231,7 +231,7 @@ class E2EHelper {
 			if(null !== $result && true === $result->isSuccess()) {
 				$image = $this->cryptTool->decryptImage(
 					$result->getData(),
-					hex2bin($receiverPublicKey->getPublicKey()),
+					\Sodium\hex2bin($receiverPublicKey->getPublicKey()),
 					$this->privateKey,
 					$message->getNonce()
 				);
@@ -254,7 +254,7 @@ class E2EHelper {
 			if(null !== $result && true === $result->isSuccess()) {
 				$file = $this->cryptTool->decryptFile(
 					$result->getData(),
-					hex2bin($message->getEncryptionKey()));
+					\Sodium\hex2bin($message->getEncryptionKey()));
 
 				if (null === $file) {
 					throw new Exception('file decryption failed');
@@ -272,7 +272,7 @@ class E2EHelper {
 				if(null !== $result && true === $result->isSuccess()) {
 					$file = $this->cryptTool->decryptFileThumbnail(
 						$result->getData(),
-						hex2bin($message->getEncryptionKey()));
+						\Sodium\hex2bin($message->getEncryptionKey()));
 
 					if(null === $file) {
 						throw new Exception('thumbnail decryption failed');
@@ -313,7 +313,7 @@ class E2EHelper {
 			}
 		}
 
-		return hex2bin($receiverPublicKey->getPublicKey());
+		return \Sodium\hex2bin($receiverPublicKey->getPublicKey());
 	}
 
 	/**

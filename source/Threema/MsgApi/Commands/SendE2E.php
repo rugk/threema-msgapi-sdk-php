@@ -55,8 +55,8 @@ class SendE2E implements CommandInterface {
 	 */
 	function getParams() {
 		$p['to'] = $this->threemaId;
-		$p['nonce'] = bin2hex($this->getNonce());
-		$p['box'] = bin2hex($this->getBox());
+		$p['nonce'] = \Sodium\bin2hex($this->getNonce());
+		$p['box'] = \Sodium\bin2hex($this->getBox());
 		return $p;
 	}
 
