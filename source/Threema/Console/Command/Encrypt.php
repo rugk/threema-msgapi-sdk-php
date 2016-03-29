@@ -28,7 +28,7 @@ class Encrypt extends Base {
 		$privateKey = $this->getArgumentPrivateKey(self::argPrivateKey);
 		$publicKey = $this->getArgumentPublicKey(self::argPublicKey);
 		$textToEncrypt = $this->readStdIn();
-		Common::required($publicKey, $publicKey, $textToEncrypt);
+		Common::required($privateKey, $publicKey, $textToEncrypt);
 
 		$cryptTool = CryptTool::getInstance();
 		//create a random nonce
