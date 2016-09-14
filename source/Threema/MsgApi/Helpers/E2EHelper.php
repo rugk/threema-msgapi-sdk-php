@@ -48,7 +48,7 @@ class E2EHelper {
 	}
 
 	/**
-	 * Crypt a text message and send it to the threemaId
+	 * Encrypt a text message and send it to the threemaId
 	 *
 	 * @param string $threemaId
 	 * @param string $text
@@ -73,7 +73,7 @@ class E2EHelper {
 	}
 
 	/**
-	 * Crypt a image file, upload the blob and send the image message to the threemaId
+	 * Encrypt an image file, upload the blob and send the image message to the threemaId
 	 *
 	 * @param string $threemaId
 	 * @param string $imagePath
@@ -122,7 +122,7 @@ class E2EHelper {
 	}
 
 	/**
-	 * Crypt a file (and thumbnail if given), upload the blob and send it to the given threemaId
+	 * Encrypt a file (and thumbnail if given), upload the blob and send it to the given threemaId
 	 *
 	 * @param string $threemaId
 	 * @param string $filePath
@@ -181,7 +181,10 @@ class E2EHelper {
 
 
 	/**
-	 * Encrypt a message and download the files of the message to the $outputFolder
+	 * Decrypt a message and download the files of the message to the $outputFolder
+	 *
+	 * Note: This does not check the MAC before, which you should always do when
+	 * you want to use this in your own application!
 	 *
 	 * @param string $threemaId
 	 * @param string $messageId
