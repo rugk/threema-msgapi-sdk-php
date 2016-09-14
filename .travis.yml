@@ -15,7 +15,7 @@ env:
 addons:
   apt:
     packages:
-      - libsodium
+      - libsodium13
 
 before_script:
   - "if [[ $LIBSODIUM != false ]]; then pecl install libsodium; fi"
