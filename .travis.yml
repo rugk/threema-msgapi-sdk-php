@@ -13,7 +13,7 @@ env:
   - LIBSODIUM=false
 
 before_script:
-  - "[[ $LIBSODIUM == true ]] && pecl install libsodium"
+  - "if [ $LIBSODIUM == true ]; then pecl install libsodium"
 
 script:
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
