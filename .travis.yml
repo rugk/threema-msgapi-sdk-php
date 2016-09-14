@@ -1,6 +1,5 @@
 language: php
-sudo: required
-dist: trusty
+sudo: false
 php:
   - 5.4
   - 5.5
@@ -13,11 +12,6 @@ env:
   - LIBSODIUM=true
   - LIBSODIUM=false
 
-addons:
-  apt:
-    packages:
-    - libsodium-dev
-
 before_script:
   - "[[ $LIBSODIUM == true ]] && pecl install libsodium"
 
@@ -25,5 +19,14 @@ script:
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
 
 matrix:
+  include:
+  - addons:
+      apt:
+        packages:
+          - libsodium13
+  - addons:
+      apt:
+        packages:
+          - libsodium18
   allow_failures:
   - php: nightly
