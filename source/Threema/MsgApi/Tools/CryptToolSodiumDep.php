@@ -14,12 +14,12 @@ use /** @noinspection PhpUndefinedClassInspection */
 
 /**
  * Contains static methods to do various Threema cryptography related tasks.
- * Support libsoidum < 0.2.0 (Statics)
+ * Support libsodium < 0.2.0 (Statics)
  *
  * @package Threema\Core
  * @deprecated please update your libsodium package to >= 0.2.0
  */
-class CryptToolSodiumDep extends  CryptTool {
+class CryptToolSodiumDep extends CryptTool {
 	/**
 	 * @param string $data
 	 * @param string $nonce
