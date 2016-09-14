@@ -1,5 +1,0 @@
-# Force to use LF line ending always
-* text eol=lf
-
-# image files should not be touched
-*.jpg binary
