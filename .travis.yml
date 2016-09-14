@@ -8,9 +8,21 @@ php:
   - hhvm
   - nightly
 
+env:
+  - LIBSODIUM=true
+  - LIBSODIUM=false
+
+addons:
+  apt:
+    packages:
+    - libsodium-dev
+
 before_script:
-  # - apt-get install libsodium-dev
-  # - pecl install libsodium
+  - "[[ $LIBSODIUM == true ]] && pecl install libsodium"
 
 script:
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
+
+matrix:
+  allow_failures:
+  - php: nightly
