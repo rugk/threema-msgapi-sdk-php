@@ -6,8 +6,8 @@ engines:
   phpcodesniffer:
     enabled: true
     checks:
-      Generic WhiteSpace DisallowTabIndent TabsUsed:
-        enabled: false	
+      Generic WhiteSpace DisallowTabIndent TabsUsed NonIndentTabsUsed:
+        enabled: false
   phpmd:
     enabled: true
 ratings:
