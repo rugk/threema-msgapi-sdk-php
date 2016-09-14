@@ -12,11 +12,11 @@ use Threema\Core\KeyPair;
 
 /**
  * Contains static methods to do various Threema cryptography related tasks.
- * Support libsoidum >= 0.2.0 (Namespaces)
+ * Support libsodium >= 0.2.0 (Namespaces)
  *
  * @package Threema\Core
  */
-class CryptToolSodium extends  CryptTool {
+class CryptToolSodium extends CryptTool {
 	/**
 	 * @param string $data
 	 * @param string $nonce
@@ -103,6 +103,60 @@ class CryptToolSodium extends  CryptTool {
 	final public function derivePublicKey($privateKey) {
 		/** @noinspection PhpUndefinedNamespaceInspection @noinspection PhpUndefinedFunctionInspection */
 		return \Sodium\crypto_box_publickey_from_secretkey($privateKey);
+	}
+
+	/**
+	 * Converts a binary string to an hexdecimal string.
+	 *
+	 * This is the same as PHP's bin2hex() implementation, but it is resistant to
+	 * timing attacks.
+	 *
+	 * @link https://paragonie.com/book/pecl-libsodium/read/03-utilities-helpers.md#bin2hex
+	 * @param  string $binaryString The binary string to convert
+	 * @return string
+	 */
+	public function bin2hex($binaryString)
+	{
+		return \Sodium\bin2hex($binaryString);
+	}
+
+	/**
+	 * Converts an hexdecimal string to a binary string.
+	 *
+	 * This is the same as PHP's hex2bin() implementation, but it is resistant to
+	 * timing attacks.
+	 *
+	 * @link https://paragonie.com/book/pecl-libsodium/read/03-utilities-helpers.md#hex2bin
+	 * @param  string $hexString The hex string to convert
+	 * @param  string|null $ignore	(optional) Characters to ignore
+	 * @throws \Threema\Core\Exception
+	 * @return string
+	 */
+	public function hex2bin($hexString, $ignore = null)
+	{
+		return \Sodium\hex2bin($hexString, $ignore);
+	}
+
+
+	/**
+	 * Compares two strings in a secure way.
+	 *
+	 * This is the same as PHP's strcmp() implementation, but it is resistant to
+	 * timing attacks.
+	 *
+	 * @link https://paragonie.com/book/pecl-libsodium/read/03-utilities-helpers.md#compare
+	 * @param  string $str1 The first string
+	 * @param  string $str2 The second string
+	 * @return bool
+	 */
+	public function stringCompare($str1, $str2)
+	{
+		// check variable type manually
+		if (!is_string($str1) || !is_string($str2)) {
+			return false;
+		}
+
+		return \Sodium\memcmp($str1, $str2) === 0;
 	}
 
 	/**
