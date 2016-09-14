@@ -18,7 +18,7 @@ addons:
       - libsodium
 
 before_script:
-  - "if [ $LIBSODIUM == true ]; then pecl install libsodium"
+  - "if [[ $LIBSODIUM == true ]]; then pecl install libsodium; fi"
 
 script:
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
