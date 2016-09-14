@@ -166,7 +166,7 @@ class PhpFile extends PublicKeyStore
 
 	/**
 	 * Initialize a new PhpFile Public Key Store
-	 * @param string $path the file will be created it it does not exist
+	 * @param string $path the file will be created if it does not exist
 	 * @return PhpFile
 	 */
 	public static function create($path) {

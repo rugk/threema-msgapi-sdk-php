@@ -55,6 +55,7 @@ abstract class PublicKeyStore {
 		$this->cache[$threemaId] = $publicKey;
 		return $this->savePublicKey($threemaId, $publicKey);
 	}
+
 	/**
 	 * save a public key
 	 * @param string $threemaId

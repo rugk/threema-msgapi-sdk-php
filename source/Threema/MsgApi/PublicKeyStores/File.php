@@ -67,4 +67,18 @@ class File extends PublicKeyStore {
 	function savePublicKey($threemaId, $publicKey) {
 		return file_put_contents($this->file, $threemaId.$publicKey."\n", FILE_APPEND) !== false;
 	}
+
+	/**
+	 * Initialize a new File Public Key Store
+	 * @param string $path the file will be created if it does not exist
+	 * @return File
+	 */
+	public static function create($path) {
+		if(false === file_exists($path)) {
+			//touch
+			touch($path);
+		}
+
+		return new File($path);
+	}
 }
