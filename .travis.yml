@@ -9,8 +9,8 @@ php:
   - nightly
 
 before_script:
-  - apt-get install libsodium-dev
-  - pecl install libsodium
+  # - apt-get install libsodium-dev
+  # - pecl install libsodium
 
 script:
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
