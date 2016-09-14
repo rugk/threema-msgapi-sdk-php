@@ -9,7 +9,7 @@ php:
   - nightly
 
 env:
-  - LIBSODIUM=13
+  - LIBSODIUM=true
   - LIBSODIUM=false
 
 addons:
@@ -18,7 +18,7 @@ addons:
       - libsodium
 
 before_script:
-  - "if [[ $LIBSODIUM == true ]]; then pecl install libsodium; fi"
+  - "if [[ $LIBSODIUM != false ]]; then pecl install libsodium; fi"
 
 script:
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
