@@ -9,7 +9,7 @@ if [[ -z "$LIBSODIUM" ]]; then
     exit 1
 fi
 
-CURRDIR=$( dirname )
+CURRDIR=$( dirname "$0" )
 
 case "$LIBSODIUM" in
     stable)
@@ -22,15 +22,15 @@ case "$LIBSODIUM" in
     # usual version number --> custom build
     [0-9]*\.[0-9]*\.[0-9]*)
         # download & verify files
-        gpg import < "$CURRDIR"/libsodiumkey.asc
+        gpg import < "$CURRDIR/libsodiumkey.asc"
 
-        wget https://download.libsodium.org/libsodium/releases/libsodium-"$LIBSODIUM".tar.gz
-        wget https://download.libsodium.org/libsodium/releases/libsodium-"$LIBSODIUM".tar.gz.sig
+        wget "https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM.tar.gz"
+        wget "https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM.tar.gz.sig"
 
-        gpg --verify libsodium-"$LIBSODIUM".tar.gz.sig --trust-key "54A2 B889 2CC3 D6A5 97B9 2B6C 2106 27AA BA70 9FE1"
+        gpg --verify "libsodium-$LIBSODIUM.tar.gz.sig" --trust-key "54A2 B889 2CC3 D6A5 97B9 2B6C 2106 27AA BA70 9FE1"
 
-        tar -xzvf libsodium-"$LIBSODIUM".tar.gz
-        cd libsodium-"$LIBSODIUM"
+        tar -xzvf "libsodium-$LIBSODIUM.tar.gz"
+        cd "libsodium-$LIBSODIUM"
 
         # build libsodium
         ./configure
