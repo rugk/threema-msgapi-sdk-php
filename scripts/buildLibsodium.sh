@@ -12,7 +12,7 @@ fi
 case "$LIBSODIUM" in
     stable)
         sudo apt-get update -qq
-        sudo apt-get install -qq libsodium-dev
+        sudo apt-get install -V libsodium
         ;;
     *)
         echo "Invalid value for libsodium version: $LIBSODIUM"
