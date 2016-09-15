@@ -18,7 +18,7 @@ case "$LIBSODIUM" in
 
         echo "Installing stable libsodium version"
         sudo apt-get update -qq
-        sudo apt-get install -qq libsodium
+        sudo apt-get install -qq libsodium-dev
         ;;
     # usual version number --> custom build
     [0-9]*\.[0-9]*\.[0-9]*)
@@ -43,3 +43,6 @@ case "$LIBSODIUM" in
         exit 1
         ;;
 esac
+
+# verify libsodium version
+echo "Installed libsodium version: $( php -r 'echo \Sodium\version_string();' )"

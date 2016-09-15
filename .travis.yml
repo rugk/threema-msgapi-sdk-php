@@ -11,6 +11,7 @@ php:
 
 env:
   - LIBSODIUM=stable
+  - LIBSODIUM=1.0.0
   - LIBSODIUM=false
 
 before_script:
@@ -26,5 +27,6 @@ matrix:
   # with libsodium
   - php: hhvm
     env: LIBSODIUM=stable
+    env: LIBSODIUM=1.0.0
   allow_failures:
   - php: nightly
