@@ -2,12 +2,14 @@
 set -ex
 
 # ignore script if libsodium should not be installed
-if [[ $LIBSODIUM == false ]]; then exit 0; fi
+if [[ "$LIBSODIUM" == false ]]; then exit 0; fi
 
-if [[ -z $LIBSODIUM ]]; then
+if [[ -z "$LIBSODIUM" ]]; then
     echo "No libsodium version given."
     exit 1
 fi
+
+CURRDIR=$( dirname )
 
 case "$LIBSODIUM" in
     stable)
@@ -16,6 +18,24 @@ case "$LIBSODIUM" in
         # so add PPA:
         sudo add-apt-repository -y ppa:chris-lea/libsodium
         sudo apt-get install -V libsodium-dev
+        ;;
+    # usual version number --> custom build
+    [0-9]*\.[0-9]*\.[0-9]*)
+        # download & verify files
+        gpg import < "$CURRDIR"/libsodiumkey.asc
+
+        wget https://download.libsodium.org/libsodium/releases/libsodium-"$LIBSODIUM".tar.gz
+        wget https://download.libsodium.org/libsodium/releases/libsodium-"$LIBSODIUM".tar.gz.sig
+
+        gpg --verify libsodium-"$LIBSODIUM".tar.gz.sig --trust-key "54A2 B889 2CC3 D6A5 97B9 2B6C 2106 27AA BA70 9FE1"
+
+        tar -xzvf libsodium-"$LIBSODIUM".tar.gz
+        cd libsodium-"$LIBSODIUM"
+
+        # build libsodium
+        ./configure
+        make
+        sudo make install
         ;;
     *)
         echo "Invalid value for libsodium version: $LIBSODIUM"
