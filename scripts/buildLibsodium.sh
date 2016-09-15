@@ -23,7 +23,8 @@ case "$LIBSODIUM" in
     # usual version number --> custom build
     [0-9]*\.[0-9]*\.[0-9]*)
         # download & verify files
-        gpg --import-ownertrust < "$CURRDIR/libsodiumkey.asc"
+        gpg --import "$CURRDIR/libsodiumkey.asc"
+        echo "54A2B8892CC3D6A597B92B6C210627AABA709FE1:5:"|gpg --import-ownertrust
 
         wget "https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM.tar.gz"
         wget "https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM.tar.gz.sig"
