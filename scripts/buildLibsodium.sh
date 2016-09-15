@@ -38,6 +38,11 @@ case "$LIBSODIUM" in
         ./configure
         make
         sudo make install
+
+        # enable extension
+        echo "extension=libsodium.so" > libsodium.ini
+        phpenv config-add libsodium.ini
+        # or php5enmod libsodium (not tested)
         ;;
     *)
         echo "Invalid value for libsodium version: $LIBSODIUM"
