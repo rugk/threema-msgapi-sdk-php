@@ -16,8 +16,9 @@ case "$LIBSODIUM" in
         # would only work with Ubuntu >= 15.04 without PPA
         sudo add-apt-repository -y ppa:chris-lea/libsodium
 
+        echo "Installing stable libsodium version"
         sudo apt-get update -qq
-        sudo apt-get install -V libsodium-dev
+        sudo apt-get install -qq libsodium
         ;;
     # usual version number --> custom build
     [0-9]*\.[0-9]*\.[0-9]*)
