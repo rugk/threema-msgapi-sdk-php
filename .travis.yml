@@ -1,5 +1,6 @@
 language: php
-sudo: false
+sudo: required
+dist: trusty
 php:
   - 5.4
   - 5.5
@@ -9,19 +10,12 @@ php:
   - nightly
 
 env:
-  - LIBSODIUM=true
+  - LIBSODIUM=stable
   - LIBSODIUM=false
 
-addons:
-  apt:
-    sources:
-    - deadsnakes
-    - sourceline: 'ppa:chris-lea/libsodium'
-    packages:
-      - libsodium-dev
-
 before_script:
-  - "if [[ $LIBSODIUM != false ]]; then pecl install libsodium; fi"
+  - scripts/buildLibsodium.sh
+  - scripts/buildLibsodiumPhp.sh
 
 script:
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
