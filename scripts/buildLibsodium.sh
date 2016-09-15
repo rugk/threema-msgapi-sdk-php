@@ -14,7 +14,7 @@ case "$LIBSODIUM" in
         sudo apt-get update -qq
         # would only work with Ubuntu >= 15.04 without PPA
         # so add PPA:
-        sudo add-apt-repository ppa:chris-lea/libsodium
+        sudo add-apt-repository -y ppa:chris-lea/libsodium
         sudo apt-get install -V libsodium-dev
         ;;
     *)
