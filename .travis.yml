@@ -21,5 +21,10 @@ script:
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
 
 matrix:
+  exclude:
+  # HHVM cannot install PECL extensions and is therefore not compatible
+  # with libsodium
+  - php: hhvm
+    env: LIBSODIUM=stable
   allow_failures:
   - php: nightly
