@@ -18,7 +18,7 @@ case "$LIBSODIUM" in
 
         echo "Installing stable libsodium version"
         sudo apt-get update -qq
-        sudo apt-get install -qq libsodium-dev
+        sudo apt-get install -qq -V libsodium-dev
         ;;
     # usual version number --> custom build
     [0-9]*\.[0-9]*\.[0-9]*)
