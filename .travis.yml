@@ -27,6 +27,7 @@ matrix:
   # with libsodium
   - php: hhvm
     env: LIBSODIUM=stable
+  - php: hhvm
     env: LIBSODIUM=1.0.0
   allow_failures:
   - php: nightly
