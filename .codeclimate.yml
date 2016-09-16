@@ -4,10 +4,10 @@ engines:
   fixme:
     enabled: true
   phpcodesniffer:
-    enabled: true
-    checks:
-      Generic WhiteSpace DisallowTabIndent TabsUsed NonIndentTabsUsed:
-        enabled: false
+    enabled: false
+    # checks:
+    #   Generic WhiteSpace DisallowTabIndent TabsUsed NonIndentTabsUsed:
+    #     enabled: false
   phpmd:
     enabled: true
 ratings:
