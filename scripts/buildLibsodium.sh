@@ -1,10 +1,10 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -ex
 
 # ignore script if libsodium should not be installed
-if [ "$LIBSODIUM" = false ]; then exit 0; fi
+if [[ "$LIBSODIUM" = false ]]; then exit 0; fi
 
-if [ -z "$LIBSODIUM" ]; then
+if [[ -z "$LIBSODIUM" ]]; then
     echo "No libsodium version given."
     exit 1
 fi

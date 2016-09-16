@@ -19,6 +19,7 @@ before_script:
   - scripts/buildLibsodiumPhp.sh
 
 script:
+  - scripts/verifyLibsodium.sh
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
 
 matrix:
