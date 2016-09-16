@@ -2,9 +2,9 @@
 set -ex
 
 # ignore script if libsodium should not be installed
-if [[ "$LIBSODIUM" == false ]]; then exit 0; fi
+if [ "$LIBSODIUM" == false ]; then exit 0; fi
 
-if [[ -z "$LIBSODIUM" ]]; then
+if [ -z "$LIBSODIUM" ]; then
     echo "No libsodium version given."
     exit 1
 fi
@@ -40,8 +40,8 @@ case "$LIBSODIUM" in
         sudo make install
 
         # enable extension
-        echo "extension=libsodium.so" > libsodium.ini
-        phpenv config-add libsodium.ini
+        # echo "extension=libsodium.so" > libsodium.ini
+        # phpenv config-add libsodium.ini
         # or php5enmod libsodium (not tested)
         ;;
     *)
