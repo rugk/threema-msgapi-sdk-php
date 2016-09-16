@@ -31,12 +31,8 @@ matrix:
   # HHVM cannot install PECL extensions and is therefore not compatible
   # with libsodium
   - php: hhvm
-    env: LIBSODIUM=stable
+  include:
   - php: hhvm
-    env: LIBSODIUM=1.0.0
-  - php: hhvm
-    env: LIBSODIUM=1.0.10
-  - php: hhvm
-    env: LIBSODIUM=nightly
+    env: LIBSODIUM=false
   allow_failures:
   - php: nightly
