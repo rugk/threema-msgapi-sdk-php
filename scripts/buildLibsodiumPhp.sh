@@ -5,4 +5,4 @@ set -ex
 if [[ "$LIBSODIUM" == false ]]; then exit 0; fi
 
 # install PHP extension
-pecl install libsodium
+sudo pecl install libsodium
