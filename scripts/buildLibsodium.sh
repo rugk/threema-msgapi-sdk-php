@@ -27,6 +27,7 @@ case "$LIBSODIUM" in
 
         cd libsodium
         git verify-commit HEAD
+        ./autogen.sh
 
         echo "Build nightly libsodium version"
         ./configure
@@ -53,12 +54,14 @@ case "$LIBSODIUM" in
 
             gpg --verify "libsodium-$LIBSODIUM.tar.gz.sig"
 
-            tar -xzvf "libsodium-$LIBSODIUM.tar.gz"
+            tar -xzf "libsodium-$LIBSODIUM.tar.gz"
             cd "libsodium-$LIBSODIUM"
         else
             git clone -b "$LIBSODIUM" "https://github.com/jedisct1/libsodium.git"
             cd libsodium
             git verify-tag "$LIBSODIUM"
+
+            ./autogen.sh
         fi
 
         echo "Build libsodium version $LIBSODIUM"
