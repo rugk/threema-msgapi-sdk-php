@@ -5,7 +5,7 @@ set -ex
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 function importgpgkey() {
     gpg --import "$CURRDIR/libsodiumkey.asc"
-    echo "54A2B8892CC3D6A597B92B6C210627AABA709FE1:5:"|gpg --import-ownertrust
+    echo "54A2B8892CC3D6A597B92B6C210627AABA709FE1:6:"|gpg --import-ownertrust
 }
 
 latestGitHubOnlyRelease="1.0.3" # so taht +1 = first website release
@@ -23,7 +23,7 @@ CURRDIR=$( dirname "$0" )
 case "$LIBSODIUM" in
     nightly)
         importgpgkey
-        git clone -b master https://github.com/jedisct1/libsodium.git
+        git clone -b master "https://github.com/jedisct1/libsodium.git"
 
         git verify-commit HEAD
 
@@ -56,7 +56,7 @@ case "$LIBSODIUM" in
             tar -xzvf "libsodium-$LIBSODIUM.tar.gz"
             cd "libsodium-$LIBSODIUM"
         else
-            git clone -b master https://github.com/jedisct1/libsodium.git
+            git clone -b master "https://github.com/jedisct1/libsodium.git"
             git verify-tag "$LIBSODIUM"
             git checkout "$LIBSODIUM"
             cd "libsodium"

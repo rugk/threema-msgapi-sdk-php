@@ -11,14 +11,14 @@ php:
 
 env:
   - LIBSODIUM=false
-  - LIBSODIUM=1.0.0
-  - LIBSODIUM=stable
-  - LIBSODIUM=1.0.10
-  - LIBSODIUM=nightly
-  - LIBSODIUMPHP=libsodium #(stable)
-  - LIBSODIUMPHP=libsodium-0.1.3 #(deprecated before namespaces)
+  - LIBSODIUM=1.0.0 LIBSODIUMPHP=libsodium #(stable)
+  - LIBSODIUM=stable LIBSODIUMPHP=libsodium #(stable)
+  - LIBSODIUM=1.0.10 LIBSODIUMPHP=libsodium #(stable)
+  - LIBSODIUM=nightly LIBSODIUMPHP=libsodium #(stable)
+  - LIBSODIUM=stable LIBSODIUMPHP=libsodium-0.1.3 #(deprecated before namespaces)
 
 before_script:
+  - scripts/verifySignature.sh
   - scripts/buildLibsodium.sh
   - scripts/buildLibsodiumPhp.sh
 
