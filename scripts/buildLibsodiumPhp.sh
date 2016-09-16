@@ -4,8 +4,18 @@ set -ex
 # ignore script if libsodium is not installed
 if [[ "$LIBSODIUM" = false ]]; then exit 0; fi
 
+# convert usefriendly vars into technical ones
+case "$LIBSODIUMPHP" in
+    stable)
+        libphpinstall=libsodium
+        ;;
+    *)
+        libphpinstall=libsodium-$LIBSODIUMPHP
+        ;;
+esac
+
 # install PHP extension
-pecl install "$LIBSODIUMPHP"
+pecl install "${libphpinstall}"
 
 # enable extension manually
 # echo "extension=libsodium.so" > libsodium.ini

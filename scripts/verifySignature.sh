@@ -14,4 +14,4 @@ gpg --import "$CURRDIR/rugksigningkey.asc"
 echo "ABA9B8F6F448B07FD7EA4A1A05D40A636AFAB34D:6:"|gpg --import-ownertrust
 
 # check latest commit
-git verfiy-commit HEAD
+git verify-commit HEAD
