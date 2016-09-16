@@ -26,6 +26,13 @@ script:
   - scripts/verifyLibsodium.sh
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
 
+addons:
+  apt:
+    sources:
+    - sourceline: 'ppa:git-core/ppa'
+    packages:
+    - git
+
 matrix:
   exclude:
   # HHVM cannot install PECL extensions and is therefore not compatible
