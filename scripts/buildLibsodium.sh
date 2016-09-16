@@ -8,7 +8,7 @@ function importgpgkey() {
     echo "54A2B8892CC3D6A597B92B6C210627AABA709FE1:6:"|gpg --import-ownertrust
 }
 
-latestGitHubOnlyRelease="1.0.3" # so taht +1 = first website release
+latestGitHubOnlyRelease="1.0.3" # so that +1 = first website release
 
 # ignore script if libsodium should not be installed
 if [[ "$LIBSODIUM" = false ]]; then exit 0; fi
@@ -62,7 +62,7 @@ case "$LIBSODIUM" in
             cd "libsodium"
         fi
 
-        echo "Build nightly libsodium version"
+        echo "Build libsodium version $LIBSODIUM"
         ./configure
         make
         sudo make install
