@@ -54,9 +54,11 @@ class SendE2E implements CommandInterface {
 	 * @return array
 	 */
 	function getParams() {
+		$cryptTool = CryptTool::getInstance();
+
 		$p['to'] = $this->threemaId;
-		$p['nonce'] = bin2hex($this->getNonce());
-		$p['box'] = bin2hex($this->getBox());
+		$p['nonce'] = $cryptTool->bin2hex($this->getNonce());
+		$p['box'] = $cryptTool->bin2hex($this->getBox());
 		return $p;
 	}
 
@@ -76,4 +78,3 @@ class SendE2E implements CommandInterface {
 		return new SendE2EResult($httpCode, $res);
 	}
 }
-

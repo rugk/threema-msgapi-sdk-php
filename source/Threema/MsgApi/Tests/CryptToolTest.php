@@ -49,10 +49,10 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 			$publicKey = Common::getPublicKey(Constants::myPublicKey);
 			$this->assertNotNull($publicKey);
 
-			$message = $cryptTool->decryptMessage(hex2bin($box),
-				hex2bin($privateKey),
-				hex2bin($publicKey),
-				hex2bin($nonce));
+			$message = $cryptTool->decryptMessage($cryptTool->hex2bin($box),
+				$cryptTool->hex2bin($privateKey),
+				$cryptTool->hex2bin($publicKey),
+				$cryptTool->hex2bin($nonce));
 
 			$this->assertNotNull($message);
 			$this->assertTrue($message instanceof TextMessage);
@@ -75,16 +75,16 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 			$this->assertNotNull($publicKey);
 
 			$message = $cryptTool->encryptMessageText($text,
-				hex2bin($privateKey),
-				hex2bin($publicKey),
-				hex2bin($nonce));
+				$cryptTool->hex2bin($privateKey),
+				$cryptTool->hex2bin($publicKey),
+				$cryptTool->hex2bin($nonce));
 
 			$this->assertNotNull($message);
 
 			$box = $cryptTool->decryptMessage($message,
-				hex2bin(Common::getPrivateKey(Constants::otherPrivateKey)),
-				hex2bin(Common::getPublicKey(Constants::myPublicKey)),
-				hex2bin($nonce));
+				$cryptTool->hex2bin(Common::getPrivateKey(Constants::otherPrivateKey)),
+				$cryptTool->hex2bin(Common::getPublicKey(Constants::myPublicKey)),
+				$cryptTool->hex2bin($nonce));
 
 			$this->assertNotNull($box);
 		});
@@ -93,8 +93,8 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 
 	public function testDerivePublicKey() {
 		$this->doTest(function(CryptTool $cryptTool, $prefix){
-			$publicKey = $cryptTool->derivePublicKey(hex2bin(Common::getPrivateKey(Constants::myPrivateKey)));
-			$myPublicKey = hex2bin(Common::getPublicKey(Constants::myPublicKey));
+			$publicKey = $cryptTool->derivePublicKey($cryptTool->hex2bin(Common::getPrivateKey(Constants::myPrivateKey)));
+			$myPublicKey = $cryptTool->hex2bin(Common::getPublicKey(Constants::myPublicKey));
 
 			$this->assertEquals($publicKey, $myPublicKey, $prefix.' derive public key failed');
 		});
@@ -105,11 +105,11 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 
 		/** @noinspection PhpUnusedParameterInspection */
 		$this->doTest(function(CryptTool $cryptTool, $prefix) use($threemaIconContent) {
-			$privateKey = hex2bin(Common::getPrivateKey(Constants::myPrivateKey));
-			$publicKey = hex2bin(Common::getPublicKey(Constants::myPublicKey));
+			$privateKey = $cryptTool->hex2bin(Common::getPrivateKey(Constants::myPrivateKey));
+			$publicKey = $cryptTool->hex2bin(Common::getPublicKey(Constants::myPublicKey));
 
-			$otherPrivateKey = hex2bin(Common::getPrivateKey(Constants::otherPrivateKey));
-			$otherPublicKey = hex2bin(Common::getPublicKey(Constants::otherPublicKey));
+			$otherPrivateKey = $cryptTool->hex2bin(Common::getPrivateKey(Constants::otherPrivateKey));
+			$otherPublicKey = $cryptTool->hex2bin(Common::getPublicKey(Constants::otherPublicKey));
 
 			$result = $cryptTool->encryptImage($threemaIconContent, $privateKey, $otherPublicKey);
 

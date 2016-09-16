@@ -34,15 +34,17 @@ class ReceiveMessage extends Base {
 	}
 
 	function doRun() {
+		$cryptTool = CryptTool::getInstance();
+
 		$sendersThreemaId = $this->getArgumentThreemaId(self::argThreemaId);
 		$id = $this->getArgumentThreemaId(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);
 		$privateKey = $this->getArgumentPrivateKey(self::argPrivateKey);
-		$nonce = hex2bin($this->getArgument(self::argNonce));
+		$nonce = $cryptTool->hex2bin($this->getArgument(self::argNonce));
 		$messageId = $this->getArgument(self::argMessageId);
 		$outputFolder = $this->getArgument(self::argOutputFolder);
 
-		$box = hex2bin($this->readStdIn());
+		$box = $cryptTool->hex2bin($this->readStdIn());
 
 		Common::required($box, $id, $secret, $privateKey, $nonce);
 

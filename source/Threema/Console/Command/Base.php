@@ -134,8 +134,9 @@ abstract class Base {
 	 */
 	public function getArgumentPrivateKey($pos) {
 		$content = Common::getPrivateKey($this->getArgumentStringOrFileContent($pos));
+		$cryptTool = CryptTool::getInstance();
 		if(null !== $content) {
-			return hex2bin($content);
+			return $cryptTool->hex2bin($content);
 		}
 		return null;
 	}
@@ -146,8 +147,9 @@ abstract class Base {
 	 */
 	public function getArgumentPublicKey($pos) {
 		$content = Common::getPublicKey($this->getArgumentStringOrFileContent($pos));
+		$cryptTool = CryptTool::getInstance();
 		if(null !== $content) {
-			return hex2bin($content);
+			return $cryptTool->hex2bin($content);
 		}
 		return null;
 	}
