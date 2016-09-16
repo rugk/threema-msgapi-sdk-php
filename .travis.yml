@@ -41,6 +41,8 @@ matrix:
   # libsodium-php <0.2.0 is not compatible with PHPv7
   - php: 7.0
     env: LIBSODIUM=1.0.1 LIBSODIUMPHP=0.1.3
+  - php: nightly
+    env: LIBSODIUM=1.0.1 LIBSODIUMPHP=0.1.3
   include:
   - php: hhvm
     env: LIBSODIUM=false
