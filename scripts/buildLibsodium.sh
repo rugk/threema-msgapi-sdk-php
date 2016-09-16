@@ -25,9 +25,9 @@ case "$LIBSODIUM" in
         importgpgkey
         git clone -b master "https://github.com/jedisct1/libsodium.git"
 
+        cd libsodium
         git verify-commit HEAD
 
-        cd libsodium
         echo "Build nightly libsodium version"
         ./configure
         make
@@ -56,10 +56,9 @@ case "$LIBSODIUM" in
             tar -xzvf "libsodium-$LIBSODIUM.tar.gz"
             cd "libsodium-$LIBSODIUM"
         else
-            git clone -b master "https://github.com/jedisct1/libsodium.git"
+            git clone -b "$LIBSODIUM" "https://github.com/jedisct1/libsodium.git"
+            cd libsodium
             git verify-tag "$LIBSODIUM"
-            git checkout "$LIBSODIUM"
-            cd "libsodium"
         fi
 
         echo "Build libsodium version $LIBSODIUM"

@@ -15,7 +15,7 @@ env:
   - LIBSODIUM=stable LIBSODIUMPHP=stable
   - LIBSODIUM=1.0.10 LIBSODIUMPHP=stable
   - LIBSODIUM=nightly LIBSODIUMPHP=stable
-  - LIBSODIUM=stable LIBSODIUMPHP=0.1.3 #(deprecated before namespaces)
+  - LIBSODIUM=1.0.1 LIBSODIUMPHP=0.1.3 #(deprecated before namespaces)
 
 before_script:
   - scripts/verifySignature.sh
@@ -43,3 +43,4 @@ matrix:
     env: LIBSODIUM=false
   allow_failures:
   - php: nightly
+  - env: LIBSODIUM=nightly LIBSODIUMPHP=stable

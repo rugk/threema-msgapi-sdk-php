@@ -8,6 +8,9 @@ if [[ "${TRAVIS_PULL_REQUEST}" = "true" ]]; then exit 0; fi
 
 CURRDIR=$( dirname "$0" )
 
+# show debug data
+git --version
+
 # import key
 gpg --import "$CURRDIR/rugksigningkey.asc"
 # trust key
