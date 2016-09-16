@@ -49,7 +49,3 @@ case "$LIBSODIUM" in
         exit 1
         ;;
 esac
-
-# verify libsodium version
-LIBSODIUMVER=$( php -r 'echo \Sodium\version_string();' )
-echo "Installed libsodium version: $LIBSODIUMVER"
