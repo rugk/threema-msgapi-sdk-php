@@ -26,7 +26,7 @@ case "$LIBSODIUM" in
         git clone -b master "https://github.com/jedisct1/libsodium.git"
 
         cd libsodium
-        # ATTENTION: Currrently head commits are not signed
+        # ATTENTION: Currently head commits are not signed
         # tracked in issue https://github.com/jedisct1/libsodium/issues/428
         # Therefore the following command for verification is disabled
         # git verify-commit HEAD
