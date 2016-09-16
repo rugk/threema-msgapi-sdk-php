@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 
 # ignore script if libsodium is not installed
 if [[ "$LIBSODIUM" = false ]]; then exit 0; fi
@@ -7,10 +7,10 @@ if [[ "$LIBSODIUM" = false ]]; then exit 0; fi
 # thanks to https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers#answer-24067243
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 
-noNamespaceVersion="0.1.3"
+firstNamespaceVersion="0.2.0"
 
 # verify libsodium version
-if version_gt "$LIBSODIUM" "$noNamespaceVersion"; then
+if version_gt "$LIBSODIUMPHP" "$firstNamespaceVersion"; then
     # a fairly recent version working with namespaces
     LIBSODIUMVER=$( php -r 'echo \Sodium\version_string();' )
 else

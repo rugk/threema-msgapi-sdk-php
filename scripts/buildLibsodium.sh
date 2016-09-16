@@ -16,7 +16,7 @@ function importgpgkey() {
     echo "54A2B8892CC3D6A597B92B6C210627AABA709FE1:6:"|gpg --import-ownertrust
 }
 
-latestGitHubOnlyRelease="1.0.3" # so that +1 = first website release
+firstWebsiteOnlyRelease="1.0.4"
 
 CURRDIR=$( dirname "$0" )
 
@@ -26,7 +26,10 @@ case "$LIBSODIUM" in
         git clone -b master "https://github.com/jedisct1/libsodium.git"
 
         cd libsodium
-        git verify-commit HEAD
+        # ATTENTION: Currrently head commits are not signed
+        # tracked in issue https://github.com/jedisct1/libsodium/issues/428
+        # Therefore the following command for verification is disabled
+        # git verify-commit HEAD
         ./autogen.sh
 
         echo "Build nightly libsodium version"
@@ -46,7 +49,7 @@ case "$LIBSODIUM" in
     [0-9]*\.[0-9]*\.[0-9]*)
         importgpgkey
 
-        if version_gt "$LIBSODIUM" "$latestGitHubOnlyRelease"; then
+        if version_gt "$LIBSODIUM" "$firstWebsiteOnlyRelease"; then
             # download & verify files from website
 
             wget "https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM.tar.gz"
