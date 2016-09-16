@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -ex
+set -e
 
 # ignore script if libsodium is not installed
 if [[ "$LIBSODIUM" = false ]]; then exit 0; fi

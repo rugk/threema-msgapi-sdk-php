@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -ex
 
+# thanks to https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers#answer-24067243
+function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
+function importgpgkey() {
+    gpg --import "$CURRDIR/libsodiumkey.asc"
+    echo "54A2B8892CC3D6A597B92B6C210627AABA709FE1:5:"|gpg --import-ownertrust
+}
+
+latestGitHubOnlyRelease="1.0.3" # so taht +1 = first website release
+
 # ignore script if libsodium should not be installed
 if [[ "$LIBSODIUM" = false ]]; then exit 0; fi
 
@@ -12,6 +21,18 @@ fi
 CURRDIR=$( dirname "$0" )
 
 case "$LIBSODIUM" in
+    nightly)
+        importgpgkey
+        git clone -b master https://github.com/jedisct1/libsodium.git
+
+        git verify-commit HEAD
+
+        cd libsodium
+        echo "Build nightly libsodium version"
+        ./configure
+        make
+        sudo make install
+        ;;
     stable)
         # would only work with Ubuntu >= 15.04 without PPA
         sudo add-apt-repository -y ppa:chris-lea/libsodium
@@ -22,19 +43,26 @@ case "$LIBSODIUM" in
         ;;
     # usual version number --> custom build
     [0-9]*\.[0-9]*\.[0-9]*)
-        # download & verify files
-        gpg --import "$CURRDIR/libsodiumkey.asc"
-        echo "54A2B8892CC3D6A597B92B6C210627AABA709FE1:5:"|gpg --import-ownertrust
+        importgpgkey
 
-        wget "https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM.tar.gz"
-        wget "https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM.tar.gz.sig"
+        if version_gt "$LIBSODIUM" "$latestGitHubOnlyRelease"; then
+            # download & verify files from website
 
-        gpg --verify "libsodium-$LIBSODIUM.tar.gz.sig"
+            wget "https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM.tar.gz"
+            wget "https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM.tar.gz.sig"
 
-        tar -xzvf "libsodium-$LIBSODIUM.tar.gz"
-        cd "libsodium-$LIBSODIUM"
+            gpg --verify "libsodium-$LIBSODIUM.tar.gz.sig"
 
-        # build libsodium
+            tar -xzvf "libsodium-$LIBSODIUM.tar.gz"
+            cd "libsodium-$LIBSODIUM"
+        else
+            git clone -b master https://github.com/jedisct1/libsodium.git
+            git verify-tag "$LIBSODIUM"
+            git checkout "$LIBSODIUM"
+            cd "libsodium"
+        fi
+
+        echo "Build nightly libsodium version"
         ./configure
         make
         sudo make install

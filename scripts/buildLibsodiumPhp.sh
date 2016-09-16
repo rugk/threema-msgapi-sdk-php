@@ -5,7 +5,7 @@ set -ex
 if [[ "$LIBSODIUM" = false ]]; then exit 0; fi
 
 # install PHP extension
-pecl install libsodium
+pecl install "$LIBSODIUMPHP"
 
 # enable extension manually
 # echo "extension=libsodium.so" > libsodium.ini

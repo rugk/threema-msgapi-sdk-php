@@ -10,9 +10,13 @@ php:
   - nightly
 
 env:
+  - LIBSODIUM=false
+  - LIBSODIUM=1.0.0
   - LIBSODIUM=stable
   - LIBSODIUM=1.0.10
-  - LIBSODIUM=false
+  - LIBSODIUM=nightly
+  - LIBSODIUMPHP=libsodium #(stable)
+  - LIBSODIUMPHP=libsodium-0.1.3 #(deprecated before namespaces)
 
 before_script:
   - scripts/buildLibsodium.sh
@@ -29,6 +33,10 @@ matrix:
   - php: hhvm
     env: LIBSODIUM=stable
   - php: hhvm
+    env: LIBSODIUM=1.0.0
+  - php: hhvm
     env: LIBSODIUM=1.0.10
+  - php: hhvm
+    env: LIBSODIUM=nightly
   allow_failures:
   - php: nightly
