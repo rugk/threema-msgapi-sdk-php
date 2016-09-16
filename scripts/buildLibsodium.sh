@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 set -ex
 
+# ignore script if libsodium should not be installed
+if [[ "$LIBSODIUM" = false ]]; then exit 0; fi
+
+if [[ -z "$LIBSODIUM" ]]; then
+    echo "No libsodium version given."
+    exit 1
+fi
+
 # thanks to https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers#answer-24067243
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 function importgpgkey() {
@@ -9,14 +17,6 @@ function importgpgkey() {
 }
 
 latestGitHubOnlyRelease="1.0.3" # so that +1 = first website release
-
-# ignore script if libsodium should not be installed
-if [[ "$LIBSODIUM" = false ]]; then exit 0; fi
-
-if [[ -z "$LIBSODIUM" ]]; then
-    echo "No libsodium version given."
-    exit 1
-fi
 
 CURRDIR=$( dirname "$0" )
 
