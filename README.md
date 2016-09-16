@@ -84,7 +84,7 @@ $settings = new ConnectionSettings(
     [
         'forceHttps' => true, //set to true to force HTTPS, default: false
         'tlsVersion' => '1.2', //set the version of TLS to be used, default: null
-        'tlsCipher' => 'ECDHE-RSA-AES128-GCM-SHA256' //choose a cipher or a list of ciphers, default: null
+        'tlsCipher' => 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384' //choose a cipher or a list of ciphers, default: null
     ]
 );
 
