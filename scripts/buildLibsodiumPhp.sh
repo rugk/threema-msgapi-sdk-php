@@ -10,8 +10,8 @@ pecl install libsodium
 # install in missing PHP version envoriments
 
 # enable extension
-echo "extension=libsodium.so" > libsodium.ini
-phpenv config-add libsodium.ini
+# echo "extension=libsodium.so" > libsodium.ini
+# phpenv config-add libsodium.ini
 # or php5enmod libsodium (not tested)
 # or echo "extension=<extension>.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
