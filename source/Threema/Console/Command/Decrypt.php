@@ -18,10 +18,12 @@ class Decrypt extends Base {
 	}
 
 	function doRun() {
+		$cryptTool = CryptTool::getInstance();
+
 		$privateKey = $this->getArgumentPrivateKey(self::argPrivateKey);
 		$publicKey = $this->getArgumentPublicKey(self::argPublicKey);
-		$nonce = hex2bin($this->getArgument(self::argNonce));
-		$input = hex2bin($this->readStdIn());
+		$nonce = $cryptTool->hex2bin($this->getArgument(self::argNonce));
+		$input = $cryptTool->hex2bin($this->readStdIn());
 
 		Common::required($privateKey, $publicKey, $nonce, $input);
 		$cryptTool = CryptTool::getInstance();

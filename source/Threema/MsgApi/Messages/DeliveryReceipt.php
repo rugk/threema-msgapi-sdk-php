@@ -78,10 +78,11 @@ class DeliveryReceipt extends ThreemaMessage {
 	 * @return string
 	 */
 	function __toString() {
+		$cryptTool = CryptTool::getInstance();
 		$str = "Delivery receipt (" . $this->getReceiptTypeName() . "): ";
 		$hexMessageIds = array();
 		foreach ($this->ackedMessageIds as $messageId) {
-			$hexMessageIds[] = bin2hex($messageId);
+			$hexMessageIds[] = $cryptTool->bin2hex($messageId);
 		}
 		$str .= join(", ", $hexMessageIds);
 		return $str;

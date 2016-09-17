@@ -25,6 +25,6 @@ class DerivePublicKey extends Base {
 		$cryptTool = CryptTool::getInstance();
 
 		$publicKey = $cryptTool->derivePublicKey($privateKey);
-		Common::l(Common::convertPublicKey(bin2hex($publicKey)));
+		Common::l(Common::convertPublicKey($cryptTool->bin2hex($publicKey)));
 	}
 }

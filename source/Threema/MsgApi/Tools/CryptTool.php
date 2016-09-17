@@ -129,7 +129,7 @@ abstract class CryptTool {
 			$senderPrivateKey,
 			$recipientPublicKey,
 			$nonce) {
-		$message = "\x02" . hex2bin($uploadFileResult->getBlobId());
+		$message = "\x02" . $this->hex2bin($uploadFileResult->getBlobId());
 		$message .= pack('V', $encryptResult->getSize());
 		$message .= $encryptResult->getNonce();
 
@@ -153,7 +153,7 @@ abstract class CryptTool {
 
 		$messageContent = array(
 			'b' => $uploadFileResult->getBlobId(),
-			'k' => bin2hex($encryptResult->getKey()),
+			'k' => $this->bin2hex($encryptResult->getKey()),
 			'm' => $fileAnalysisResult->getMimeType(),
 			'n' => $fileAnalysisResult->getFileName(),
 			's' => $fileAnalysisResult->getSize(),
@@ -280,7 +280,7 @@ abstract class CryptTool {
 				$blobId = $piece->__invoke(self::BLOB_ID_LEN);
 				$length = $piece->__invoke(self::IMAGE_FILE_SIZE_LEN);
 				$nonce = $piece->__invoke(self::IMAGE_NONCE_LEN);
-				return new ImageMessage(bin2hex($blobId), bin2hex($length), $nonce);
+				return new ImageMessage($this->bin2hex($blobId), $this->bin2hex($length), $nonce);
 			case FileMessage::TYPE_CODE:
 				/* Image Message */
 				$decodeResult = json_decode(substr($data, 1), true);
@@ -457,6 +457,97 @@ abstract class CryptTool {
 
 	function __toString() {
 		return 'CryptTool '.$this->getName();
+	}
+
+	/**
+	 * Converts a binary string to an hexdecimal string.
+	 *
+	 * This is the same as PHP's bin2hex() implementation, but it is resistant to
+	 * timing attacks.
+	 *
+	 * @param  string $binaryString The binary string to convert
+	 * @return string
+	 */
+	public function bin2hex($binaryString)
+	{
+		return bin2hex($binaryString);
+	}
+
+	/**
+	 * Converts an hexdecimal string to a binary string.
+	 *
+	 * This is the same as PHP's hex2bin() implementation, but it is resistant to
+	 * timing attacks.
+	 * Note that the default implementation does not support $ignore currrently and will
+	 * throw an error. Only when libsodium >= 0.22 is used, this is supported.
+	 *
+	 * @param  string $hexString The hex string to convert
+	 * @param  string|null $ignore	(optional) Characters to ignore
+	 * @throws \Threema\Core\Exception
+	 * @return string
+	 */
+	public function hex2bin($hexString, $ignore = null)
+	{
+		if ($ignore !== null) {
+			throw new Exception('$ignore parameter is not supported');
+		}
+		return hex2bin($hexString);
+	}
+
+	/**
+	 * Compares two strings in a secure way.
+	 *
+	 * This is the same as PHP's strcmp() implementation, but it is resistant to
+	 * timing attacks.
+	 *
+	 * @link https://paragonie.com/book/pecl-libsodium/read/03-utilities-helpers.md#compare
+	 * @param  string $str1 The first string
+	 * @param  string $str2 The second string
+	 * @return int
+	 */
+	public function stringCompare($str1, $str2)
+	{
+		if (function_exists('hash_equals')) {
+			return hash_equals($str1, $str2);
+		} else {
+			// check variable type manually
+			if (!is_string($str1) || !is_string($str2)) {
+				return false;
+			}
+
+			// fast comparison: check string length
+			if (strlen($str1) != strlen($str2)) {
+				return false;
+			}
+
+			# PHP implementation of hash_equals
+			# partly taken from https://github.com/symfony/polyfill-php56/blob/master/Php56.php#L45-L51
+			#
+			# Note that this is really slow!!
+			#
+			$ret = 0;
+			for ($i = 0; $i < strlen($str1); ++$i) {
+	            $ret |= ord($str1[$i]) ^ ord($str2[$i]);
+	        }
+			return 0 === $ret;
+		}
+	}
+
+	/**
+	 * Unsets/removes a variable.
+	 *
+	 * Note: the PHP implementation here provides no security, but if you use
+	 * Libsodium, the variable will be deleted in a better way.
+	 *
+	 * @param  string $var A variable, passed by reference
+	 */
+	public function removeVar(&$var)
+	{
+		// overwrite var (128x0), quite certainly not secure at all
+		$var = $this->hex2bin('00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000');
+		$var = null;
+		// actually this does not erase the content of the variable
+		unset($var);
 	}
 
 	/**

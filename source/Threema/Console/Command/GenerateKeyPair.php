@@ -18,10 +18,11 @@ class GenerateKeyPair extends Base {
 	}
 
 	function doRun() {
-		$keyPair = CryptTool::getInstance()->generateKeyPair();
+		$cryptTool = ryptTool::getInstance();
+		$keyPair = $cryptTool->generateKeyPair();
 
-		$privateKeyHex = bin2hex($keyPair->privateKey);
-		$publicKeyHex = bin2hex($keyPair->publicKey);
+		$privateKeyHex = $cryptTool->bin2hex($keyPair->privateKey);
+		$publicKeyHex = $cryptTool->bin2hex($keyPair->publicKey);
 
 		file_put_contents($this->getArgument(self::argPrivateKeyFile), Common::convertPrivateKey($privateKeyHex)."\n");
 		file_put_contents($this->getArgument(self::argPublicKeyFile), Common::convertPublicKey($publicKeyHex)."\n");
