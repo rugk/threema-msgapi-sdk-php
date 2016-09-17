@@ -29,53 +29,43 @@ class CryptToolSodiumTests extends \PHPUnit_Framework_TestCase {
 	 * test hex2bin and bin2hex functions to make sure they are resistant to timing attacks
 	 */
 	public function testHexBin() {
-		// // make strings large enough
-		// $string1 = str_repeat(Constants::myPrivateKey, 100000);
-		// $string2 = str_repeat(Constants::otherPrivateKey, 100000);
-		// echo PHP_EOL;
-		//
-		// $humanDescr = [
-		// 	'length' => 'different length',
-		// 	'diff' => 'same length, different content',
-		// 	'same' => 'same length, same content'
-		// ];
-		//
-		// // test different strings when comparing and get time needed
-		// $result = [];
-		// foreach(array(
-		// 	'length' => [$string1, $string1 . 'a'],
-		// 	'diff' => [$string1, $string2],
-		// 	'same' => [$string1, $string1]
-		// ) as $testName => $strings) {
-		// 	$timeStart = microtime(true);
-		// 	$comparisonResult = $this->cryptTool->stringCompare($strings[0], $strings[1]);
-		// 	$timeEnd = microtime(true);
-		// 	$timeElapsed = $timeEnd - $timeStart;
-		//
-		// 	// echo $prefix.': '.$humanDescr[$testName].': '.$timeElapsed.'; result: '.$comparisonResult.PHP_EOL;
-		// 	$result[$testName] = [$timeElapsed, $comparisonResult];
-		//
-		// 	// check result
-		// 	if ($testName == 'length' || $testName == 'diff') {
-		// 		$this->assertEquals($comparisonResult, false, $prefix.': comparison of "'.$humanDescr[$testName].'" is wrong: expected: false, got '.$comparisonResult);
-		// 	} else {
-		// 		$this->assertEquals($comparisonResult, true, $prefix.': comparison of "'.$humanDescr[$testName].'" is wrong: expected: true, got '.$comparisonResult);
-		// 	}
-		// }
-		//
-		// // check timings
-		// echo 'Timing test results with '.$prefix.':'.PHP_EOL;
-		// $timingRatio = 2 - ($result['diff'][0] / $result['same'][0]);
-		// $absoluteDifference = abs($result['diff'][0] - $result['same'][0]);
-		// echo 'timing ratio: '.$timingRatio.PHP_EOL;
-		// echo 'absolute difference: '.$absoluteDifference.PHP_EOL;
-		//
-		// // only allow 10% relative difference of two values
-		// $allowedDifference = 0.10;
-		// $this->assertLessThan(1+$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ration: '.$timingRatio);
-		// $this->assertGreaterThan(1-$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ration: '.$timingRatio);
-		//
-		// // make sure the absolute difference is smaller than 0.05 microseconds
-		// $this->assertLessThan(0.05, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
+		// make strings large enough
+		$testStrSmall = Constants::myPrivateKeyExtract;
+		$testStrLong = Constants::myPublicKeyExtract;
+		echo PHP_EOL;
+
+		// test different strings when comparing and get time needed
+		$result = [];
+		foreach(array(
+			'short' => $testStrSmall,
+			'long' => $testStrLong
+		) as $testName => $testString) {
+			$timeStart = microtime(true);
+			$conResultBin = $this->cryptTool->hex2bin($testString);
+			$conResultHex = $this->cryptTool->bin2hex($conResultBin);
+			$timeEnd = microtime(true);
+			$timeElapsed = $timeEnd - $timeStart;
+
+			echo $testName.': '.$timeElapsed.PHP_EOL;
+			$result[$testName] = [$timeElapsed, $conResultBin, $conResultHex];
+
+			// check result
+			$this->assertEquals(hex2bin($testString), $conResultBin, $testName.': hex2bin returns different result than PHP-only implementation');
+			$this->assertEquals($testString, $conResultHex, $testName.': hex string differs from original string after conversion');
+		}
+
+		// check timings
+		$timingRatio = 2 - ($result['short'][0] / $result['long'][0]);
+		$absoluteDifference = abs($result['short'][0] - $result['long'][0]);
+		echo 'timing ratio: '.$timingRatio.PHP_EOL;
+		echo 'absolute difference: '.$absoluteDifference.PHP_EOL;
+
+		// only allow 10% relative difference of two values
+		$allowedDifference = 0.10;
+		// $this->assertLessThan(1+$allowedDifference, $timingRatio, 'difference of conversion ration of "short" compared to "long" is too high. Ration: '.$timingRatio);
+		// $this->assertGreaterThan(1-$allowedDifference, $timingRatio, 'difference of conversion ration of "short" compared to "long" is too high. Ration: '.$timingRatio);
+
+		// make sure the absolute difference is smaller than 0.05 microseconds
+		$this->assertLessThan(0.05, $absoluteDifference, 'difference of conversion ration of "short" compared to "long" is too high. Value is: '.$absoluteDifference.' micro seconds');
 	}
 }

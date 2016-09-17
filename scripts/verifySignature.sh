@@ -4,7 +4,7 @@
 set -ex
 
 # ignore pull requests as they are usually not signed
-if [[ "${TRAVIS_PULL_REQUEST}" != "false" ]]; then exit 0; fi
+if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then exit 0; fi
 
 CURRDIR=$( dirname "$0" )
 
