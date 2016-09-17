@@ -104,7 +104,7 @@ class E2EHelper {
 		$encryptionResult = $this->cryptTool->encryptImage(file_get_contents($imagePath), $this->privateKey, $receiverPublicKey);
 		$uploadResult =  $this->connection->uploadFile($encryptionResult->getData());
 
-		if($uploadResult == null || !$uploadResult->isSuccess()) {
+		if($uploadResult === null || !$uploadResult->isSuccess()) {
 			throw new Exception('could not upload the image ('.$uploadResult->getErrorCode().' '.$uploadResult->getErrorMessage().') '.$uploadResult->getRawResponse());
 		}
 
@@ -159,7 +159,7 @@ class E2EHelper {
 			$thumbnailEncryptionResult = $this->cryptTool->encryptFileThumbnail(file_get_contents($thumbnailPath), $encryptionResult->getKey());
 			$thumbnailUploadResult = $this->connection->uploadFile($thumbnailEncryptionResult->getData());
 
-			if($thumbnailUploadResult == null || !$thumbnailUploadResult->isSuccess()) {
+			if($thumbnailUploadResult === null || !$thumbnailUploadResult->isSuccess()) {
 				throw new Exception('could not upload the thumbnail file ('.$thumbnailUploadResult->getErrorCode().' '.$thumbnailUploadResult->getErrorMessage().') '.$thumbnailUploadResult->getRawResponse());
 			}
 		}
@@ -205,7 +205,7 @@ class E2EHelper {
 										 $outputFolder = null,
 										 \Closure $downloadMessage = null) {
 
-		if($outputFolder == null || strlen($outputFolder) == 0) {
+		if($outputFolder === null || strlen($outputFolder) == 0) {
 			$outputFolder = '.';
 		}
 
