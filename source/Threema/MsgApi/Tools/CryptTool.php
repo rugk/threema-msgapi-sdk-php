@@ -522,12 +522,32 @@ abstract class CryptTool {
 
 			# PHP implementation of hash_equals
 			# partly taken from https://github.com/symfony/polyfill-php56/blob/master/Php56.php#L45-L51
+			#
+			# Note that this is really slow!!
+			#
 			$ret = 0;
 			for ($i = 0; $i < strlen($str1); ++$i) {
 	            $ret |= ord($str1[$i]) ^ ord($str2[$i]);
 	        }
-			return 0 === $result;
+			return 0 === $ret;
 		}
+	}
+
+	/**
+	 * Unsets/removes a variable.
+	 *
+	 * Note: the PHP implementation here provides no security, but if you use
+	 * Libsodium, the variable will be deleted in a better way.
+	 *
+	 * @param  string $var A variable, passed by reference
+	 */
+	public function removeVar(&$var)
+	{
+		// overwrite var (128x0), quite certainly not secure at all
+		$var = $this->hex2bin('00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000');
+		$var = null;
+		// actually this does not erase the content of the variable
+		unset($var);
 	}
 
 	/**

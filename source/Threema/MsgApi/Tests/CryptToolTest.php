@@ -119,6 +119,108 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 
 		});
 	}
+
+	/**
+	 * test hex2bin and bin2hex
+	 */
+	public function testHexBin() {
+		$this->doTest(function(CryptTool $cryptTool, $prefix) {
+			$testStr = Constants::myPrivateKeyExtract;
+
+			// convert hex to bin
+			$testStrBin = $cryptTool->hex2bin($testStr);
+			$this->assertNotNull($testStrBin);
+			$testStrBinPhp = hex2bin($testStr);
+
+			// compare usual PHP conversion with crypt tool version
+			$this->assertEquals($testStrBin, $testStrBinPhp, $prefix.': hex2bin returns different result than PHP-only implementation');
+
+			// convert back to hex
+			$testStrHex = $cryptTool->bin2hex($testStrBin);
+			$this->assertNotNull($testStrHex);
+			$testStrHexPhp = bin2hex($testStrBin);
+
+			// compare usual PHP conversion with crypt tool version
+			$this->assertEquals($testStrHex, $testStrHexPhp, $prefix.': bin2hex returns different result than PHP-only implementation');
+			// compare with initial value
+			$this->assertEquals($testStr, $testStrHex, $prefix.': binary string is different than initial string after conversions');
+		});
+	}
+
+	/**
+	 * test compare functions to make sure they are resistant to timing attacks
+	 */
+	public function testCompare() {
+		$this->doTest(function(CryptTool $cryptTool, $prefix) {
+				// make strings large enough
+				$string1 = str_repeat(Constants::myPrivateKey, 100000);
+				$string2 = str_repeat(Constants::otherPrivateKey, 100000);
+				echo PHP_EOL;
+
+				$humanDescr = [
+					'length' => 'different length',
+					'diff' => 'same length, different content',
+					'same' => 'same length, same content'
+				];
+
+				// test different strings when comparing and get time needed
+				$result = [];
+				foreach(array(
+					'length' => [$string1, $string1 . 'a'],
+					'diff' => [$string1, $string2],
+					'same' => [$string1, $string1]
+				) as $testName => $strings) {
+					$timeStart = microtime(true);
+					$comparisonResult = $cryptTool->stringCompare($strings[0], $strings[1]);
+					$timeEnd = microtime(true);
+					$timeElapsed = $timeEnd - $timeStart;
+
+					// echo $prefix.': '.$humanDescr[$testName].': '.$timeElapsed.'; result: '.$comparisonResult.PHP_EOL;
+					$result[$testName] = [$timeElapsed, $comparisonResult];
+
+					// check result
+					if ($testName == 'length' || $testName == 'diff') {
+						$this->assertEquals($comparisonResult, false, $prefix.': comparison of "'.$humanDescr[$testName].'" is wrong: expected: false, got '.$comparisonResult);
+					} else {
+						$this->assertEquals($comparisonResult, true, $prefix.': comparison of "'.$humanDescr[$testName].'" is wrong: expected: true, got '.$comparisonResult);
+					}
+				}
+
+				// check timings
+				echo 'Timing test results with '.$prefix.':'.PHP_EOL;
+				$timingRatio = 2 - ($result['diff'][0] / $result['same'][0]);
+				$absoluteDifference = abs($result['diff'][0] - $result['same'][0]);
+				echo 'timing ratio: '.$timingRatio.PHP_EOL;
+				echo 'absolute difference: '.$absoluteDifference.PHP_EOL;
+
+				// only allow 10% relative difference of two values
+				$allowedDifference = 0.10;
+				$this->assertLessThan(1+$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ration: '.$timingRatio);
+				$this->assertGreaterThan(1-$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ration: '.$timingRatio);
+
+				// make sure the absolute difference is smaller than 0.05 microseconds
+				$this->assertLessThan(0.05, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
+			});
+	}
+
+	/**
+	 * test variable deletion
+	 */
+	public function testRemoveVar() {
+		$this->doTest(function(CryptTool $cryptTool, $prefix) {
+			foreach(array(
+						'hex' => Constants::myPrivateKeyExtract,
+						'bin' => $cryptTool->hex2bin(Constants::myPrivateKeyExtract)
+					) as $key => $testVar) {
+				// let it remove
+				$cryptTool->removeVar($testVar);
+
+				$this->assertEmpty($testVar, $prefix.': variable is not empty (test: '.$key.')');
+				$this->assertNull($testVar, $prefix.': variable is not null (test: '.$key.')');
+			}
+		});
+	}
+
 	private function doTest(\Closure $c) {
 		foreach(array(
 					'Salt' => CryptTool::createInstance(CryptTool::TYPE_SALT),

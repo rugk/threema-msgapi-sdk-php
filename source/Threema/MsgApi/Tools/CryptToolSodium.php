@@ -117,6 +117,7 @@ class CryptToolSodium extends CryptTool {
 	 */
 	public function bin2hex($binaryString)
 	{
+		/** @noinspection PhpUndefinedNamespaceInspection @noinspection PhpUndefinedFunctionInspection */
 		return \Sodium\bin2hex($binaryString);
 	}
 
@@ -134,6 +135,7 @@ class CryptToolSodium extends CryptTool {
 	 */
 	public function hex2bin($hexString, $ignore = null)
 	{
+		/** @noinspection PhpUndefinedNamespaceInspection @noinspection PhpUndefinedFunctionInspection */
 		return \Sodium\hex2bin($hexString, $ignore);
 	}
 
@@ -156,7 +158,32 @@ class CryptToolSodium extends CryptTool {
 			return false;
 		}
 
+		/** @noinspection PhpUndefinedNamespaceInspection @noinspection PhpUndefinedFunctionInspection */
 		return \Sodium\memcmp($str1, $str2) === 0;
+	}
+
+	/**
+	 * Unsets/removes a variable.
+	 *
+	 * Important: When using PHPv7, make sure to have at least version 1.0.1 of
+	 * the Libsodium PECL (libsodium-php) installed. Otherwise this falls back to
+	 * the (insecure) PHP method of removing a variable.
+	 *
+	 * @link https://paragonie.com/book/pecl-libsodium/read/03-utilities-helpers.md#memzero
+	 * @param  string $var A variable, passed by reference
+	 */
+	public function removeVar(&$var)
+	{
+		// check if version is compatible
+		if (version_compare(PHP_VERSION, '7.0', '>=') &&
+			version_compare(\Sodium\version_string(), '1.0.1', '>=') # TODO: Fix: Check version of PHP ext. & not of Libsodium itself
+		) {
+			// if not, fall back to PHP implementation
+			return parent::removeVar($var);
+		}
+
+		/** @noinspection PhpUndefinedNamespaceInspection @noinspection PhpUndefinedFunctionInspection */
+		return \Sodium\memzero($var);
 	}
 
 	/**
