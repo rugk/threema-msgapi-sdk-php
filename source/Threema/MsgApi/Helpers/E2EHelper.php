@@ -224,14 +224,14 @@ class E2EHelper {
 			throw new Exception('Could not encrypt box');
 		}
 
+		$receiveResult = new ReceiveMessageResult($messageId, $message);
+
 		if($outputFolder === false) {
 			return $receiveResult;
 		}
 		if($outputFolder === null || strlen($outputFolder) == 0) {
 			$outputFolder = '.';
 		}
-
-		$receiveResult = new ReceiveMessageResult($messageId, $message);
 
 		if($message instanceof ImageMessage) {
 			$result = $this->downloadFile($message, $message->getBlobId(), $downloadMessage);
