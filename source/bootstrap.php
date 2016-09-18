@@ -6,6 +6,7 @@ defined('CURL_SSLVERSION_DEFAULT')  || define('CURL_SSLVERSION_DEFAULT', 0);
 defined('CURL_SSLVERSION_TLSv1')    || define('CURL_SSLVERSION_TLSv1', 1);
 defined('CURL_SSLVERSION_TLSv1_1')  || define('CURL_SSLVERSION_TLSv1_1', 5);
 defined('CURL_SSLVERSION_TLSv1_2')  || define('CURL_SSLVERSION_TLSv1_2', 6);
+defined('CURLOPT_PINNEDPUBLICKEY')  || define('CURLOPT_PINNEDPUBLICKEY', 10230);
 
 //define autoloader
 $d = dirname(__FILE__);

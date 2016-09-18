@@ -58,3 +58,9 @@ matrix:
   allow_failures:
   - php: nightly
   - env: LIBSODIUM=nightly LIBSODIUMPHP=stable
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
