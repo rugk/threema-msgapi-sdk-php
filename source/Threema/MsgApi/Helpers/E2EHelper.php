@@ -190,7 +190,8 @@ class E2EHelper {
 	 * @param string $messageId
 	 * @param string $box box as binary string
 	 * @param string $nonce nonce as binary string
-	 * @param string|null $outputFolder folder for storing the files
+	 * @param string|null|false $outputFolder folder for storing the files,
+	 * 							null=current folder, false=do not download files
 	 * @param \Closure $downloadMessage
 	 * @return ReceiveMessageResult
 	 * @throws Exception
@@ -225,6 +226,10 @@ class E2EHelper {
 
 		if(null === $message || false === is_object($message)) {
 			throw new Exception('Could not encrypt box');
+		}
+
+		if ($outputFolder === false) {
+			$receiveResult;
 		}
 
 		$receiveResult = new ReceiveMessageResult($messageId, $message);
