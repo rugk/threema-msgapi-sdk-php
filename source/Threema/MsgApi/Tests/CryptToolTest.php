@@ -199,7 +199,7 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 				$this->assertGreaterThan(1-$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
 
 				// make sure the absolute difference is smaller than 1 microseconds
-				$this->assertLessThan(1, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
+				$this->assertLessThan(1, $absoluteDifsference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
 			});
 	}
 
