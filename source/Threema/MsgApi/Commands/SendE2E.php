@@ -8,6 +8,7 @@
 namespace Threema\MsgApi\Commands;
 
 use Threema\MsgApi\Commands\Results\SendE2EResult;
+use Threema\MsgApi\Tools\CryptTool;
 
 class SendE2E implements CommandInterface {
 	/**

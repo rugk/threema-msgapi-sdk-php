@@ -28,6 +28,7 @@ use Threema\MsgApi\Commands\Results\UploadFileResult;
 use Threema\MsgApi\Commands\SendSimple;
 use Threema\MsgApi\Commands\SendE2E;
 use Threema\MsgApi\Commands\UploadFile;
+use Threema\MsgApi\Constants;
 
 /**
  * Class Connection
@@ -203,6 +204,11 @@ class Connection
 		if ($tlsCipher = $this->setting->getTlsOption(ConnectionSettings::tlsOptionCipher, null)) {
 			if(true === is_string($tlsCipher)) {
 				$options[CURLOPT_SSL_CIPHER_LIST] = $tlsCipher;
+			}
+		}
+		if ($pinnedKey = $this->setting->getTlsOption(ConnectionSettings::tlsOptionPinnedKey, Constants::DEFAULT_PINNED_KEY)) {
+			if(true === is_string($pinnedKey)) {
+				$options[CURLOPT_PINNEDPUBLICKEY] = $pinnedKey;
 			}
 		}
 		return $options;

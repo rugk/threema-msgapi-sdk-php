@@ -12,6 +12,7 @@ class ConnectionSettings
 	const tlsOptionForceHttps = 'forceHttps';
 	const tlsOptionVersion = 'tlsVersion';
 	const tlsOptionCipher = 'tlsCipher';
+	const tlsOptionPinnedKey = 'pinnedKey';
 
 	/**
 	 * @var string
@@ -59,6 +60,10 @@ class ConnectionSettings
 
 			if(true === array_key_exists(self::tlsOptionCipher, $tlsOptions)) {
 				$this->tlsOptions[self::tlsOptionCipher] = $tlsOptions[self::tlsOptionCipher];
+			}
+
+			if(true === array_key_exists(self::tlsOptionPinnedKey, $tlsOptions)) {
+				$this->tlsOptions[self::tlsOptionPinnedKey] = $tlsOptions[self::tlsOptionPinnedKey];
 			}
 		}
 	}
