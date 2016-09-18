@@ -188,7 +188,7 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 
 				// check timings
 				echo 'Timing test results with '.$prefix.':'.PHP_EOL;
-				$timingRatio = 2 - ($result['diff'][0] / $result['same'][0]);
+				$timingRatio = $result['diff'][0] / $result['same'][0];
 				$absoluteDifference = abs($result['diff'][0] - $result['same'][0]);
 				echo 'timing ratio: '.$timingRatio.PHP_EOL;
 				echo 'absolute difference: '.$absoluteDifference.PHP_EOL;
