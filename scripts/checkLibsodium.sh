@@ -10,7 +10,7 @@ function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" 
 firstNamespaceVersion="0.2.0"
 
 # verify PHP libsodium binding (pecl extension)
-LIBSODIUMPHPVER=$( php -r 'echo phpversion(''libsodium'');' )
+LIBSODIUMPHPVER=$( php -r 'echo phpversion("libsodium");' )
 echo "Installed libsodium-php version: $LIBSODIUMPHPVER"
 
 # verify libsodium version
