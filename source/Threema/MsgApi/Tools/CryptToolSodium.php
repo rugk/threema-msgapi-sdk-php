@@ -176,7 +176,7 @@ class CryptToolSodium extends CryptTool {
 	{
 		// check if version is compatible
 		if (version_compare(PHP_VERSION, '7.0', '>=') &&
-			version_compare(\Sodium\version_string(), '1.0.1', '>=') # TODO: Fix: Check version of PHP ext. & not of Libsodium itself
+			version_compare(phpversion('libsodium'), '1.0.1', '>=')
 		) {
 			// if not, fall back to PHP implementation
 			return parent::removeVar($var);
@@ -221,6 +221,6 @@ class CryptToolSodium extends CryptTool {
 	 */
 	public function getDescription() {
 		/** @noinspection PhpUndefinedNamespaceInspection @noinspection PhpUndefinedFunctionInspection */
-		return 'Sodium implementation '.\Sodium\version_string();
+		return 'Sodium implementation '.\Sodium\version_string().' with PHP binding '.phpversion('libsodium');
 	}
 }

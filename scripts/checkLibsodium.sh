@@ -9,8 +9,12 @@ function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" 
 
 firstNamespaceVersion="0.2.0"
 
+# verify PHP libsodium binding (pecl extension)
+LIBSODIUMPHPVER=$( php -r 'echo phpversion(''libsodium'');' )
+echo "Installed libsodium-php version: $LIBSODIUMPHPVER"
+
 # verify libsodium version
-if version_gt "$LIBSODIUMPHP" "$firstNamespaceVersion"; then
+if version_gt "$LIBSODIUMPHPVER" "$firstNamespaceVersion"; then
     # a fairly recent version working with namespaces
     LIBSODIUMVER=$( php -r 'echo \Sodium\version_string();' )
 else
