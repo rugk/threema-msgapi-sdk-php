@@ -34,7 +34,7 @@ class SendSimple implements CommandInterface {
 	/**
 	 * @return string
 	 */
-	public public function getText() {
+	public function getText() {
 		return $this->text;
 	}
 
