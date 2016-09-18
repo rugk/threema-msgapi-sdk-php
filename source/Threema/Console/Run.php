@@ -24,6 +24,7 @@ use Threema\Console\Command\SendE2EImage;
 use Threema\Console\Command\SendE2EText;
 use Threema\Console\Command\SendSimple;
 use Threema\Console\Command\Credits;
+use Threema\Console\Command\FeatureLevel;
 use Threema\Core\Exception;
 use Threema\MsgApi\PublicKeyStore;
 use Threema\MsgApi\Tools\CryptTool;
@@ -70,6 +71,7 @@ class Run {
 		$this->register(array('-h', '-p'), new HashPhone());
 		$this->register('-g', new GenerateKeyPair());
 		$this->register('-d', new DerivePublicKey());
+		$this->register('-v', new FeatureLevel());
 
 		$this->registerSubject('Network operations');
 		//network operations
@@ -160,7 +162,8 @@ class Run {
 		Common::l();
 		Common::l('Threema PHP MsgApi Tool');
 		Common::l('Version: '.MSGAPI_SDK_VERSION);
-		Common::l('CryptTool: '.$defaultCryptTool->getName().' '.$defaultCryptTool->getDescription());
+		Common::l('Feature level: '.MSGAPI_FEATURE_LEVEL);
+		Common::l('CryptTool: '.$defaultCryptTool->getName().' ('.$defaultCryptTool->getDescription().')');
 		Common::l(str_repeat('.', 40));
 		Common::l();
 		foreach($this->commands as $data) {

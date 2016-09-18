@@ -28,6 +28,8 @@ spl_autoload_register(function($className) use($d)
 
 $sdkVersion = '1.1.7';
 define('MSGAPI_SDK_VERSION', $sdkVersion);
+$sdkFeatLevel = 3;
+define('MSGAPI_SDK_FEATURE_LEVEL', $sdkFeatLevel);
 $cryptTool = Threema\MsgApi\Tools\CryptTool::getInstance();
 
 if(null === $cryptTool) {

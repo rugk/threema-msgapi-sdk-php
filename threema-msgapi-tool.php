@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 <?php
 /**
  * @author Threema GmbH
@@ -12,7 +12,8 @@ if ('cli' !== php_sapi_name() || null === $argv) {
 		'To use the threema msgapi sdk in your web project, include the source/bootstrap.php or the threema_msgapi.phar file.');
 }
 try {
-include 'threema_msgapi.phar';
+	include 'source/bootstrap.php';
+	// include 'threema_msgapi.phar';
 
 	$tool = new \Threema\Console\Run(
 		$argv,
