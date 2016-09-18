@@ -206,10 +206,6 @@ class E2EHelper {
 										 $outputFolder = null,
 										 \Closure $downloadMessage = null) {
 
-		if($outputFolder === null || strlen($outputFolder) == 0) {
-			$outputFolder = '.';
-		}
-
 		//fetch the public key
 		$receiverPublicKey = $this->connection->fetchPublicKey($threemaId);
 
@@ -228,8 +224,11 @@ class E2EHelper {
 			throw new Exception('Could not encrypt box');
 		}
 
-		if ($outputFolder === false) {
-			$receiveResult;
+		if($outputFolder === false) {
+			return $receiveResult;
+		}
+		if($outputFolder === null || strlen($outputFolder) == 0) {
+			$outputFolder = '.';
 		}
 
 		$receiveResult = new ReceiveMessageResult($messageId, $message);
