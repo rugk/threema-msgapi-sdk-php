@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Verifies taht the key is signed by
+#
+# Verifies that the key is signed by rugk.
 #
 set -ex
 
 # ignore pull requests as they are usually not signed
-if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]]; then exit 0; fi
+if [[ "${TRAVIS_PULL_REQUEST}" != "false" ]]; then exit 0; fi
 
 CURRDIR=$( dirname "$0" )
 

@@ -23,5 +23,3 @@ else
     echo "Warning: This version is depreciated!"
 fi
 echo "Installed libsodium version: $LIBSODIUMVER"
-
-echo "Show me value: $( php -r 'echo CURLOPT_PINNEDPUBLICKEY;' )"
