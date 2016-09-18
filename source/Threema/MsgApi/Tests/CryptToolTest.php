@@ -173,6 +173,7 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 					$timeStart = microtime(true);
 					for ($i=0; $i < 3; $i++) {
 						$comparisonResult = $cryptTool->stringCompare($strings[0], $strings[1]);
+						usleep(100000);
 					}
 					$timeEnd = microtime(true);
 					$timeElapsed = $timeEnd - $timeStart;
@@ -181,6 +182,7 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 					$result[$testName] = [$timeElapsed, $comparisonResult];
 
 					// check result
+					// Note that as $comparisonResult is reset three times, only the last execution result is checked, but there should not be any difference anyway.
 					if ($testName == 'length' || $testName == 'diff') {
 						$this->assertEquals(false, $comparisonResult, $prefix.': comparison of "'.$humanDescr[$testName].'" is wrong: expected: false, got '.$comparisonResult);
 					} else {
@@ -200,7 +202,7 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 				$this->assertLessThan(1+$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
 				$this->assertGreaterThan(1-$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
 
-				// make sure the absolute difference is smaller than 3 microseconds
+				// make sure the absolute difference is smaller than 3 seconds! (1 second per test)
 				$this->assertLessThan(3, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
 			});
 	}
