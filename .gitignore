@@ -1,0 +1,7 @@
+# Ignore public keystore files
+keystore.*
+
+# Ignore key files
+*.key
+privatekey.txt
+
