@@ -48,7 +48,7 @@ class FileMessage extends ThreemaMessage {
 	 * @param string $filename
 	 * @param int $size
 	 */
-	function __construct($blobId, $thumbnailBlobId, $encryptionKey, $mimeType, $filename, $size) {
+	public function __construct($blobId, $thumbnailBlobId, $encryptionKey, $mimeType, $filename, $size) {
 		$this->blobId = $blobId;
 		$this->thumbnailBlobId = $thumbnailBlobId;
 		$this->encryptionKey = $encryptionKey;
@@ -102,7 +102,7 @@ class FileMessage extends ThreemaMessage {
 	/**
 	 * @return string
 	 */
-	function __toString() {
+	public function __toString() {
 		return 'file message';
 	}
 

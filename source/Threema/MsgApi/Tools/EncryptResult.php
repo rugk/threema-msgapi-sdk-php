@@ -39,7 +39,7 @@ class EncryptResult {
 	 * @param string $nonce (binary)
 	 * @param int $size
 	 */
-	function __construct($data, $key, $nonce, $size) {
+	public function __construct($data, $key, $nonce, $size) {
 		$this->data = $data;
 		$this->key = $key;
 		$this->nonce = $nonce;

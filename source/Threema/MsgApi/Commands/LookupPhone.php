@@ -7,6 +7,7 @@
 
 namespace Threema\MsgApi\Commands;
 
+use Threema\MsgApi\Commands\CommandInterface;
 use Threema\MsgApi\Commands\Results\LookupIdResult;
 use Threema\MsgApi\Tools\CryptTool;
 
@@ -19,7 +20,7 @@ class LookupPhone implements CommandInterface {
 	/**
 	 * @param string $phoneNumber
 	 */
-	function __construct($phoneNumber) {
+	public function __construct($phoneNumber) {
 		$this->phoneNumber = $phoneNumber;
 	}
 
@@ -33,14 +34,14 @@ class LookupPhone implements CommandInterface {
 	/**
 	 * @return array
 	 */
-	function getParams() {
+	public function getParams() {
 		return array();
 	}
 
 	/**
 	 * @return string
 	 */
-	function getPath() {
+	public function getPath() {
 		return 'lookup/phone_hash/'.urlencode(CryptTool::getInstance()->hashPhoneNo($this->phoneNumber));
 	}
 
@@ -49,7 +50,7 @@ class LookupPhone implements CommandInterface {
 	 * @param object $res
 	 * @return LookupIdResult
 	 */
-	function parseResult($httpCode, $res){
+	public function parseResult($httpCode, $res){
 		return new LookupIdResult($httpCode, $res);
 	}
 }

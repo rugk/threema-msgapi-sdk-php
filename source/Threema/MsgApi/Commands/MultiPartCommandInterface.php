@@ -7,6 +7,8 @@
 
 namespace Threema\MsgApi\Commands;
 
+use Threema\MsgApi\Commands\CommandInterface;
+
 interface MultiPartCommandInterface extends CommandInterface {
-	function getData();
+	public function getData();
 }

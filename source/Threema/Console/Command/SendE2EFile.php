@@ -25,7 +25,7 @@ class SendE2EFile extends Base {
 	/**
 	 * @param PublicKeyStore $publicKeyStore
 	 */
-	function __construct(PublicKeyStore $publicKeyStore) {
+	public function __construct(PublicKeyStore $publicKeyStore) {
 		parent::__construct('Send a End-to-End Encrypted File Message',
 			array(self::argThreemaId, self::argFrom, self::argSecret, self::argPrivateKey, self::argFile),
 			'Encrypt the file (and thumbnail if given) and send the message to the given ID. \'from\' is the API identity and \'secret\' is the API secret. Prints the message ID on success.',
@@ -33,7 +33,7 @@ class SendE2EFile extends Base {
 		$this->publicKeyStore = $publicKeyStore;
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$threemaId = $this->getArgument(self::argThreemaId);
 		$from = $this->getArgument(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);

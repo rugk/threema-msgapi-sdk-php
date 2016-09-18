@@ -18,7 +18,7 @@ class TextMessage extends ThreemaMessage {
 	/**
 	 * @param string $text
 	 */
-	function __construct($text) {
+	public function __construct($text) {
 		$this->text = $text;
 	}
 
@@ -32,7 +32,7 @@ class TextMessage extends ThreemaMessage {
 	/**
 	 * @return string
 	 */
-	function __toString() {
+	public function __toString() {
 		return 'text message';
 	}
 

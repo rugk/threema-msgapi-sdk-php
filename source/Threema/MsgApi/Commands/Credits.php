@@ -7,17 +7,18 @@
 
 namespace Threema\MsgApi\Commands;
 
+use Threema\MsgApi\Commands\CommandInterface;
 use Threema\MsgApi\Commands\Results\CreditsResult;
 
 class Credits implements CommandInterface {
 	/**
 	 * @return array
 	 */
-	function getParams() {
+	public function getParams() {
 		return array();
 	}
 
-	function getPath() {
+	public function getPath() {
 		return 'credits';
 	}
 
@@ -26,7 +27,7 @@ class Credits implements CommandInterface {
 	 * @param object $res
 	 * @return CreditsResult
 	 */
-	function parseResult($httpCode, $res){
+	public function parseResult($httpCode, $res){
 		return new CreditsResult($httpCode, $res);
 	}
 }

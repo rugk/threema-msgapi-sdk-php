@@ -30,7 +30,7 @@ class ImageMessage extends ThreemaMessage {
 	 * @param int $length
 	 * @param string $nonce
 	 */
-	function __construct($blobId, $length, $nonce) {
+	public function __construct($blobId, $length, $nonce) {
 		$this->blobId = $blobId;
 		$this->length = $length;
 		$this->nonce = $nonce;

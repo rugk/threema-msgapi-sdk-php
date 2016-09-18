@@ -7,6 +7,7 @@
 
 namespace Threema\MsgApi\Commands;
 
+use Threema\MsgApi\Commands\CommandInterface;
 use Threema\MsgApi\Commands\Results\SendE2EResult;
 use Threema\MsgApi\Tools\CryptTool;
 
@@ -31,7 +32,7 @@ class SendE2E implements CommandInterface {
 	 * @param string $nonce
 	 * @param string $box
 	 */
-	function __construct($threemaId, $nonce, $box) {
+	public function __construct($threemaId, $nonce, $box) {
 		$this->nonce = $nonce;
 		$this->box = $box;
 		$this->threemaId = $threemaId;
@@ -54,7 +55,7 @@ class SendE2E implements CommandInterface {
 	/**
 	 * @return array
 	 */
-	function getParams() {
+	public function getParams() {
 		$cryptTool = CryptTool::getInstance();
 
 		$p['to'] = $this->threemaId;
@@ -66,7 +67,7 @@ class SendE2E implements CommandInterface {
 	/**
 	 * @return string
 	 */
-	function getPath() {
+	public function getPath() {
 		return 'send_e2e';
 	}
 
@@ -75,7 +76,7 @@ class SendE2E implements CommandInterface {
 	 * @param object $res
 	 * @return SendE2EResult
 	 */
-	function parseResult($httpCode, $res){
+	public function parseResult($httpCode, $res){
 		return new SendE2EResult($httpCode, $res);
 	}
 }

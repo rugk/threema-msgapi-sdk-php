@@ -7,6 +7,7 @@
 
 namespace Threema\MsgApi\Commands;
 
+use Threema\MsgApi\Commands\CommandInterface;
 use Threema\MsgApi\Commands\Results\DownloadFileResult;
 use Threema\MsgApi\Commands\Results\UploadFileResult;
 
@@ -19,21 +20,21 @@ class DownloadFile implements CommandInterface {
 	/**
 	 * @param string $blobId
 	 */
-	function __construct($blobId) {
+	public function __construct($blobId) {
 		$this->blobId = $blobId;
 	}
 
 	/**
 	 * @return array
 	 */
-	function getParams() {
+	public function getParams() {
 		return array();
 	}
 
 	/**
 	 * @return string
 	 */
-	function getPath() {
+	public function getPath() {
 		return 'blobs/'.$this->blobId;
 	}
 
@@ -42,7 +43,7 @@ class DownloadFile implements CommandInterface {
 	 * @param object $res
 	 * @return UploadFileResult
 	 */
-	function parseResult($httpCode, $res){
+	public function parseResult($httpCode, $res){
 		return new DownloadFileResult($httpCode, $res);
 	}
 }

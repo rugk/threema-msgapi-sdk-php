@@ -17,7 +17,7 @@ class AssocArray {
 	/**
 	 * @param array $data
 	 */
-	function __construct(array $data) {
+	public function __construct(array $data) {
 		//be sure a array is set
 		$this->data = null !== $data ? $data : array();
 	}

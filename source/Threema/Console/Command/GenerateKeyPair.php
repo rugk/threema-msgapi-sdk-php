@@ -8,17 +8,16 @@
 namespace Threema\Console\Command;
 
 use Threema\Console\Common;
-use Threema\MsgApi\Tools\CryptTool;
 
 class GenerateKeyPair extends Base {
-	function __construct() {
+	public function __construct() {
 		parent::__construct('Generate Key Pair',
 			array(self::argPrivateKeyFile, self::argPublicKeyFile),
 			'Generate a new key pair and write the private and public keys to the respective files (in hex).');
 	}
 
-	function doRun() {
-		$cryptTool = ryptTool::getInstance();
+	protected function doRun() {
+		$cryptTool = CryptTool::getInstance();
 		$keyPair = $cryptTool->generateKeyPair();
 
 		$privateKeyHex = $cryptTool->bin2hex($keyPair->privateKey);

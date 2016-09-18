@@ -11,7 +11,7 @@ class KeyPair {
 	public $privateKey;
 	public $publicKey;
 
-	function __construct($privateKey, $publicKey) {
+	public function __construct($privateKey, $publicKey) {
 		$this->privateKey = $privateKey;
 		$this->publicKey = $publicKey;
 	}

@@ -7,6 +7,8 @@
 
 namespace Threema\MsgApi\Messages;
 
+use Threema\MsgApi\Messages\CryptTool;
+
 class DeliveryReceipt extends ThreemaMessage {
 	const TYPE_CODE = 0x80;
 
@@ -38,7 +40,7 @@ class DeliveryReceipt extends ThreemaMessage {
 	 * @param int $receiptType the type of this receipt
 	 * @param array $ackedMessageIds list of message IDs acknowledged by this delivery receipt
 	 */
-	function __construct($receiptType, array $ackedMessageIds) {
+	public function __construct($receiptType, array $ackedMessageIds) {
 		$this->receiptType = $receiptType;
 		$this->ackedMessageIds = $ackedMessageIds;
 	}
@@ -77,7 +79,7 @@ class DeliveryReceipt extends ThreemaMessage {
 	 *
 	 * @return string
 	 */
-	function __toString() {
+	public function __toString() {
 		$cryptTool = CryptTool::getInstance();
 		$str = "Delivery receipt (" . $this->getReceiptTypeName() . "): ";
 		$hexMessageIds = array();

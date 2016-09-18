@@ -37,7 +37,7 @@ class File extends PublicKeyStore {
 	 * @return null|string
 	 * @throws Exception
 	 */
-	function findPublicKey($threemaId) {
+	public function findPublicKey($threemaId) {
 		$storeHandle = fopen($this->file, 'r');
 		if(false === $storeHandle) {
 			throw new Exception('could not open file '.$this->file);
@@ -64,7 +64,7 @@ class File extends PublicKeyStore {
 	 * @param string $publicKey
 	 * @return bool
 	 */
-	function savePublicKey($threemaId, $publicKey) {
+	public function savePublicKey($threemaId, $publicKey) {
 		return file_put_contents($this->file, $threemaId.$publicKey."\n", FILE_APPEND) !== false;
 	}
 

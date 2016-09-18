@@ -11,13 +11,13 @@ use Threema\Console\Common;
 use Threema\MsgApi\Tools\CryptTool;
 
 class DerivePublicKey extends Base {
-	function __construct() {
+	public function __construct() {
 		parent::__construct('Derive Public Key',
 			array(self::argPrivateKey),
 			'Derive the public key that corresponds with the given private key.');
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$privateKey = $this->getArgumentPrivateKey(self::argPrivateKey);
 
 		Common::required($privateKey);

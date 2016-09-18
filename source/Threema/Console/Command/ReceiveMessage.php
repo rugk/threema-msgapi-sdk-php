@@ -12,6 +12,7 @@ use Threema\MsgApi\Connection;
 use Threema\MsgApi\ConnectionSettings;
 use Threema\MsgApi\Helpers\E2EHelper;
 use Threema\MsgApi\PublicKeyStore;
+use Threema\MsgApi\Tools\CryptTool;
 
 class ReceiveMessage extends Base {
 	const argOutputFolder = 'outputFolder';
@@ -25,7 +26,7 @@ class ReceiveMessage extends Base {
 	/**
 	 * @param PublicKeyStore $publicKeyStore
 	 */
-	function __construct(PublicKeyStore $publicKeyStore) {
+	public function __construct(PublicKeyStore $publicKeyStore) {
 		parent::__construct('Decrypt a Message and download the Files',
 			array(self::argThreemaId, self::argFrom, self::argSecret, self::argPrivateKey, self::argMessageId, self::argNonce),
 			'Decrypt a box (must be provided on stdin) message and download (if the message is an image or file message) the file(s) to the given <'.self::argOutputFolder.'> folder',
@@ -33,7 +34,7 @@ class ReceiveMessage extends Base {
 		$this->publicKeyStore = $publicKeyStore;
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$cryptTool = CryptTool::getInstance();
 
 		$sendersThreemaId = $this->getArgumentThreemaId(self::argThreemaId);

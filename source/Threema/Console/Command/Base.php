@@ -9,6 +9,7 @@ namespace Threema\Console\Command;
 
 use Threema\Console\Common;
 use Threema\Core\Exception;
+use Threema\Console\Command\CryptTool;
 
 abstract class Base {
 	const argThreemaId = 'threemaId';
@@ -201,7 +202,7 @@ abstract class Base {
 	 * @param array $arguments
 	 * @throws \Threema\Core\Exception
 	 */
-	final function run(array $arguments) {
+	final public function run(array $arguments) {
 		$this->arguments = $arguments;
 
 		$argCount = null !== $this->arguments ? count($this->arguments) : 0;
@@ -245,5 +246,5 @@ abstract class Base {
 		return $this->subject;
 	}
 
-	abstract function doRun();
+	abstract protected function doRun();
 }

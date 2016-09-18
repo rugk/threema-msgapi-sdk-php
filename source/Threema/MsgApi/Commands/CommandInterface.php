@@ -13,17 +13,17 @@ interface CommandInterface {
 	/**
 	 * @return string
 	 */
-	function getPath();
+	public function getPath();
 
 	/**
 	 * @return array
 	 */
-	function getParams();
+	public function getParams();
 
 	/**
 	 * @param int $httpCode
 	 * @param object $res
 	 * @return Result
 	 */
-	function parseResult($httpCode, $res);
+	public function parseResult($httpCode, $res);
 }

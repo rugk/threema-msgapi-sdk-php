@@ -23,14 +23,14 @@ class LookupIdByPhoneNo extends Base {
 	/**
 	 * @param PublicKeyStore $publicKeyStore
 	 */
-	function __construct(PublicKeyStore $publicKeyStore) {
+	public function __construct(PublicKeyStore $publicKeyStore) {
 		parent::__construct('ID-Lookup By Phone Number',
 			array(self::argPhoneNo, self::argFrom, self::argSecret),
 			'Lookup the ID linked to the given phone number (will be hashed locally).');
 		$this->publicKeyStore = $publicKeyStore;
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$phoneNo = $this->getArgument(self::argPhoneNo);
 		$from = $this->getArgumentThreemaId(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);

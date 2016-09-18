@@ -84,8 +84,7 @@ class Url {
 		return $p;
 	}
 
-
-	function __toString() {
+	public function __toString() {
 		return $this->getPath();
 	}
 

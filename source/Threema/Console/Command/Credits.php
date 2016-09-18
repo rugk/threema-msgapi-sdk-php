@@ -21,14 +21,14 @@ class Credits extends Base {
 	/**
 	 * @param PublicKeyStore $publicKeyStore
 	 */
-	function __construct(PublicKeyStore $publicKeyStore) {
+	public function __construct(PublicKeyStore $publicKeyStore) {
 		parent::__construct('Get remaining credits',
 			array(self::argFrom, self::argSecret),
 			'Get the remaining credits');
 		$this->publicKeyStore = $publicKeyStore;
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$from = $this->getArgumentThreemaId(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);
 

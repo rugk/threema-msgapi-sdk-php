@@ -147,7 +147,7 @@ class E2EHelper {
 		$encryptionResult = $this->cryptTool->encryptFile(file_get_contents($filePath));
 		$uploadResult =  $this->connection->uploadFile($encryptionResult->getData());
 
-		if($uploadResult == null || !$uploadResult->isSuccess()) {
+		if($uploadResult === null || !$uploadResult->isSuccess()) {
 			throw new Exception('could not upload the file ('.$uploadResult->getErrorCode().' '.$uploadResult->getErrorMessage().') '.$uploadResult->getRawResponse());
 		}
 

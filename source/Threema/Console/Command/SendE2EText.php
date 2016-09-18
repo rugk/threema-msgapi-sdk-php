@@ -22,14 +22,14 @@ class SendE2EText extends Base {
 	/**
 	 * @param PublicKeyStore $publicKeyStore
 	 */
-	function __construct(PublicKeyStore $publicKeyStore) {
+	public function __construct(PublicKeyStore $publicKeyStore) {
 		parent::__construct('Send End-to-End Encrypted Text Message',
 			array(self::argThreemaId, self::argFrom, self::argSecret, self::argPrivateKey),
 			'Encrypt standard input and send the text message to the given ID. \'from\' is the API identity and \'secret\' is the API secret. Prints the message ID on success.');
 		$this->publicKeyStore = $publicKeyStore;
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$threemaId = $this->getArgumentThreemaId(self::argThreemaId);
 		$from = $this->getArgument(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);

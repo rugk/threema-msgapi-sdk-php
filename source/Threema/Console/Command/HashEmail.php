@@ -13,13 +13,13 @@ use Threema\MsgApi\Tools\CryptTool;
 class HashEmail extends Base {
 	const argEmail = 'email';
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct('Hash Email Address',
 			array(self::argEmail),
 			'Hash an email address for identity lookup. Prints the hash in hex.');
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$email = $this->getArgument(self::argEmail);
 		Common::required($email);
 		$hashedEmail = CryptTool::getInstance()->hashEmail($email);

@@ -22,14 +22,14 @@ class Capability extends Base {
 	/**
 	 * @param PublicKeyStore $publicKeyStore
 	 */
-	function __construct(PublicKeyStore $publicKeyStore) {
+	public function __construct(PublicKeyStore $publicKeyStore) {
 		parent::__construct('Fetch Capability',
 			array(self::argThreemaId, self::argFrom, self::argSecret),
 			'Fetch the capabilities of a Threema ID');
 		$this->publicKeyStore = $publicKeyStore;
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$threemaId = $this->getArgumentThreemaId(self::argThreemaId);
 		$from = $this->getArgumentThreemaId(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);

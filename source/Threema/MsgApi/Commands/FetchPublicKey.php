@@ -7,6 +7,7 @@
 
 namespace Threema\MsgApi\Commands;
 
+use Threema\MsgApi\Commands\CommandInterface;
 use Threema\MsgApi\Commands\Results\FetchPublicKeyResult;
 
 class FetchPublicKey implements CommandInterface {
@@ -18,22 +19,21 @@ class FetchPublicKey implements CommandInterface {
 	/**
 	 * @param string $threemaId
 	 */
-	function __construct($threemaId) {
+	public function __construct($threemaId) {
 		$this->threemaId = $threemaId;
 	}
-
 
 	/**
 	 * @return array
 	 */
-	function getParams() {
+	public function getParams() {
 		return array();
 	}
 
 	/**
 	 * @return string
 	 */
-	function getPath() {
+	public function getPath() {
 		return 'pubkeys/'.$this->threemaId;
 	}
 
@@ -42,7 +42,7 @@ class FetchPublicKey implements CommandInterface {
 	 * @param object $res
 	 * @return FetchPublicKeyResult
 	 */
-	function parseResult($httpCode, $res){
+	public function parseResult($httpCode, $res){
 		return new FetchPublicKeyResult($httpCode, $res);
 	}
 }

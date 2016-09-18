@@ -15,5 +15,10 @@ final class Constants {
 	/**
 	 * create instance disabled
 	 */
-	function __construct() {}
+	private function __construct() {}
+
+	/**
+	 * clone instance disabled
+	 */
+	private function __clone() {}
 }

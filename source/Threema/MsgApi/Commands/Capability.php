@@ -7,6 +7,7 @@
 
 namespace Threema\MsgApi\Commands;
 
+use Threema\MsgApi\Commands\CommandInterface;
 use Threema\MsgApi\Commands\Results\CapabilityResult;
 
 class Capability implements CommandInterface {
@@ -18,18 +19,18 @@ class Capability implements CommandInterface {
 	/**
 	 * @param string $threemaId
 	 */
-	function __construct($threemaId) {
+	public function __construct($threemaId) {
 		$this->threemaId = $threemaId;
 	}
 
 	/**
 	 * @return array
 	 */
-	function getParams() {
+	public function getParams() {
 		return array();
 	}
 
-	function getPath() {
+	public function getPath() {
 		return 'capabilities/'.$this->threemaId;
 	}
 
@@ -38,7 +39,7 @@ class Capability implements CommandInterface {
 	 * @param object $res
 	 * @return CapabilityResult
 	 */
-	function parseResult($httpCode, $res){
+	public function parseResult($httpCode, $res){
 		return new CapabilityResult($httpCode, $res);
 	}
 }

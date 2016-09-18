@@ -7,6 +7,7 @@
 
 namespace Threema\MsgApi\Commands;
 
+use Threema\MsgApi\Commands\MultiPartCommandInterface;
 use Threema\MsgApi\Commands\Results\UploadFileResult;
 
 class UploadFile implements MultiPartCommandInterface {
@@ -18,28 +19,28 @@ class UploadFile implements MultiPartCommandInterface {
 	/**
 	 * @param string $encryptedFileData (binary) the encrypted file data
 	 */
-	function __construct($encryptedFileData) {
+	public function __construct($encryptedFileData) {
 		$this->encryptedFileData = $encryptedFileData;
 	}
 
 	/**
 	 * @return array
 	 */
-	function getParams() {
+	public function getParams() {
 		return array();
 	}
 
 	/**
 	 * @return string
 	 */
-	function getPath() {
+	public function getPath() {
 		return 'upload_blob';
 	}
 
 	/**
 	 * @return string
 	 */
-	function getData() {
+	public function getData() {
 		return $this->encryptedFileData;
 	}
 
@@ -48,7 +49,7 @@ class UploadFile implements MultiPartCommandInterface {
 	 * @param object $res
 	 * @return UploadFileResult
 	 */
-	function parseResult($httpCode, $res){
+	public function parseResult($httpCode, $res){
 		return new UploadFileResult($httpCode, $res);
 	}
 }

@@ -23,14 +23,14 @@ class LookupIdByEmail extends Base {
 	/**
 	 * @param PublicKeyStore $publicKeyStore
 	 */
-	function __construct(PublicKeyStore $publicKeyStore) {
+	public function __construct(PublicKeyStore $publicKeyStore) {
 		parent::__construct('ID-Lookup By Email Address',
 			array(self::argEmail, self::argFrom, self::argSecret),
 			'Lookup the ID linked to the given email address (will be hashed locally).');
 		$this->publicKeyStore = $publicKeyStore;
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$email = $this->getArgument(self::argEmail);
 		$from = $this->getArgumentThreemaId(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);

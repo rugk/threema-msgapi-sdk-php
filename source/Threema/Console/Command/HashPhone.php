@@ -13,13 +13,13 @@ use Threema\MsgApi\Tools\CryptTool;
 class HashPhone extends Base {
 	const argPhoneNo = 'phoneNo';
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct('Hash Phone Number',
 			array(self::argPhoneNo),
 			'Hash a phone number for identity lookup. Prints the hash in hex.');
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$phoneNo = $this->getArgument(self::argPhoneNo);
 		Common::required($phoneNo);
 		$hashedPhoneNo = CryptTool::getInstance()->hashPhoneNo($phoneNo);

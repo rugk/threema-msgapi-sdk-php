@@ -11,13 +11,13 @@ use Threema\Console\Common;
 use Threema\MsgApi\Tools\CryptTool;
 
 class Decrypt extends Base {
-	function __construct() {
+	public function __construct() {
 		parent::__construct('Decrypt',
 			array(self::argPrivateKey, self::argPublicKey, self::argNonce),
 			'Decrypt standard input using the given recipient private key and sender public key. The nonce must be given on the command line, and the box (hex) on standard input. Prints the decrypted message to standard output.');
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$cryptTool = CryptTool::getInstance();
 
 		$privateKey = $this->getArgumentPrivateKey(self::argPrivateKey);

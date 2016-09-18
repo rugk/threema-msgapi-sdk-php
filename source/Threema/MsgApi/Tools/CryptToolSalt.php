@@ -117,7 +117,7 @@ class CryptToolSalt extends CryptTool {
 	 * @throws \Threema\Core\Exception
 	 * @return EncryptResult
 	 */
-	function encryptImageData($imageData, $recipientPublicKey, $senderPrivateKey) {
+	public function encryptImageData($imageData, $recipientPublicKey, $senderPrivateKey) {
 		$message = Salt::decodeInput($imageData);
 		$nonce = $this->randomNonce();
 		$salt = Salt::instance();

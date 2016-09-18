@@ -92,6 +92,7 @@ abstract class CryptTool {
 	const PHONENO_HMAC_KEY = "\x85\xad\xf8\x22\x69\x53\xf3\xd9\x6c\xfd\x5d\x09\xbf\x29\x55\x5e\xb9\x55\xfc\xd8\xaa\x5e\xc4\xf9\xfc\xd8\x69\xe2\x58\x37\x07\x23";
 
 	protected  function __construct() {}
+	protected  function __clone() {}
 
 	/**
 	 * Encrypt a text message.
@@ -160,7 +161,7 @@ abstract class CryptTool {
 			'i' => 0
 		);
 
-		if($thumbnailUploadFileResult != null && strlen($thumbnailUploadFileResult->getBlobId()) > 0) {
+		if($thumbnailUploadFileResult !== null && strlen($thumbnailUploadFileResult->getBlobId()) > 0) {
 			$messageContent['t'] = $thumbnailUploadFileResult->getBlobId();
 		}
 
@@ -455,7 +456,7 @@ abstract class CryptTool {
 		return $padbytes;
 	}
 
-	function __toString() {
+	public function __toString() {
 		return 'CryptTool '.$this->getName();
 	}
 
@@ -526,7 +527,8 @@ abstract class CryptTool {
 			# Note that this is really slow!!
 			#
 			$ret = 0;
-			for ($i = 0; $i < strlen($str1); ++$i) {
+			$length = strlen($str1);
+			for ($i = 0; $i < $length; ++$i) {
 	            $ret |= ord($str1[$i]) ^ ord($str2[$i]);
 	        }
 			return 0 === $ret;

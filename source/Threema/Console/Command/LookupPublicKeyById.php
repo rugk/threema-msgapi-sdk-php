@@ -21,14 +21,14 @@ class LookupPublicKeyById extends Base {
 	/**
 	 * @param PublicKeyStore $publicKeyStore
 	 */
-	function __construct(PublicKeyStore $publicKeyStore) {
+	public function __construct(PublicKeyStore $publicKeyStore) {
 		parent::__construct('Fetch Public Key',
 			array(self::argThreemaId, self::argFrom, self::argSecret),
 			'Lookup the public key for the given ID.');
 		$this->publicKeyStore = $publicKeyStore;
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$id = $this->getArgumentThreemaId(self::argThreemaId);
 		$from = $this->getArgumentThreemaId(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);

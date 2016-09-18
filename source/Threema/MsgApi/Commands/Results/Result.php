@@ -22,7 +22,7 @@ abstract class Result {
 	 * @param int $httpCode
 	 * @param $response
 	 */
-	function __construct($httpCode, $response) {
+	public function __construct($httpCode, $response) {
 		$this->httpCode = $httpCode;
 		$this->processResponse($response);
 		$this->response = $response;

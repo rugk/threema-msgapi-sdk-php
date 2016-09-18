@@ -34,7 +34,7 @@ class ReceiveMessageResult {
 	 * @param string $messageId
 	 * @param ThreemaMessage $threemaMessage
 	 */
-	function __construct($messageId, ThreemaMessage $threemaMessage) {
+	public function __construct($messageId, ThreemaMessage $threemaMessage) {
 		$this->threemaMessage = $threemaMessage;
 		$this->messageId = $messageId;
 	}

@@ -7,6 +7,7 @@
 
 namespace Threema\MsgApi\Commands;
 
+use Threema\MsgApi\Commands\CommandInterface;
 use Threema\MsgApi\Commands\Results\SendSimpleResult;
 use Threema\MsgApi\Receiver;
 
@@ -25,7 +26,7 @@ class SendSimple implements CommandInterface {
 	 * @param \Threema\MsgApi\Receiver $receiver
 	 * @param string $text
 	 */
-	function __construct(Receiver $receiver, $text) {
+	public function __construct(Receiver $receiver, $text) {
 		$this->text = $text;
 		$this->receiver = $receiver;
 	}
@@ -33,14 +34,14 @@ class SendSimple implements CommandInterface {
 	/**
 	 * @return string
 	 */
-	public function getText() {
+	public public function getText() {
 		return $this->text;
 	}
 
 	/**
 	 * @return array
 	 */
-	function getParams() {
+	public function getParams() {
 		$p = $this->receiver->getParams();
 		$p['text'] = $this->getText();
 		return $p;
@@ -49,7 +50,7 @@ class SendSimple implements CommandInterface {
 	/**
 	 * @return string
 	 */
-	function getPath() {
+	public function getPath() {
 		return 'send_simple';
 	}
 
@@ -58,7 +59,7 @@ class SendSimple implements CommandInterface {
 	 * @param object $res
 	 * @return SendSimpleResult
 	 */
-	function parseResult($httpCode, $res){
+	public function parseResult($httpCode, $res){
 		return new SendSimpleResult($httpCode, $res);
 	}
 }

@@ -22,14 +22,14 @@ class SendSimple extends Base {
 	/**
 	 * @param PublicKeyStore $publicKeyStore
 	 */
-	function __construct(PublicKeyStore $publicKeyStore) {
+	public function __construct(PublicKeyStore $publicKeyStore) {
 		parent::__construct('Send Simple Message',
 			array(self::argThreemaId, self::argFrom, self::argSecret),
 			'Send a message from standard input with server-side encryption to the given ID. is the API identity and \'secret\' is the API secret. the message ID on success.');
 		$this->publicKeyStore = $publicKeyStore;
 	}
 
-	function doRun() {
+	protected function doRun() {
 		$to = $this->getArgument(self::argThreemaId);
 		$from = $this->getArgument(self::argFrom);
 		$secret = $this->getArgument(self::argSecret);

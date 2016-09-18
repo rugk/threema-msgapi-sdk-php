@@ -15,7 +15,7 @@ use Threema\MsgApi\Tools\CryptTool;
  * @package Threema\Console\Command
  */
 class Encrypt extends Base {
-	function __construct() {
+	public function __construct() {
 		parent::__construct('Encrypt',
 			array(self::argPrivateKey, self::argPublicKey),
 			'Encrypt standard input using the given sender private key and recipient public key. two lines to standard output: first the nonce (hex), and then the box (hex).');
@@ -24,7 +24,7 @@ class Encrypt extends Base {
 	/**
 	 * run the command
 	 */
-	function doRun() {
+	protected function doRun() {
 		$privateKey = $this->getArgumentPrivateKey(self::argPrivateKey);
 		$publicKey = $this->getArgumentPublicKey(self::argPublicKey);
 		$textToEncrypt = $this->readStdIn();
