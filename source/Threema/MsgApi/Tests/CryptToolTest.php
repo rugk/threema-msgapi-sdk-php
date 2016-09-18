@@ -170,13 +170,13 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 					'diff' => [$string1, $string2],
 					'same' => [$string1, $string1]
 				) as $testName => $strings) {
-					$timeStart = microtime(true);
+					$timeElapsed = 0;
 					for ($i=0; $i < 3; $i++) {
+						$timeElapsed -= microtime(true);
 						$comparisonResult = $cryptTool->stringCompare($strings[0], $strings[1]);
+						$timeElapsed += microtime(true);
 						usleep(100000);
 					}
-					$timeEnd = microtime(true);
-					$timeElapsed = $timeEnd - $timeStart;
 
 					// echo $prefix.': '.$humanDescr[$testName].': '.$timeElapsed.'; result: '.$comparisonResult.PHP_EOL;
 					$result[$testName] = [$timeElapsed, $comparisonResult];
@@ -202,8 +202,8 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 				$this->assertLessThan(1+$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
 				$this->assertGreaterThan(1-$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
 
-				// make sure the absolute difference is smaller than 3 seconds! (1 second per test)
-				$this->assertLessThan(3, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
+				// make sure the absolute difference is smaller than 1 second!
+				$this->assertLessThan(1, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
 			});
 	}
 
