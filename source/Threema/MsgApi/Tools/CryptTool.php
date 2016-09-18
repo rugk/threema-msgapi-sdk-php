@@ -504,7 +504,7 @@ abstract class CryptTool {
 	 * @link https://paragonie.com/book/pecl-libsodium/read/03-utilities-helpers.md#compare
 	 * @param  string $str1 The first string
 	 * @param  string $str2 The second string
-	 * @return int
+	 * @return bool
 	 */
 	public function stringCompare($str1, $str2)
 	{
