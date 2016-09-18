@@ -10,9 +10,6 @@ use Threema\Console\Common;
 use Threema\MsgApi\Tools\CryptTool;
 
 class FeatureLevel extends Base {
-	/**
-	 * @param PublicKeyStore $publicKeyStore
-	 */
 	public function __construct() {
 		parent::__construct('Show current feature level',
 			[],
