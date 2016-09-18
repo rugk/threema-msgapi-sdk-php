@@ -67,7 +67,7 @@ $connector = new Connection($settings, $publicKeyStore);
 ### Creating a connection with advanced options
 **Attention:** These settings change internal values of the TLS connection. Choosing wrong settings can weaken the TLS connection or prevent a successful connection to the server. Use them with care!
 
-Each of the additional options shown below is optional. You can leave it out or use `null` to use the default value for this option.
+Each of the additional options shown below is optional. You can leave it out or use `null` to use the default value determinated by cURL for this option.
 
 ```php
 use Threema\MsgApi\Connection;
@@ -85,6 +85,7 @@ $settings = new ConnectionSettings(
         'forceHttps' => true, //set to true to force HTTPS, default: false
         'tlsVersion' => '1.2', //set the version of TLS to be used, default: null
         'tlsCipher' => 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384' //choose a cipher or a list of ciphers, default: null
+        'pinnedKey' => 'sha256//PI1YNwkAgVLVmnydc84An+4reEMvoXcYCEgFP0WEF2Y=;sha256//8SLubAXo6MrrGziVya6HjCS/Cuc7eqtzw1v6AfIW57c=' // the hashes to pin, the default is shown here, it is NOT recommend to change this value!
     ]
 );
 
@@ -96,6 +97,9 @@ $connector = new Connection($settings, $publicKeyStore);
 ```
 
 If you want to get a list of all ciphers you can use have a look at the [SSLLabs scan](https://www.ssllabs.com/ssltest/analyze.html?d=msgapi.threema.ch&latest), at the list of all available [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/apps/ciphers.html) and the [comparison table by Mozilla](https://wiki.mozilla.org/Security/Server_Side_TLS#Cipher_names_correspondence_table) which also has some suggestions for good ciphers you should use.
+
+**Note:** For 'pinnedKey' to work you must install cURL 7.39 or higher. It is also recommend to use PHP v7.0.7 or higher if you want to support this feature, but it is not required.
+You can test whether it works by specyfing an invalid pin.
 
 ### Sending a text message to a Threema ID (Simple Mode)
 
