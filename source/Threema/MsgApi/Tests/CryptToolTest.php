@@ -179,8 +179,7 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 						$timeElapsed[$testName][$i] = -microtime(true);
 						$comparisonResult[$testName][$i] = $cryptTool->stringCompare($strings[0], $strings[1]);
 						$timeElapsed[$testName][$i] += microtime(true);
-						usleep(500000);
-
+						
 						// debug output
 						echo $prefix.': '.$humanDescr[$testName].' #'.$i.': '.$timeElapsed[$testName][$i].'; result: '.$comparisonResult[$testName][$i].PHP_EOL;
 
