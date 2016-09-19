@@ -164,43 +164,47 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 				];
 
 				// test different strings when comparing and get time needed
-				$result = [];
+				$timeElapsed = [];
+				$comparisonResult = [];
+				$timeElapsedAvg = [];
 				foreach(array(
 					'length' => [$string1, $string1 . 'a'],
 					'diff' => [$string1, $string2],
 					'same' => [$string1, $string1]
 				) as $testName => $strings) {
-					$timeElapsed = 0;
 					for ($i=0; $i < 3; $i++) {
-						$timeElapsed -= microtime(true);
-						$comparisonResult = $cryptTool->stringCompare($strings[0], $strings[1]);
-						$timeElapsed += microtime(true);
-						usleep(100000);
+						// test run with delay
+						$timeElapsed[$testName][$i] = -microtime(true);
+						$comparisonResult[$testName][$i] = $cryptTool->stringCompare($strings[0], $strings[1]);
+						$timeElapsed[$testName][$i] += microtime(true);
+						usleep(1000);
+
+						// debug output
+						echo $prefix.': '.$humanDescr[$testName].' #'.$i.': '.$timeElapsed[$testName][$i].'; result: '.$comparisonResult[$testName][$i].PHP_EOL;
+
+						// check result
+						if ($testName == 'length' || $testName == 'diff') {
+							$this->assertEquals(false, $comparisonResult[$testName][$i], $prefix.': comparison of "'.$humanDescr[$testName].' #'.$i.'" is wrong: expected: false, got '.$comparisonResult[$testName][$i]);
+						} else {
+							$this->assertEquals(true, $comparisonResult[$testName][$i], $prefix.': comparison of "'.$humanDescr[$testName].' #'.$i.'" is wrong: expected: true, got '.$comparisonResult[$testName][$i]);
+						}
 					}
 
-					// echo $prefix.': '.$humanDescr[$testName].': '.$timeElapsed.'; result: '.$comparisonResult.PHP_EOL;
-					$result[$testName] = [$timeElapsed, $comparisonResult];
-
-					// check result
-					// Note that as $comparisonResult is reset three times, only the last execution result is checked, but there should not be any difference anyway.
-					if ($testName == 'length' || $testName == 'diff') {
-						$this->assertEquals(false, $comparisonResult, $prefix.': comparison of "'.$humanDescr[$testName].'" is wrong: expected: false, got '.$comparisonResult);
-					} else {
-						$this->assertEquals(true, $comparisonResult, $prefix.': comparison of "'.$humanDescr[$testName].'" is wrong: expected: true, got '.$comparisonResult);
-					}
+					// calculate average
+					$timeElapsedAvg[$testName] = array_sum($timeElapsed[$testName]) / count($timeElapsed[$testName]);
 				}
 
 				// check timings
 				echo 'Timing test results with '.$prefix.':'.PHP_EOL;
-				$timingRatio = $result['diff'][0] / $result['same'][0];
-				$absoluteDifference = abs($result['diff'][0] - $result['same'][0]);
+				$timingRatio = $timeElapsedAvg['diff'] / $timeElapsedAvg['same'];
+				$absoluteDifference = abs($timeElapsedAvg['diff'] - $timeElapsedAvg['same']);
 				echo 'timing ratio: '.$timingRatio.PHP_EOL;
 				echo 'absolute difference: '.$absoluteDifference.PHP_EOL;
 
 				// only allow 25% relative difference of two values
 				$allowedDifference = 0.25;
 				$this->assertLessThan(1+$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
-				$this->assertGreaterThan(1-$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
+				$this->assertGreaterThan(1-$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too low. Ratio: '.$timingRatio);
 
 				// make sure the absolute difference is smaller than 3 seconds! (1 second per test)
 				$this->assertLessThan(3, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
