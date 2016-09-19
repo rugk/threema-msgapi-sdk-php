@@ -182,7 +182,7 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 						usleep(1000);
 
 						// debug output
-						echo $prefix.': '.$humanDescr[$testName].' #'.$i.': '.$timeElapsed[$testName][$i].'; result: '.$comparisonResult[$testName][$i].PHP_EOL;
+						// echo $prefix.': '.$humanDescr[$testName].' #'.$i.': '.$timeElapsed[$testName][$i].'; result: '.$comparisonResult[$testName][$i].PHP_EOL;
 
 						// check result
 						if ($testName == 'length' || $testName == 'diff') {
