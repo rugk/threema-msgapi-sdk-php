@@ -179,7 +179,8 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 						$timeElapsed[$testName][$i] = -microtime(true);
 						$comparisonResult[$testName][$i] = $cryptTool->stringCompare($strings[0], $strings[1]);
 						$timeElapsed[$testName][$i] += microtime(true);
-						
+						usleep(1000);
+
 						// debug output
 						echo $prefix.': '.$humanDescr[$testName].' #'.$i.': '.$timeElapsed[$testName][$i].'; result: '.$comparisonResult[$testName][$i].PHP_EOL;
 
@@ -216,13 +217,20 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 				echo 'timing ratio: '.$timingRatio.PHP_EOL;
 				echo 'absolute difference: '.$absoluteDifference.PHP_EOL;
 
-				// only allow 25% relative difference of two values
-				$allowedDifference = 0.25;
-				$this->assertLessThan(1+$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
-				$this->assertGreaterThan(1-$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too low. Ratio: '.$timingRatio);
+				// only allow 25% relative difference of two values (upper value additionally +0.25 as u7sually when there is a timing error the value will be too low)
+				$allowedDifferenceLow = 0.25;
+				$allowedDifferenceTop = 0.5;
+				// double value if running in a CI envoriment
+				if (getenv('CI') == 'true')	{
+					$allowedDifferenceLow = $allowedDifferenceLow*2;
+					$allowedDifferenceTop = $allowedDifferenceTop*2;
+				}
 
-				// make sure the absolute difference is smaller than 1 second!
-				$this->assertLessThan(1, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
+				$this->assertLessThan(1+$allowedDifferenceTop, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
+				$this->assertGreaterThan(1-$allowedDifferenceLow, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too low. Ratio: '.$timingRatio);
+
+				// make sure the absolute difference is smaller than 1 second! (CI = 2 seconds)
+				$this->assertLessThan(getenv('CI') == 'true' ? 2 : 1, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
 			});
 	}
 
