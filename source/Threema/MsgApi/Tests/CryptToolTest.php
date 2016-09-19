@@ -172,6 +172,8 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 					'diff' => [$string1, $string2],
 					'same' => [$string1, $string1]
 				) as $testName => $strings) {
+					$timeMin = [null, 0];
+					$timeMax = [null, 0];
 					for ($i=0; $i < 3; $i++) {
 						// test run with delay
 						$timeElapsed[$testName][$i] = -microtime(true);
@@ -188,9 +190,23 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 						} else {
 							$this->assertEquals(true, $comparisonResult[$testName][$i], $prefix.': comparison of "'.$humanDescr[$testName].' #'.$i.'" is wrong: expected: true, got '.$comparisonResult[$testName][$i]);
 						}
+
+						// get min/max values for later normalisation
+						if (is_null($timeMin[0]) || $timeElapsed[$testName][$i] < $timeMin[0]) {
+							$timeMin[0] = $timeElapsed[$testName][$i]; //minimum value
+							$timeMin[1] = $i; //index
+						}
+						if (is_null($timeMax[0]) || $timeElapsed[$testName][$i] > $timeMax[0]) {
+							$timeMax[0] = $timeElapsed[$testName][$i]; //maxiumum value
+							$timeMax[1] = $i; //index
+						}
 					}
 
-					// calculate average
+					// remove min/max value from array to normalize value
+					array_splice($timeElapsed[$testName], $timeMin[1], 1);
+					array_splice($timeElapsed[$testName], $timeMax[1] >= $timeMin[1] ? ($timeMax[1]-1) : $timeMax[1], 1);
+
+					// calculate average (currently useless as there is only one value left, but it may be useful later)
 					$timeElapsedAvg[$testName] = array_sum($timeElapsed[$testName]) / count($timeElapsed[$testName]);
 				}
 
@@ -206,8 +222,8 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 				$this->assertLessThan(1+$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
 				$this->assertGreaterThan(1-$allowedDifference, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too low. Ratio: '.$timingRatio);
 
-				// make sure the absolute difference is smaller than 3 seconds! (1 second per test)
-				$this->assertLessThan(3, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
+				// make sure the absolute difference is smaller than 1 second!
+				$this->assertLessThan(1, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
 			});
 	}
 
