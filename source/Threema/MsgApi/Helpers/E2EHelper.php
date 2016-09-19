@@ -184,7 +184,7 @@ class E2EHelper {
 	 * Decrypt a message and download the files of the message to the $outputFolder
 	 *
 	 * Note: This does not check the MAC before, which you should always do when
-	 * you want to use this in your own application!
+	 * you want to use this in your own application! Use {@link checkMac()} for doing so.
 	 *
 	 * @param string $threemaId
 	 * @param string $messageId
@@ -294,6 +294,25 @@ class E2EHelper {
 		}
 
 		return $receiveResult;
+	}
+
+	/**
+	 * Check the HMAC of an ingoing Threema request. Always do this before de-
+	 * crypting the message.
+	 *
+	 * @param string $threemaId
+	 * @param string $gatewayId
+	 * @param string $messageId
+	 * @param string $date
+	 * @param string $nonce nonce as hex encoded string
+	 * @param string $box box as hex encoded string
+	 * @param string $mac the original one send by the server
+	 *
+	 * @return bool true if check was successfull, false if not
+	 */
+	public final function checkMac($threemaId, $gatewayId, $messageId, $date, $nonce, $box, $mac, $secret) {
+		$calculatedMac = hash_hmac('sha256', $threemaId.$gatewayId.$messageId.$date.$nonce.$box, $secret);
+		return $this->cryptTool->stringCompare($calculatedMac, $mac) === true;
 	}
 
 	/**
