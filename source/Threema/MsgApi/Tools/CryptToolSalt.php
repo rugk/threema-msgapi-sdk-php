@@ -8,6 +8,7 @@
 namespace Threema\MsgApi\Tools;
 
 use Salt;
+use SaltException;
 use Threema\Core\Exception;
 use Threema\Core\KeyPair;
 
