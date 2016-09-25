@@ -99,7 +99,7 @@ $connector = new Connection($settings, $publicKeyStore);
 If you want to get a list of all ciphers you can use have a look at the [SSLLabs scan](https://www.ssllabs.com/ssltest/analyze.html?d=msgapi.threema.ch&latest), at the list of all available [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/apps/ciphers.html) and the [comparison table by Mozilla](https://wiki.mozilla.org/Security/Server_Side_TLS#Cipher_names_correspondence_table) which also has some suggestions for good ciphers you should use.
 
 **Note:** For `pinnedKey` to work you must install cURL 7.39 or higher. It is also recommend to use PHP 7.0.7 or higher if you want to support this feature, but it is not required.
-You can test whether it works by specyfing an invalid pin.
+You can test whether it works by specifying an invalid pin.
 
 ### Sending a text message to a Threema ID (Simple Mode)
 
