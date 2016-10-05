@@ -176,7 +176,7 @@ class CryptToolSodium extends CryptTool {
 	{
 		// check if version is compatible
 		if (version_compare(PHP_VERSION, '7.0', '>=') &&
-			version_compare(phpversion('libsodium'), '1.0.1', '>=')
+			version_compare(phpversion('libsodium'), '1.0.1', '<')
 		) {
 			// if not, fall back to PHP implementation
 			return parent::removeVar($var);
