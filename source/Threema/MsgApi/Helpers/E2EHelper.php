@@ -261,7 +261,7 @@ class E2EHelper {
 			if(null !== $result && true === $result->isSuccess()) {
 				$file = $this->cryptTool->decryptFile(
 					$result->getData(),
-					hex2bin($message->getEncryptionKey()));
+					$this->cryptTool->hex2bin($message->getEncryptionKey()));
 
 				if (null === $file) {
 					throw new Exception('file decryption failed');
