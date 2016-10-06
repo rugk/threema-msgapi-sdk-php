@@ -186,7 +186,7 @@ class E2EHelper {
 	 * Note: This does not check the MAC before, which you should always do when
 	 * you want to use this in your own application! Use {@link checkMac()} for doing so.
 	 *
-	 * @param string $threemaId
+	 * @param string $threemaId The sender ID (= the ID the message came from)
 	 * @param string $messageId
 	 * @param string $box box as binary string
 	 * @param string $nonce nonce as binary string
