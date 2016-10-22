@@ -7,7 +7,7 @@
 
 namespace Threema\MsgApi\Messages;
 
-use Threema\MsgApi\Messages\CryptTool;
+use Threema\MsgApi\Tools\CryptTool;
 
 class DeliveryReceipt extends ThreemaMessage {
 	const TYPE_CODE = 0x80;
