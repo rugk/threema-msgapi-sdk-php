@@ -85,7 +85,7 @@ $settings = new ConnectionSettings(
         'forceHttps' => true, //set to true to force HTTPS, default: false
         'tlsVersion' => '1.2', //set the version of TLS to be used, default: null
         'tlsCipher' => 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384' //choose a cipher or a list of ciphers, default: null
-        'pinnedKey' => 'sha256//PI1YNwkAgVLVmnydc84An+4reEMvoXcYCEgFP0WEF2Y=;sha256//8SLubAXo6MrrGziVya6HjCS/Cuc7eqtzw1v6AfIW57c=' // the hashes to pin, the default is shown here, it is NOT recommend to change this value!
+        'pinnedKey' => 'sha256//8SLubAXo6MrrGziVya6HjCS/Cuc7eqtzw1v6AfIW57c=;sha256//8kTK9HP1KHIP0sn6T2AFH3Bq+qq3wn2i/OJSMjewpFw=' // the hashes to pin, the default is shown here, it is NOT recommend to change this value!
     ]
 );
 
