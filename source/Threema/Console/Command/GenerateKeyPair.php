@@ -8,6 +8,7 @@
 namespace Threema\Console\Command;
 
 use Threema\Console\Common;
+use Threema\Console\Command\CryptTool;
 
 class GenerateKeyPair extends Base {
 	public function __construct() {

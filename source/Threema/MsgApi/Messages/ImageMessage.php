@@ -60,7 +60,7 @@ class ImageMessage extends ThreemaMessage {
 	/**
 	 * @return string
 	 */
-	function __toString() {
+	public function __toString() {
 		return 'image message';
 	}
 
