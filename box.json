@@ -1,0 +1,18 @@
+{
+	"algorithm": "SHA256",
+	"compactors": [
+		"Herrera\\Box\\Compactor\\Json",
+		"Herrera\\Box\\Compactor\\Php"
+	],
+	"blacklist": [
+		"Threema/MsgApi/Tests"
+	],
+	"compression": "NONE",
+	"directories": ["source"],
+	"extract": false,
+	"files": [
+		"LICENSE"
+	],
+	"main": "source/bootstrap.php",
+	"output": "threema_msgapi.phar"
+}

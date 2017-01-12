@@ -5,3 +5,7 @@ keystore.*
 *.key
 privatekey.txt
 
+# Ignore builds
+*.phar
+*.phar.asc
+
