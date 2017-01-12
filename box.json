@@ -7,12 +7,13 @@
 	"blacklist": [
 		"Threema/MsgApi/Tests"
 	],
-	"compression": "NONE",
+	"compression": "GZ",
 	"directories": ["source"],
 	"extract": false,
 	"files": [
 		"LICENSE"
 	],
 	"main": "source/bootstrap.php",
-	"output": "threema_msgapi.phar"
+	"output": "threema_msgapi.phar",
+	"stub": false
 }
