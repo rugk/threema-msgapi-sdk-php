@@ -7,7 +7,7 @@
 	"blacklist": [
 		"Threema/MsgApi/Tests"
 	],
-	"compression": "GZ",
+	"compression": "NONE",
 	"directories": ["source"],
 	"extract": false,
 	"files": [

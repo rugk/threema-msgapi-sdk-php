@@ -11,7 +11,7 @@ Version: [1.1.7](https://github.com/rugk/threema-msgapi-sdk-php/releases/tag/v1.
 ## Notes about this version
 This is a fork of the [original repo](https://github.com/threema-ch/threema-msgapi-sdk-php) after it was announced that the GitHub-version is no longer maintained by Threema.
 As this is the community version of the Threema Gateway PHP SDK it may contain additional changes which are not yet included in the official downloadable version on the Threema website. If you are looking for a simple mirror of the downloadable Threema version you can switch to the branch [`official`](https://github.com/rugk/threema-msgapi-sdk-php/tree/official).  
-More information are avaliable in [the wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/Branches-and-releases).
+More information is avaliable in [the wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/Branches-and-releases).
 
 An automatically created documentation of this SDK can be found [on GitHub Pages](https://rugk.github.io/threema-msgapi-sdk-php/).
 
