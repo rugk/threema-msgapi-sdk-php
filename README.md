@@ -290,6 +290,10 @@ Fetch remaining credits.
 Nice to see you want to contribute. We may periodically send patches to Threema to make it possible for them to implement them in the official SDK version.  
 You can find more information [in our wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/Contributing).
 
+## Implementations
+
+Looking for some implementations? Have a look at [the wiki](https://github.com/rugk/threema-msgapi-sdk-php/wiki/Implementations).
+
 ## Other platforms (Java and Python)
 All repositories on GitHub are no longer maintained by the Threema GmbH. However, the community has forked the repositories of all platforms and they are now maintained unofficially.
 
