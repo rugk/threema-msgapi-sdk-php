@@ -17,6 +17,7 @@ env:
   - LIBSODIUM=1.0.10 LIBSODIUMPHP=stable
   - LIBSODIUM=nightly LIBSODIUMPHP=stable
 before_script:
+  - phpenv config-add scripts/php.ini
   - scripts/verifySignature.sh
   - scripts/buildLibsodium.sh
   - scripts/buildLibsodiumPhp.sh
