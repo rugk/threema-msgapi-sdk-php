@@ -23,6 +23,7 @@ before_script:
 
 script:
   - scripts/checkLibsodium.sh
+  - scripts/buildPhar.php
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
 
 addons:
