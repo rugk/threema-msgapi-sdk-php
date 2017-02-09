@@ -1,6 +1,6 @@
 # [Threema Gateway](https://gateway.threema.ch/) PHP SDK
 
-Version: [1.1.7](https://github.com/rugk/threema-msgapi-sdk-php/releases/tag/v1.1.7)
+Version: [1.2.0](https://github.com/rugk/threema-msgapi-sdk-php/releases/tag/v1.2.0)
 
 [![Build Status](https://travis-ci.org/rugk/threema-msgapi-sdk-php.svg?branch=master)](https://travis-ci.org/rugk/threema-msgapi-sdk-php)
 [![Code Climate](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php/badges/gpa.svg)](https://codeclimate.com/github/rugk/threema-msgapi-sdk-php)
