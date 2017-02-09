@@ -3,7 +3,7 @@
 // set variables
 $dir = dirname(__DIR__);
 $source = dirname(__DIR__) . '/source';
-$file = 'threema_msgapi.phar';
+$file = $dir . '/threema_msgapi.phar';
 
 // preparation
 if (!is_dir($dir)) {

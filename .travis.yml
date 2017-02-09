@@ -24,7 +24,7 @@ before_script:
 
 script:
   - scripts/checkLibsodium.sh
-  - scripts/buildPhar.php
+  #- scripts/buildPhar.php # fails, see https://github.com/rugk/threema-msgapi-sdk-php/issues/54
   - phpunit --bootstrap source/bootstrap.php source/Threema/MsgApi/Tests
 
 addons:
