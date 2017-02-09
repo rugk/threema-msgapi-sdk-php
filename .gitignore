@@ -9,3 +9,5 @@ privatekey.txt
 *.phar
 *.phar.asc
 
+# no, composer…
+vendor/
