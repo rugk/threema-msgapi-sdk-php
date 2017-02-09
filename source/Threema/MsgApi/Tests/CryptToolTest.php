@@ -163,26 +163,16 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 					'same' => 'same length, same content'
 				];
 
-				// test different strings when comparing and get time needed
-				$timeElapsed = [];
+				// test different strings when comparing
 				$comparisonResult = [];
-				$timeElapsedAvg = [];
 				foreach(array(
 					'length' => [$string1, $string1 . 'a'],
 					'diff' => [$string1, $string2],
 					'same' => [$string1, $string1]
 				) as $testName => $strings) {
-					$timeMin = [null, 0];
-					$timeMax = [null, 0];
 					for ($i=0; $i < 3; $i++) {
 						// test run with delay
-						$timeElapsed[$testName][$i] = -microtime(true);
 						$comparisonResult[$testName][$i] = $cryptTool->stringCompare($strings[0], $strings[1]);
-						$timeElapsed[$testName][$i] += microtime(true);
-						usleep(1000);
-
-						// debug output
-						// echo $prefix.': '.$humanDescr[$testName].' #'.$i.': '.$timeElapsed[$testName][$i].'; result: '.$comparisonResult[$testName][$i].PHP_EOL;
 
 						// check result
 						if ($testName == 'length' || $testName == 'diff') {
@@ -190,48 +180,9 @@ class CryptToolTests extends \PHPUnit_Framework_TestCase {
 						} else {
 							$this->assertEquals(true, $comparisonResult[$testName][$i], $prefix.': comparison of "'.$humanDescr[$testName].' #'.$i.'" is wrong: expected: true, got '.$comparisonResult[$testName][$i]);
 						}
-
-						// get min/max values for later normalisation
-						if (is_null($timeMin[0]) || $timeElapsed[$testName][$i] < $timeMin[0]) {
-							$timeMin[0] = $timeElapsed[$testName][$i]; //minimum value
-							$timeMin[1] = $i; //index
-						}
-						if (is_null($timeMax[0]) || $timeElapsed[$testName][$i] > $timeMax[0]) {
-							$timeMax[0] = $timeElapsed[$testName][$i]; //maxiumum value
-							$timeMax[1] = $i; //index
-						}
 					}
-
-					// remove min/max value from array to normalize value
-					array_splice($timeElapsed[$testName], $timeMin[1], 1);
-					array_splice($timeElapsed[$testName], $timeMax[1] >= $timeMin[1] ? ($timeMax[1]-1) : $timeMax[1], 1);
-
-					// calculate average (currently useless as there is only one value left, but it may be useful later)
-					$timeElapsedAvg[$testName] = array_sum($timeElapsed[$testName]) / count($timeElapsed[$testName]);
 				}
-
-				// check timings
-				echo 'Timing test results with '.$prefix.':'.PHP_EOL;
-				$timingRatio = $timeElapsedAvg['diff'] / $timeElapsedAvg['same'];
-				$absoluteDifference = abs($timeElapsedAvg['diff'] - $timeElapsedAvg['same']);
-				echo 'timing ratio: '.$timingRatio.PHP_EOL;
-				echo 'absolute difference: '.$absoluteDifference.PHP_EOL;
-
-				// only allow 25% relative difference of two values (upper value additionally +0.25 as u7sually when there is a timing error the value will be too low)
-				$allowedDifferenceLow = 0.25;
-				$allowedDifferenceTop = 0.5;
-				// double value if running in a CI envoriment
-				if (getenv('CI') == 'true')	{
-					$allowedDifferenceLow = $allowedDifferenceLow*2;
-					$allowedDifferenceTop = $allowedDifferenceTop*2;
-				}
-
-				$this->assertLessThan(1+$allowedDifferenceTop, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Ratio: '.$timingRatio);
-				$this->assertGreaterThan(1-$allowedDifferenceLow, $timingRatio, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too low. Ratio: '.$timingRatio);
-
-				// make sure the absolute difference is smaller than 1 second! (CI = 2 seconds)
-				$this->assertLessThan(getenv('CI') == 'true' ? 2 : 1, $absoluteDifference, $prefix.': difference of comparison ration of "'.$humanDescr['diff'].'" compared to "'.$humanDescr['same'].'" is too high. Value is: '.$absoluteDifference.' micro seconds');
-			});
+		});
 	}
 
 	/**
