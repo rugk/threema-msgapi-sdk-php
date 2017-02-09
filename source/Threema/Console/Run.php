@@ -162,7 +162,7 @@ class Run {
 		Common::l();
 		Common::l('Threema PHP MsgApi Tool');
 		Common::l('Version: '.MSGAPI_SDK_VERSION);
-		Common::l('Feature level: '.MSGAPI_FEATURE_LEVEL);
+		Common::l('Feature level: '.MSGAPI_SDK_FEATURE_LEVEL);
 		Common::l('CryptTool: '.$defaultCryptTool->getName().' ('.$defaultCryptTool->getDescription().')');
 		Common::l(str_repeat('.', 40));
 		Common::l();
